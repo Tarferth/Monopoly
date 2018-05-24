@@ -16,6 +16,8 @@ public class Monopoly {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        aaaaaaaaaaaaa
     }
     
 }
