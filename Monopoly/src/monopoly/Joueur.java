@@ -74,4 +74,10 @@ public class Joueur {
     public void setPositionJoueur(int position){
         // A FAIRE
     }
+    public Case getCase(int position){
+        // A FAIRE
+    }
+    public void setPositionTourComplet(int position){
+        
+    }
 }
