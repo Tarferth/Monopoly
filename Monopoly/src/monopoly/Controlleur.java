@@ -36,11 +36,48 @@ public class Controlleur {
     
     public Joueur nouveauJoueur(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Choisissez votre nom : ");
+        System.out.println("|**               Choisissez votre nom :                 **|");
         String nom = sc.nextLine();
-        System.out.println("Choisissez votre symbole : ");
+        System.out.println("|**               Choisissez votre symbole :             **|");
         String symbole = sc.nextLine();
-        return new Joueur(nom,symbole);
+        System.out.println("! Inscription validée !");
+        return new Joueur(nom,symbole,1500,0); // création d'un nouveau joueur (nom, symboel,argent et position)
+    }
+    
+    public void inscriptionJoueur(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("|**                A combien voulez vous jouer ? :       **|");
+        int nb = sc.nextInt();
+        
+        for (int i = 0; i <nb; i++) {
+            nouveauJoueur();
+        }
+    }
+    
+    public void Menu(){
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("------------------------------------------------------------");
+        System.out.println("|**********************************************************|");
+        System.out.println("|**                   -- Monopoly --                     **|");
+        System.out.println("|**********************************************************|");
+        System.out.println("|**                                                      **|");
+        System.out.println("|**                     1- Jouer                         **|");
+        System.out.println("|**                                                      **|");
+        System.out.println("|**                     0- Quitter                       **|");
+        System.out.println("|**                                                      **|");
+        System.out.println("|**********************************************************|");
+        System.out.println("------------------------------------------------------------");
+        int nb = sc.nextInt();
+        
+        switch(nb){
+            case 1:
+                inscriptionJoueur();
+            case 0:
+                return;
+            default:
+                System.out.println("! Entrée non valide !");
+        }
     }
    
 }
