@@ -14,15 +14,16 @@ import java.util.ArrayList;
 public class Joueur {
     private String nom;
     private String symbole;
-    private int montantJoueur;
-    private Case position;
+    private int fortune;
+    private Case case;
     private ArrayList<Proprieter> possedé;
+    
 
-    public Joueur(String nom, String symbole, int montantJoueur, Case position) {
+    public Joueur(String nom, String symbole, int fortune, Case position) {
         this.nom = nom;
         this.symbole = symbole;
-        this.montantJoueur = montantJoueur;
-        this.position = position;
+        this.fortune = fortune;
+        this.case = case;
         this.possedé = new ArrayList<>();
     }
     
@@ -39,21 +40,12 @@ public class Joueur {
         // A FAIRE
     }
     public int getFortune(){
-        // A FAIRE
+        return this.fortune;
     }
-    public int getPosition(){
-        // A FAIRE
+    public Case getPosition(){
+        return this.position;
     }
     public void getPropriétésJoueur(Joueur j){
-        // A FAIRE
-    }
-    public int getMontantJoueur(Joueur j){
-        // A FAIRE
-    }
-    public void enleverArgent(int prixLoyer, Joueur j){
-        // A FAIRE
-    }
-    public void ajouterArgent(int prixLoyer, Joueur proprietaire){
         // A FAIRE
     }
     public void perdu(Joueur j){
@@ -65,19 +57,13 @@ public class Joueur {
     public int getNbCompagnies(Joueur proprietaire){
         // A FAIRE
     }
-    public void setFortune(int fortune){
-        // A FAIRE
-    }
-    public void acheter(){
-        // A FAIRE
+    public void setFortune(int montant){
+        this.fortune = this.getFortune() + montant;
     }
     public void setPositionJoueur(int position){
         // A FAIRE
     }
-    public Case getCase(int position){
-        // A FAIRE
-    }
-    public void setPositionTourComplet(int position){
+    public Case getCase(int case){
         
     }
 }
