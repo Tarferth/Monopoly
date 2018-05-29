@@ -15,7 +15,7 @@ public class Joueur {
     private String nom;
     private String symbole;
     private int fortune;
-    private Case case;
+    private Cellule cellule;
     private ArrayList<Proprieter> possedé;
     
 
@@ -23,7 +23,7 @@ public class Joueur {
         this.nom = nom;
         this.symbole = symbole;
         this.fortune = fortune;
-        this.case = case;
+        this.cellule = cellule;
         this.possedé = new ArrayList<>();
     }
     
@@ -42,8 +42,8 @@ public class Joueur {
     public int getFortune(){
         return this.fortune;
     }
-    public Case getPosition(){
-        return this.position;
+    public Cellule getPosition(){
+        return this.;
     }
     public void getPropriétésJoueur(Joueur j){
         // A FAIRE
@@ -63,7 +63,7 @@ public class Joueur {
     public void setPositionJoueur(int position){
         // A FAIRE
     }
-    public Case getCase(int case){
+    public Cellule getCase(int numero){
         
     }
 }
