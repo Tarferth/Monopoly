@@ -15,15 +15,15 @@ public class Joueur {
     private String nom;
     private String symbole;
     private int fortune;
-    private Case case;
+    private Cellule case;
     private ArrayList<Proprieter> possedé;
     
 
-    public Joueur(String nom, String symbole, int fortune, Case position) {
+    public Joueur(String nom, String symbole, int fortune, Cellule position) {
         this.nom = nom;
         this.symbole = symbole;
         this.fortune = fortune;
-        this.case = case;
+        this.position = position;
         this.possedé = new ArrayList<>();
     }
     
