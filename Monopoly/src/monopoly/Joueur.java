@@ -6,6 +6,8 @@
 package monopoly;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -17,7 +19,7 @@ public class Joueur {
     private int fortune;
     private int position;
     private Cellule cellule;
-    private ArrayList<Proprieter> possedé;
+    private HashMap<String,String> possedé;
     
 
     public Joueur(String nom, String symbole, int fortune, int position) {
@@ -25,20 +27,17 @@ public class Joueur {
         this.symbole = symbole;
         this.fortune = fortune;
         this.position = position;
-        this.possedé = new ArrayList<>();
+        this.possedé = new HashMap<>();
     }
     
-    public void deplacer(int tot){
-        // A FAIRE
-    }
     public void acheter(Proprieter p){
         // A FAIRE
     }
-    public void addProprieter(){
+    public void addProprieter(Proprieter p){
         // A FAIRE
     }
-    public void payerLoyer(){
-        // A FAIRE
+    public void payerLoyer(int montantLoyer){
+        this.setFortune(this.getFortune() - montantLoyer);
     }
     public int getFortune(){
         return this.fortune;
@@ -46,20 +45,20 @@ public class Joueur {
     public int getPosition(){
         return this.position;
     }
-    public ArrayList getPropriétésJoueur(Joueur j){
-        return j.possedé;
+    public HashMap getPropriétésJoueur(){
+        return this.possedé;
     }
     public void perdu(Joueur j){
         // A FAIRE
     }
-    public int getNbGarePossédées(Joueur proprietaire){
+    public int getNbGarePossédées(){
         // A FAIRE
     }
-    public int getNbCompagnies(Joueur proprietaire){
+    public int getNbCompagnies(){
         // A FAIRE
     }
     public void setFortune(int montant){
-        this.fortune = this.getFortune() + montant;
+        this.fortune = montant;
     }
     public void setPositionJoueur(int position){
         this.position = position;
