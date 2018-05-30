@@ -19,7 +19,7 @@ public class Joueur {
     private int fortune;
     private int position;
     private Cellule cellule;
-    private HashMap<String,String> possedé;
+    private HashMap<String,Proprieter> possedé;
     
 
     public Joueur(String nom, String symbole, int fortune, int position) {
@@ -34,7 +34,7 @@ public class Joueur {
         // A FAIRE
     }
     public void addProprieter(Proprieter p){
-        // A FAIRE
+        this.possedé.put(this.nom, p);
     }
     public void payerLoyer(int montantLoyer){
         this.setFortune(this.getFortune() - montantLoyer);
@@ -63,7 +63,11 @@ public class Joueur {
     public void setPositionJoueur(int position){
         this.position = position;
     }
-    public Cellule getCellule(int numero){
-        return this.cellule.getNumero(numero);
+    public Cellule getCellule(){
+        return this.cellule;
     }
+    public String getNom() {
+        return this.nom;
+    }
+    
 }
