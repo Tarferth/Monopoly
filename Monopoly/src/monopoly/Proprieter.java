@@ -21,10 +21,14 @@ public abstract class Proprieter {
     public int getPrixAchat(){
         return this.prixAchat;
     }
-    public Joueur getProprietaire(){
-        return this.proprio;
-    }
     public void setProprietaire(Joueur joueur){
         this.proprio = joueur;
     }
+    public Joueur getProprio() {
+        return this.proprio;
+    }
+    public String getType() {
+        return this.type;
+    }
+    
 }
