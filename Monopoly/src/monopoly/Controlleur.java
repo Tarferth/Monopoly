@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class Controlleur {
     private ArrayList<Joueur> joueurs;
     private boolean faitUnDouble;
+    private Plateau plateau;
     
     public int lancerDes(){
         int lancer1 = (int) Math.round(Math.random()*5+1);
