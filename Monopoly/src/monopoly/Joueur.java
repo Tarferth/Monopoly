@@ -19,7 +19,7 @@ public class Joueur {
     private ArrayList<Proprieter> possedé;
     
 
-    public Joueur(String nom, String symbole, int fortune, Case position) {
+    public Joueur(String nom, String symbole, int fortune, int position) {
         this.nom = nom;
         this.symbole = symbole;
         this.fortune = fortune;
