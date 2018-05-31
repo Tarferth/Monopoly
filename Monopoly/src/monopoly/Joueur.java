@@ -20,6 +20,7 @@ public class Joueur {
     private int position;
     private Cellule cellule;
     private HashMap<String,Propriete> possedé;
+    private int De;
     
 
     public Joueur(String nom, String symbole, int fortune, int position) {
