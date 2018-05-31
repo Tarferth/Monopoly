@@ -58,6 +58,15 @@ public class Joueur {
     public int getNbCompagnies(){
         // A FAIRE
     }
+
+    public void setDe(int De) {
+        this.De = De;
+    }
+
+    public int getDe() {
+        return De;
+    }
+    
     public void setFortune(int montant){
         this.fortune = montant;
     }

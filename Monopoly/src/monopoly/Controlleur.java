@@ -83,8 +83,43 @@ public class Controlleur {
         }
     }
     
+    
+    public void choix()            //Quand le joueur arrive sur une cellule
+    {
+        
+    }  
+    
+    
     public void initialisationPlateau(){
         
     }
    
+    
+    public void tourDeJeu()
+    {
+        while (finDeLaPartie() != true)
+        {
+            for (int i =0;i<this.joueurs.size();i++)
+            {
+                this.joueurs.get(i).setDe(lancerDes());
+            }
+        }        
+                    
+                
+        
+        
+        
+    }
+    
+    public boolean finDeLaPartie(){
+        if (joueurs.size()==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
+
