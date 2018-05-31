@@ -19,7 +19,7 @@ public class Joueur {
     private int fortune;
     private int position;
     private Cellule cellule;
-    private HashMap<String,Proprieter> possedé;
+    private HashMap<String,Propriete> possedé;
     
 
     public Joueur(String nom, String symbole, int fortune, int position) {
@@ -30,10 +30,10 @@ public class Joueur {
         this.possedé = new HashMap<>();
     }
     
-    public void acheter(Proprieter p){
+    public void acheter(Propriete p){
         // A FAIRE
     }
-    public void addProprieter(Proprieter p){
+    public void addProprieter(Propriete p){
         this.possedé.put(this.nom, p);
     }
     public void payerLoyer(int montantLoyer){

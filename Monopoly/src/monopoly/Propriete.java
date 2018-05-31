@@ -9,14 +9,21 @@ package monopoly;
  *
  * @author fourrieq
  */
-public abstract class Proprieter {
+public abstract class Propriete {
     private int prixAchat;
     private Joueur proprio;
     private String nom;
-    private String type;
+    private Cellule cellule;
+
+    public Propriete(int prixAchat, String nom, Cellule cellule) {
+        this.prixAchat = prixAchat;
+        this.nom = nom;
+        this.cellule = cellule;
+    }
+    
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
     public int getPrixAchat(){
         return this.prixAchat;
@@ -24,11 +31,13 @@ public abstract class Proprieter {
     public void setProprietaire(Joueur joueur){
         this.proprio = joueur;
     }
-    public Joueur getProprio() {
+    public Joueur getProprietaire() {
         return this.proprio;
     }
-    public String getType() {
-        return this.type;
+
+    public Cellule getCellule() {
+        return this.cellule;
     }
+    
     
 }

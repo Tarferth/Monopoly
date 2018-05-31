@@ -5,6 +5,8 @@
  */
 package monopoly;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author fourrieq
@@ -12,27 +14,34 @@ package monopoly;
 public class Cellule {
     private String nom;
     private int numero;
-    private Plateau plateau;
+    private ArrayList<Joueur> pions = new ArrayList<>();
+    private Propriete propriete;
+    
 
     public Cellule(String nom, int numero) {
         this.nom = nom;
         this.numero = numero;
     }
 
+    public Propriete getPropriete() {
+        return this.propriete;
+    }
+
     public int getNumero() {
         return this.numero;
     }
     
-    public String getNomCellule(int numero){
-        // A FAIRE
+    public String getNomCellule(){
+        return this.nom;
     }
-    public Joueur getProprietaire(){
-        // A FAIRE
-    }
-    public void removePion(Cellule cAvant){
-        
+    
+    public void removePion(Joueur pion){
+        if (this.pions.contains(pion))
+        {
+        this.pions.remove(pion);
+        }
     }
     public void addPions(Joueur pion){
-        
+        this.pions.add(pion);
     }
 }
