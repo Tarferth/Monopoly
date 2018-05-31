@@ -23,7 +23,7 @@ public class Cellule {
         return this.numero;
     }
     
-    public String getNomCase(int numero){
+    public String getNomCellule(int numero){
         // A FAIRE
     }
     public Joueur getProprietaire(){
@@ -33,9 +33,6 @@ public class Cellule {
         
     }
     public void addPions(Joueur pion){
-        
-    }
-    public void test(){
         
     }
 }
