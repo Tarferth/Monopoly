@@ -9,14 +9,18 @@ package monopoly;
  *
  * @author fourrieq
  */
-public class Case {
+public class Cellule {
     private String nom;
     private int numero;
     private Plateau plateau;
 
-    public Case(String nom, int numero) {
+    public Cellule(String nom, int numero) {
         this.nom = nom;
         this.numero = numero;
+    }
+
+    public int getNumero() {
+        return this.numero;
     }
     
     public String getNomCase(int numero){
@@ -25,10 +29,13 @@ public class Case {
     public Joueur getProprietaire(){
         // A FAIRE
     }
-    public void removePion(Case cAvant){
+    public void removePion(Cellule cAvant){
         
     }
     public void addPions(Joueur pion){
+        
+    }
+    public void test(){
         
     }
 }
