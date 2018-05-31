@@ -41,7 +41,9 @@ public class Controlleur {
         System.out.println("|**               Choisissez votre symbole :             **|");
         String symbole = sc.nextLine();
         System.out.println("! Inscription validée !");
-        return new Joueur(nom,symbole,1500,0); // création d'un nouveau joueur (nom, symboel,argent et position)
+        Joueur j1 = new Joueur(nom,symbole,1500,0); 
+        joueurs.add(j1);
+        return j1; // création d'un nouveau joueur (nom, symboel,argent et position)
     }
     
     public void inscriptionJoueur(){
@@ -78,6 +80,10 @@ public class Controlleur {
             default:
                 System.out.println("! Entrée non valide !");
         }
+    }
+    
+    public void initialisationPlateau(){
+        
     }
    
 }
