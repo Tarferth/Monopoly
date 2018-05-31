@@ -5,10 +5,18 @@
  */
 package monopoly;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author fourrieq
  */
+
 public class Plateau {
+    private ArrayList<Cellule> cellules;
+
+    public Plateau(ArrayList<Cellule> cellules) {
+        this.cellules = cellules;
+    }
     
 }
