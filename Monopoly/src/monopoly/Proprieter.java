@@ -9,17 +9,26 @@ package monopoly;
  *
  * @author fourrieq
  */
-public class Proprieter {
+public abstract class Proprieter {
     private int prixAchat;
     private Joueur proprio;
-    
+    private String nom;
+    private String type;
+
+    public String getNom() {
+        return nom;
+    }
     public int getPrixAchat(){
         return this.prixAchat;
-    }
-    public Joueur getProprietaire(){
-        return this.proprio;
     }
     public void setProprietaire(Joueur joueur){
         this.proprio = joueur;
     }
+    public Joueur getProprio() {
+        return this.proprio;
+    }
+    public String getType() {
+        return this.type;
+    }
+    
 }

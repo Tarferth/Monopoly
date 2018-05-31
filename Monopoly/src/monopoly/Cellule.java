@@ -18,6 +18,10 @@ public class Cellule {
         this.nom = nom;
         this.numero = numero;
     }
+
+    public int getNumero() {
+        return this.numero;
+    }
     
     public String getNomCase(int numero){
         // A FAIRE
