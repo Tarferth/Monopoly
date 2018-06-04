@@ -48,9 +48,7 @@ public class Joueur {
     public HashMap getPropriétésJoueur(){
         return this.possedé;
     }
-    public void perdu(Joueur j){
-        // A FAIRE
-    }
+    
     public int getNbGarePossédées(){
         // A FAIRE
     }
@@ -60,7 +58,7 @@ public class Joueur {
     public void setFortune(int montant){
         this.fortune = montant;
     }
-    public void setPositionJoueur(int position){
+    public void setPositionJoueur(Joueur j,int position){
         this.position = position;
     }
     public Cellule getCellule(){
@@ -69,5 +67,5 @@ public class Joueur {
     public String getNom() {
         return this.nom;
     }
-    
+  
 }

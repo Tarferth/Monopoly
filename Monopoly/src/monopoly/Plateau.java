@@ -18,5 +18,8 @@ public class Plateau {
     public Plateau(ArrayList<Cellule> cellules) {
         this.cellules = cellules;
     }
+
+    public Plateau() {
+    }
     
 }

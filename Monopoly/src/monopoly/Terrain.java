@@ -21,7 +21,7 @@ public class Terrain extends Propriete {
     }
     
     public int getLoyer(){
-        if(this.getProprietaire().couleurComplete)
+        if(this.getProprietaire().couleurComplete())
         {
             return this.loyer*2;
         }

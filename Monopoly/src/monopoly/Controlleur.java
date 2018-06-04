@@ -16,6 +16,7 @@ public class Controlleur {
     private ArrayList<Joueur> joueurs;
     private boolean faitUnDouble;
     private Plateau plateau;
+    private Joueur joueurCourrant;
     
     public int lancerDes(){
         int lancer1 = (int) Math.round(Math.random()*5+1);
@@ -27,10 +28,9 @@ public class Controlleur {
             faitUnDouble = false;
         
        return lancer1+lancer2;
+
     }
-    public Joueur getJoueurCourant(){
-       
-    }
+
     public int getPrixLot(int l){
         // A FAIRE
     }
@@ -51,10 +51,18 @@ public class Controlleur {
         Scanner sc = new Scanner(System.in);
         System.out.println("|**                A combien voulez vous jouer ? :       **|");
         int nb = sc.nextInt();
-        
-        for (int i = 0; i <nb; i++) {
-            nouveauJoueur();
+        switch(nb){
+            case 2: case 3: case 4: case 5: case 6:
+               for (int i = 0; i <nb; i++) {
+                    nouveauJoueur();
+               }
+               break;
+             
+            default:
+                System.out.println("! Il faut un minimum de 2 joueurs ou un maximum de 6 joueurs !");
         }
+
+        tourDeJeu();
     }
     
     public void Menu(){
@@ -83,8 +91,33 @@ public class Controlleur {
         }
     }
     
-    public void initialisationPlateau(){
+    public void initialisationTourJeu(){
+        Plateau p1 = new Plateau();
+    }
+    
+    public void tourDeJeu(){
+        joueurCourrant =  joueurs.get(0);//innitialisation du joueur courrant
         
+        int de = lancerDes();
+        de = de + joueurCourrant.getPosition();
+        deplacer(joueurCourrant,de);//déplacement du pion du joueur courrant
+        
+        if (perdu(joueurCourrant)){
+            System.out.println("! Le joueur " + joueurCourrant + " a perdu !");
+        }else if (){
+            
+        }
+        
+        if (faitUnDouble){ //rejoue si le joueur fait un double
+            tourDeJeu();
+        }else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
+            joueurs.remove(0);
+            joueurs.add(joueurCourrant);
+        }
+    }
+    
+    public boolean perdu(Joueur j){
+        return true;
     }
    
 }
