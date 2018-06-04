@@ -120,4 +120,18 @@ public class Controlleur {
         return true;
     }
    
+    
+
+    
+    public boolean finDeLaPartie(){
+        if (joueurs.size()==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
+

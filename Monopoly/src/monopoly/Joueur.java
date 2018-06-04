@@ -20,6 +20,7 @@ public class Joueur {
     private int position;
     private Cellule cellule;
     private HashMap<String,Propriete> possedé;
+    private int De;
     
 
     public Joueur(String nom, String symbole, int fortune, int position) {
@@ -55,6 +56,15 @@ public class Joueur {
     public int getNbCompagnies(){
         // A FAIRE
     }
+
+    public void setDe(int De) {
+        this.De = De;
+    }
+
+    public int getDe() {
+        return De;
+    }
+    
     public void setFortune(int montant){
         this.fortune = montant;
     }

@@ -18,7 +18,11 @@ public class Compagnie extends Propriete{
     public int getLoyer(){
         if (this.getProprietaire().getNbCompagnies() == 1)
         {
-            return 
+            return this.getProprietaire().getDe()*4;
+        }
+        else if (this.getProprietaire().getNbCompagnies()==2)
+        {
+            return this.getProprietaire().getDe()*10;
         }
     }
     
