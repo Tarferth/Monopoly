@@ -103,13 +103,36 @@ public class Controlleur {
         Cellule cel = joueurCourrant.getCellule();
         String proprio = cel.getPropriete().getProprietaire().getNom();
         
-        
-        if (proprio=="banque"){ //on suppose que le joueur est sur une propriete
-            Scanner sc = new Scanner(System.in);
-            System.out.println("|**                     1- Acheter                         **|");
-            System.out.println("|**                     0- Passer son Tour                 **|");
-            int nb = sc.nextInt();
-     
+        if (joueurCourrant.getFortune()>cel.getPropriete().getPrixAchat() && proprio=="banque"){// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
+            
+               Scanner sc = new Scanner(System.in);
+               System.out.println("|**                     1- Acheter                         **|");
+               System.out.println("|**                     0- Passer son Tour                 **|");
+               int nb = sc.nextInt();
+               switch(nb){
+                   case 1:
+                       joueurCourrant.setFortune(joueurCourrant.getFortune()-cel.getPropriete().getPrixAchat());    
+                       joueurCourrant.addProprieter(cel.getPropriete());
+                       System.out.println("! Achat confirmé !");
+                       System.out.println("Fin de tour");
+                       tourDeJeu();
+                       break;
+                   case 0:
+                       System.out.println("Fin de tour");
+                       tourDeJeu();
+                       break;
+                    default:
+                        System.out.println("! Entrée non valide !");
+               }
+      
+        }else if (proprio != "banque"){
+           Joueur proprietaire = cel.getPropriete().getProprietaire();
+           if(proprietaire == joueurCourrant){
+               System.out.println("Fin de tour");
+               tourDeJeu();
+           }else{
+               proprietaire.setFortune(proprietaire.getFortune()+cel.getPropriete().getLoyer());
+               joueurCourrant.setFortune(joueurCourrant.getFortune()-cel.getPropriete().getLoyer());
         }
         
         if (perdu(joueurCourrant)){ // gestion après paiement
