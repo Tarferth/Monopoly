@@ -92,7 +92,7 @@ public class Controlleur {
     }
     
     public void initialisationTourJeu(){
-        Plateau p1 = new Plateau();
+        Plateau plateau = new Plateau();
     }
     
     public void tourDeJeu(){
@@ -104,7 +104,7 @@ public class Controlleur {
         
         if (perdu(joueurCourrant)){
             System.out.println("! Le joueur " + joueurCourrant + " a perdu !");
-        }else if (){
+        }else{
             
         }
         
@@ -132,6 +132,21 @@ public class Controlleur {
         {
             return false;
         }
+    }
+    
+    public void deplacer(Joueur j, int de){
+        int pos = j.getPosition()+de;
+        
+        if (pos<40){
+            j.setPositionJoueur(j, pos);
+            Cellule c = j.getCellule();
+            c.addPions(j);
+        }
+        else
+            pos = pos%40;
+             j.setPositionJoueur(j, pos);
+            Cellule c = j.getCellule();
+            c.addPions(j);
     }
 }
 
