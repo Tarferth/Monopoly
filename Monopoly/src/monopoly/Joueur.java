@@ -19,7 +19,7 @@ public class Joueur {
     private int fortune;
     private int position;
     private Cellule cellule;
-    private HashMap<String,Propriete> possedé;
+    private HashMap<String,Propriete> possedé; 
     private int De;
     
 
@@ -51,7 +51,7 @@ public class Joueur {
     }
     
     public int getNbGarePossédées(){
-        // A FAIRE
+        
     }
     public int getNbCompagnies(){
         // A FAIRE
@@ -77,5 +77,4 @@ public class Joueur {
     public String getNom() {
         return this.nom;
     }
-  
 }
