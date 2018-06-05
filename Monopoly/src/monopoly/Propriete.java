@@ -50,5 +50,8 @@ public abstract class Propriete {
         return this.cellule;
     }
     
-    
+   public abstract int getLoyer();
+   
+       
+   
 }
