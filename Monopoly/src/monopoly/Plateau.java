@@ -17,8 +17,10 @@ public class Plateau {
     private ArrayList<Cellule> cellules;
     private HashMap<Integer,String> achetables;  // Numero de cellule puis nom de la cellule
 
-    public Plateau(ArrayList<Cellule> cellules) {
-        this.cellules = cellules;
+    public Plateau() {
+        this.cellules = new ArrayList<>();
+        this.cellules.add(NomCellule.values(1));
+        this.achetables = new HashMap<>();
         achetables.put(1, "Boulevard_de_Belleville");
         achetables.put(3, "Rue_Lecourbe");
         achetables.put(5, "Gare_Montparnasse");
@@ -49,7 +51,6 @@ public class Plateau {
         achetables.put(39, "Rue_de_la_Paix");    
     }
 
-    public Plateau() {
-    }
+  
     
 }

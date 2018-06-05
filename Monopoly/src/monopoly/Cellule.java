@@ -14,13 +14,14 @@ import java.util.ArrayList;
 public class Cellule {
     private String nom;
     private int numero;
-    private ArrayList<Joueur> pions = new ArrayList<>();
+    private ArrayList<Joueur> pions;
     private Propriete propriete;
     
 
     public Cellule(String nom, int numero) {
         this.nom = nom;
         this.numero = numero;
+        this.pions = new ArrayList<>();
     }
 
     public Propriete getPropriete() {

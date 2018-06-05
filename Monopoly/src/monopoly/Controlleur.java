@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class Controlleur {
 
-    private ArrayList<Joueur> joueurs;
+    private ArrayList<Joueur> joueurs = new ArrayList<>();
     private boolean faitUnDouble;
     private Plateau plateau;
     private Joueur joueurCourrant;
@@ -32,7 +32,7 @@ public class Controlleur {
 
     }
 
-    public Joueur nouveauJoueur() {
+    public void nouveauJoueur() {
         Scanner sc = new Scanner(System.in);
         System.out.println("|**               Choisissez votre nom :                 **|");
         String nom = sc.nextLine();
@@ -40,8 +40,7 @@ public class Controlleur {
         String symbole = sc.nextLine();
         System.out.println("! Inscription validée !");
         Joueur j1 = new Joueur(nom, symbole, 1500, 0);
-        joueurs.add(j1);
-        return j1; // création d'un nouveau joueur (nom, symboel,argent et position)
+        joueurs.add(j1); // création d'un nouveau joueur (nom, symboel,argent et position)
     }
 
     public void inscriptionJoueur() {
@@ -50,9 +49,25 @@ public class Controlleur {
         int nb = sc.nextInt();
         switch (nb) {
             case 2:
+                for (int i = 0; i < nb; i++) {
+                    nouveauJoueur();
+                }
+                break;
             case 3:
+                for (int i = 0; i < nb; i++) {
+                    nouveauJoueur();
+                }
+                break;
             case 4:
+                for (int i = 0; i < nb; i++) {
+                    nouveauJoueur();
+                }
+                break;
             case 5:
+                for (int i = 0; i < nb; i++) {
+                    nouveauJoueur();
+                }
+                break;
             case 6:
                 for (int i = 0; i < nb; i++) {
                     nouveauJoueur();
@@ -183,7 +198,6 @@ public class Controlleur {
         if (pos < 40) {
             j.setPositionJoueur(j, pos);
             Cellule c = j.getCellule();
-            c.addPions(j);
         } else {
             pos = pos % 40;
         }

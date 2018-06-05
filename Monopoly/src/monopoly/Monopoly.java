@@ -16,7 +16,9 @@ public class Monopoly {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        Controlleur c = new Controlleur();
+        c.initialisationTourJeu();
+        c.Menu();
         
     }
     
