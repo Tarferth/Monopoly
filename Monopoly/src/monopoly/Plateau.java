@@ -6,6 +6,7 @@
 package monopoly;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -14,9 +15,11 @@ import java.util.ArrayList;
 
 public class Plateau {
     private ArrayList<Cellule> cellules;
+    private HashMap<Integer,Propriete> achetables;
 
     public Plateau(ArrayList<Cellule> cellules) {
         this.cellules = cellules;
+        
     }
 
     public Plateau() {
