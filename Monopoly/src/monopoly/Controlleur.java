@@ -133,31 +133,34 @@ public class Controlleur {
                         System.out.println("! Entrée non valide !");
                }
       
-        }else if (proprio != "banque"){ // si le joueur tombe sur une propriété achtée
+        }else if (proprio != "banque"){ // si le joueur tombe sur une propriété achetée
            Joueur proprietaire = cel.getPropriete().getProprietaire();
            if(proprietaire == joueurCourrant){ //Si la propriété lui appartient
                System.out.println("Fin de tour");
                tourDeJeu();
            }else{// si il doit payer un loyer
-               proprietaire.setFortune(proprietaire.getFortune()+cel.getPropriete().getPrixLoyer());
-               joueurCourrant.setFortune(joueurCourrant.getFortune()-cel.getPropriete().getPrixLoyer());
-               System.out.println("! La transaction a été effectuée !");
-               System.out.println("Fin de tour");
-               tourDeJeu();
+                if (joueurCourrant.getFortune()<cel.getPropriete().getPrixLoyer()){
+                   proprietaire.setFortune(proprietaire.getFortune()+cel.getPropriete().getPrixLoyer());
+                    joueurCourrant.setFortune(joueurCourrant.getFortune()-cel.getPropriete().getPrixLoyer());
+                    System.out.println("! La transaction a été effectuée !");
+                    System.out.println("Fin de tour");
+                    tourDeJeu();
+                }else{
+                    System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
+                    System.out.println("! Vous avez perdu !");
+                    perdu(joueurCourrant);
+                }   
             }
         }
-        
-        if (perdu(joueurCourrant)){ // gestion après paiement
-            System.out.println("! Le joueur " + joueurCourrant + " a perdu !");
-        }else{
-           
+        else{
+            System.out.println("! Vous n'avez rien à faire !");
+            tourDeJeu();
         }
-
-        
+       
     }
     
-    public boolean perdu(Joueur j){
-        return true;
+    public void perdu(Joueur j){
+        joueurs.remove(0);
     }
    
     
