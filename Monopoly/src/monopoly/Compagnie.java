@@ -24,6 +24,7 @@ public class Compagnie extends Propriete{
         {
             return this.getProprietaire().getDe()*10;
         }
+        return 0;
     }
     
 }
