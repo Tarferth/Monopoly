@@ -103,6 +103,14 @@ public class Controlleur {
         Cellule cel = joueurCourrant.getCellule();
         String proprio = cel.getPropriete().getProprietaire().getNom();
         
+                
+        if (faitUnDouble){ //rejoue si le joueur fait un double
+            tourDeJeu();
+        }else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
+            joueurs.remove(0);
+            joueurs.add(joueurCourrant);
+        }
+        
         if (joueurCourrant.getFortune()>cel.getPropriete().getPrixAchat() && proprio=="banque"){// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
             
                Scanner sc = new Scanner(System.in);
@@ -125,28 +133,27 @@ public class Controlleur {
                         System.out.println("! Entrée non valide !");
                }
       
-        }else if (proprio != "banque"){
+        }else if (proprio != "banque"){ // si le joueur tombe sur une propriété achtée
            Joueur proprietaire = cel.getPropriete().getProprietaire();
-           if(proprietaire == joueurCourrant){
+           if(proprietaire == joueurCourrant){ //Si la propriété lui appartient
                System.out.println("Fin de tour");
                tourDeJeu();
-           }else{
-               proprietaire.setFortune(proprietaire.getFortune()+cel.getPropriete().getLoyer());
-               joueurCourrant.setFortune(joueurCourrant.getFortune()-cel.getPropriete().getLoyer());
+           }else{// si il doit payer un loyer
+               proprietaire.setFortune(proprietaire.getFortune()+cel.getPropriete().getPrixLoyer());
+               joueurCourrant.setFortune(joueurCourrant.getFortune()-cel.getPropriete().getPrixLoyer());
+               System.out.println("! La transaction a été effectuée !");
+               System.out.println("Fin de tour");
+               tourDeJeu();
+            }
         }
         
         if (perdu(joueurCourrant)){ // gestion après paiement
             System.out.println("! Le joueur " + joueurCourrant + " a perdu !");
         }else{
-            
+           
         }
+
         
-        if (faitUnDouble){ //rejoue si le joueur fait un double
-            tourDeJeu();
-        }else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
-            joueurs.remove(0);
-            joueurs.add(joueurCourrant);
-        }
     }
     
     public boolean perdu(Joueur j){
