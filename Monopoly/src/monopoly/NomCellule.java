@@ -45,6 +45,7 @@ public enum NomCellule {
     Avenue_Foch,
     Communaute3,
     Boulevard_Saint_Lazare,
+    Gare_Saint_Lazare,
     Chance3,
     Avenue_des_Champs_Elysees,
     Taxe,
