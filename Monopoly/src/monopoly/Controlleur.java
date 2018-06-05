@@ -31,10 +31,7 @@ public class Controlleur {
 
     }
 
-    public int getPrixLot(int l){
-        // A FAIRE
-    }
-    
+
     public Joueur nouveauJoueur(){
         Scanner sc = new Scanner(System.in);
         System.out.println("|**               Choisissez votre nom :                 **|");
@@ -93,6 +90,7 @@ public class Controlleur {
     
     public void initialisationTourJeu(){
         Plateau plateau = new Plateau();
+        Joueur banque = new Joueur("banque", "$" , 0, 0);
     }
     
     public void tourDeJeu(){
@@ -101,8 +99,20 @@ public class Controlleur {
         int de = lancerDes();
         de = de + joueurCourrant.getPosition();
         deplacer(joueurCourrant,de);//déplacement du pion du joueur courrant
+        System.out.println("Le joueur : " + joueurCourrant + "est sur la case : " + joueurCourrant.getCellule().getNomCellule());
+        Cellule cel = joueurCourrant.getCellule();
+        String proprio = cel.getPropriete().getProprietaire().getNom();
         
-        if (perdu(joueurCourrant)){
+        
+        if (proprio=="banque"){ //on suppose que le joueur est sur une propriete
+            Scanner sc = new Scanner(System.in);
+            System.out.println("|**                     1- Acheter                         **|");
+            System.out.println("|**                     0- Passer son Tour                 **|");
+            int nb = sc.nextInt();
+     
+        }
+        
+        if (perdu(joueurCourrant)){ // gestion après paiement
             System.out.println("! Le joueur " + joueurCourrant + " a perdu !");
         }else{
             
@@ -147,6 +157,7 @@ public class Controlleur {
              j.setPositionJoueur(j, pos);
             Cellule c = j.getCellule();
             c.addPions(j);
+            j.setFortune(j.getFortune()+200);
     }
 }
 
