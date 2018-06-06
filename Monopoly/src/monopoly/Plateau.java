@@ -57,6 +57,8 @@ public class Plateau {
         achetables.put(39, "Rue_de_la_Paix");    
     }
 
-  
+    public Cellule getCellule(int nb){
+        return this.cellules.get(nb);
+    }
     
 }
