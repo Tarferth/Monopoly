@@ -10,16 +10,14 @@ package monopoly;
  * @author crosv
  */
 public class Gare extends Propriete{
-    private int loyer;
 
     public Gare(int loyer, int prixAchat, String nom, Cellule cellule) {
         super(prixAchat, nom, cellule);
-        this.loyer = loyer;
     }
     
     public int getLoyer()
     {
-        return this.getProprietaire().getNbGarePossédées()*this.loyer;
+        return this.getProprietaire().getNbGarePossédées()*25;
     }
     
     
