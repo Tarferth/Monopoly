@@ -197,7 +197,6 @@ public class Controlleur {
 
         if (pos < 40) {
             j.setPositionJoueur(j, pos);
-            Cellule c = j.getCellule();
         } else {
             pos = pos % 40;
         }
@@ -205,5 +204,8 @@ public class Controlleur {
         Cellule c = j.getCellule();
         c.addPions(j);
         j.setFortune(j.getFortune() + 200);
+    }
+    public void afficherJoueurTuile(Cellule p){
+      p.getPion(p);
     }
 }
