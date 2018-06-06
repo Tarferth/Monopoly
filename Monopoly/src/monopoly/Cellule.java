@@ -42,7 +42,13 @@ public class Cellule {
         this.pions.remove(pion);
         }
     }
-    public void addPions(Joueur pion){
-        this.pions.add(pion);
+    public void addPions(Joueur j){
+        this.pions.add(j);
+    }
+    
+    public void getPion(Cellule c){
+        for (int  i = 0; i<pions.size() ; i++) {
+            System.out.println(pions.get(i));
+        }
     }
 }
