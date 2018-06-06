@@ -25,6 +25,9 @@ public class Plateau {
 
             cellules.add(new Cellule(n.toString(),i));
             System.out.println(cellules.get(i).getNomCellule());
+            if (this.achetables.containsValue(n)) {
+                this.cellules.get(i).setPropriete(new Propriete(i, null, null));
+            }
             i++;
         }
         
@@ -60,8 +63,16 @@ public class Plateau {
         achetables.put(39, "Rue_de_la_Paix");    
     }
 
+    public HashMap<Integer, String> getAchetables() {
+        return achetables;
+    }
+
     public Cellule getCellule(int nb){
         return this.cellules.get(nb);
+    }
+
+    public ArrayList<Cellule> getCellules() {
+        return cellules;
     }
     
 }

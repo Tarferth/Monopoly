@@ -39,8 +39,12 @@ public class Joueur {
 
     }
 
-    
+    public void setCellule(Cellule cellule) {
+        this.cellule = cellule;
+    }
 
+    
+    
     public void addProprieter(Propriete p) {
         this.possedé.put(this.nom, p);
     }

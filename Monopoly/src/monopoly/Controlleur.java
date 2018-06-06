@@ -110,17 +110,31 @@ public class Controlleur {
     public void initialisationTourJeu() {
         this.plateau = new Plateau();
         Joueur banque = new Joueur("banque", "$", 0, 0);
+        for(int i =0;i<plateau.getCellules().size();i++)
+        {
+         if(plateau.getAchetables().containsKey(plateau.getCellule(i).getNomCellule()))
+         {
+             banque.addProprieter(plateau.getCellule(i).getPropriete());
+             plateau.getCellule(i).getPropriete().setProprietaire(banque);
+         }
+        }
     }
 
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
-
+        String proprio;
         int de = lancerDes();
         de = de + joueurCourrant.getPosition();
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
         System.out.println("Le joueur : " + joueurCourrant.getNom() + "est sur la case : " + joueurCourrant.getPosition());
         Cellule cel = joueurCourrant.getCellule();
-        String proprio = cel.getPropriete().getProprietaire().getNom();
+        if(cel.getClass().getName() != "Terrain" ||cel.getClass().getName() != "Gare" ||cel.getClass().getName() != "Compagnie")
+        {
+            proprio = cel.getNomCellule();
+        }else{
+            proprio = cel.getPropriete().getProprietaire().getNom();
+        }
+        
 
         if (faitUnDouble) { //rejoue si le joueur fait un double
             tourDeJeu();
@@ -201,6 +215,7 @@ public class Controlleur {
             pos = pos % 40;
         }
         j.setPositionJoueur(j, pos);
+        j.setCellule(this.plateau.getCellule(pos));
         this.plateau.getCellule(pos).addPions(j);
     }
     public void afficherJoueurTuile(Cellule p){

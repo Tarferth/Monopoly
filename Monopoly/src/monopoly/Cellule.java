@@ -15,7 +15,7 @@ public class Cellule {
     private String nom;
     private int numero;
     private ArrayList<Joueur> pions;
-    private Propriete propriete;
+    private Propriete propriete = null;
     
 
     public Cellule(String nom, int numero) {
@@ -24,10 +24,14 @@ public class Cellule {
         this.pions = new ArrayList<>();
     }
 
+    public void setPropriete(Propriete propriete) {
+        this.propriete = propriete;
+    }
+    
     public Propriete getPropriete() {
         return this.propriete;
     }
-
+    
     public int getNumero() {
         return this.numero;
     }
