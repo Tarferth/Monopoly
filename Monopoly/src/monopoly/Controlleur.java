@@ -108,7 +108,7 @@ public class Controlleur {
     }
 
     public void initialisationTourJeu() {
-        Plateau plateau = new Plateau();
+        this.plateau = new Plateau();
         Joueur banque = new Joueur("banque", "$", 0, 0);
     }
 
@@ -201,9 +201,7 @@ public class Controlleur {
             pos = pos % 40;
         }
         j.setPositionJoueur(j, pos);
-        Cellule c = j.getCellule();
-        c.addPions(j);
-        j.setFortune(j.getFortune() + 200);
+        this.plateau.getCellule(pos).addPions(j);
     }
     public void afficherJoueurTuile(Cellule p){
       p.getPion(p);
