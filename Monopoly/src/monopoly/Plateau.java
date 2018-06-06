@@ -19,7 +19,13 @@ public class Plateau {
 
     public Plateau() {
         this.cellules = new ArrayList<>();
-        this.cellules.add(NomCellule.values(1));
+        for(NomCellule c : NomCellule.values()){
+            System.out.println(c.name());
+            int i = 1;
+            this.cellules.add(new Cellule(c.name(),i));  
+            i++;
+            System.out.println(c.name());
+        }
         this.achetables = new HashMap<>();
         achetables.put(1, "Boulevard_de_Belleville");
         achetables.put(3, "Rue_Lecourbe");
