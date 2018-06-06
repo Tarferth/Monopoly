@@ -118,7 +118,7 @@ public class Controlleur {
         int de = lancerDes();
         de = de + joueurCourrant.getPosition();
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
-        System.out.println("Le joueur : " + joueurCourrant + "est sur la case : " + joueurCourrant.getCellule().getNomCellule());
+        System.out.println("Le joueur : " + joueurCourrant.getNom() + "est sur la case : " + joueurCourrant.getPosition());
         Cellule cel = joueurCourrant.getCellule();
         String proprio = cel.getPropriete().getProprietaire().getNom();
 
