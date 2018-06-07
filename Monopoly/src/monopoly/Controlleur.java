@@ -56,7 +56,7 @@ public class Controlleur {
         System.out.println("|**               Choisissez votre symbole :             **|");
         String symbole = sc.nextLine();
         System.out.println("! Inscription validée !");
-        Joueur j1 = new Joueur(nom, symbole, 300, 0);
+        Joueur j1 = new Joueur(nom, symbole, 100, 0);
         j1.setCellule(plateau.getCellule(0));
         joueurs.add(j1);
         System.out.println(joueurs.get(0).getNom());
@@ -162,7 +162,7 @@ System.out.println(joueurs.get(0).getFortune());
 
         if (faitUnDouble) { //rejoue si le joueur fait un double
             if (cel.getPropriete() != null) {
-            if (joueurCourrant.getFortune() > cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
+            if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
                 Scanner sc = new Scanner(System.in);
                 System.out.println("|**                     1- Voir l'offre                    **|");
@@ -221,6 +221,11 @@ System.out.println(joueurs.get(0).getFortune());
                         System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                         System.out.println("! Vous avez perdu !");
                         perdu(joueurCourrant);
+                         if (finDeLaPartie())
+                        {
+                            System.out.println("La partie est finie le joueur "+joueurs.get(0).getNom()+" a gagné !");
+                            System.exit(0);
+                        }
                     }
                 }
             } else {
@@ -238,7 +243,7 @@ System.out.println(joueurs.get(0).getFortune());
             joueurs.add(joueurCourrant);
         }
         if (cel.getPropriete() != null) {
-            if (joueurCourrant.getFortune() > cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
+            if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
                 Scanner sc = new Scanner(System.in);
                 System.out.println("|**                     1- Voir l'offre                    **|");
@@ -298,6 +303,11 @@ System.out.println(joueurs.get(0).getFortune());
                         System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                         System.out.println("! Vous avez perdu !");
                         perdu(joueurCourrant);
+                        if (finDeLaPartie())
+                        {
+                            System.out.println("La partie est finie le joueur "+joueurs.get(0).getNom()+" a gagné !");
+                            System.exit(0);
+                        }
                     }
                 }
             } 
@@ -344,6 +354,6 @@ System.out.println(joueurs.get(0).getFortune());
         System.out.println("Ma fortune: " + joueurCourrant.getFortune());
         System.out.println("Nom de la propriété: " + joueurCourrant.getCellule().getNomCellule());
         System.out.println("Prix d'achat: " + joueurCourrant.getCellule().getPropriete().getPrixAchat());
-        System.out.println("Prix du loyer: " + joueurCourrant.getCellule().getPropriete().getPrixLoyer());
+        System.out.println("Prix du loyer: " + joueurCourrant.getCellule().getPropriete().getLoyer());
     }
 }
