@@ -135,7 +135,7 @@ System.out.println(joueurs.get(0).getFortune());
         Cellule cel = joueurCourrant.getCellule();
         if(cel.getClass().getName() != "Terrain" ||cel.getClass().getName() != "Gare" ||cel.getClass().getName() != "Compagnie")
         {
-            proprio = cel.getNomCellule();
+            proprio = "banque";
         }else{
             proprio = cel.getPropriete().getProprietaire().getNom();
         }
