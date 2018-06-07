@@ -144,7 +144,7 @@ System.out.println(joueurs.get(0).getFortune());
             joueurs.remove(0);
             joueurs.add(joueurCourrant);
         }
-        if (cel.getPropriete().getClass().getName() == "Terrain" || cel.getPropriete().getClass().getName() == "Compagnie" || cel.getPropriete().getClass().getName() == "Gare") {
+        if (cel.getPropriete() != null) {
             if (joueurCourrant.getFortune() > cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
                 Scanner sc = new Scanner(System.in);
