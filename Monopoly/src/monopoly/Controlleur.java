@@ -165,19 +165,33 @@ System.out.println(joueurs.get(0).getFortune());
             if (joueurCourrant.getFortune() > cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
                 Scanner sc = new Scanner(System.in);
-                System.out.println("|**                     1- Acheter                         **|");
+                System.out.println("|**                     1- Voir l'offre                    **|");
                 System.out.println("|**                     0- Passer son Tour                 **|");
                 int nb = sc.nextInt();
                 switch (nb) {
                     case 1:
-                        joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
-                        joueurCourrant.addProprieter(cel.getPropriete());
-                        banque.getPropriétésJoueur().remove(cel.getPropriete());
-                        cel.getPropriete().setProprietaire(joueurCourrant);
-                        System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " +joueurCourrant.getFortune());
-                        System.out.println("! Achat confirmé !");
-                        System.out.println("Fin de tour");
-                        tourDeJeu();
+                        voirOffre();
+                        System.out.println("|**                     1- Acheter                            **|");
+                        System.out.println("|**                     0- Passer son Tour                    **|");
+                        int nb2 = sc.nextInt();
+                        switch (nb2) {
+                                case 1:
+                                    joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
+                                    joueurCourrant.addProprieter(cel.getPropriete());
+                                    banque.getPropriétésJoueur().remove(cel.getPropriete());
+                                    cel.getPropriete().setProprietaire(joueurCourrant);
+                                    System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " +joueurCourrant.getFortune());
+                                    System.out.println("! Achat confirmé !");
+                                    System.out.println("Fin de tour");
+                                    tourDeJeu();
+                                    break;
+                                case 0:
+                                    System.out.println("Fin de tour");
+                                    tourDeJeu();
+                                    break;
+                                default:
+                                    System.out.println("! Entrée non valide !");
+                        }
                         break;
                     case 0:
                         System.out.println("Fin de tour");
@@ -224,19 +238,33 @@ System.out.println(joueurs.get(0).getFortune());
             if (joueurCourrant.getFortune() > cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
                 Scanner sc = new Scanner(System.in);
-                System.out.println("|**                     1- Acheter                         **|");
+                System.out.println("|**                     1- Voir l'offre                    **|");
                 System.out.println("|**                     0- Passer son Tour                 **|");
                 int nb = sc.nextInt();
                 switch (nb) {
                     case 1:
-                        joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
-                        joueurCourrant.addProprieter(cel.getPropriete());
-                        cel.getPropriete().setProprietaire(joueurCourrant);
-                        banque.getPropriétésJoueur().remove(cel.getPropriete());
-                        System.out.println(joueurCourrant.getFortune());
-                        System.out.println("! Achat confirmé !");
-                        System.out.println("Fin de tour");
-                        tourDeJeu();
+                        voirOffre();
+                        System.out.println("|**                     1- Acheter                            **|");
+                        System.out.println("|**                     0- Passer son Tour                    **|");
+                        int nb2 = sc.nextInt();
+                        switch (nb2) {
+                                case 1:
+                                    joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
+                                    joueurCourrant.addProprieter(cel.getPropriete());
+                                    banque.getPropriétésJoueur().remove(cel.getPropriete());
+                                    cel.getPropriete().setProprietaire(joueurCourrant);
+                                    System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " +joueurCourrant.getFortune());
+                                    System.out.println("! Achat confirmé !");
+                                    System.out.println("Fin de tour");
+                                    tourDeJeu();
+                                    break;
+                                case 0:
+                                    System.out.println("Fin de tour");
+                                    tourDeJeu();
+                                    break;
+                                default:
+                                    System.out.println("! Entrée non valide !");
+                        }
                         break;
                     case 0:
                         System.out.println("Fin de tour");
@@ -302,5 +330,11 @@ System.out.println(joueurs.get(0).getFortune());
     }
     public void afficherJoueurTuile(Cellule p){
       p.getPion(p);
+    }
+    public void voirOffre(){
+        System.out.println("Ma fortune: " + joueurCourrant.getFortune());
+        System.out.println("Nom de la propriété: " + joueurCourrant.getCellule().getNomCellule());
+        System.out.println("Prix d'achat: " + joueurCourrant.getCellule().getPropriete().getPrixAchat());
+        System.out.println("Prix du loyer: " + joueurCourrant.getCellule().getPropriete().getPrixLoyer());
     }
 }
