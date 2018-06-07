@@ -154,7 +154,7 @@ System.out.println(joueurs.get(0).getFortune());
         
         
         //int de = lancerDes(); // Jeu avec lancé de dés aléatoire
-        int de = lancerDes(); // Jeu avec choix du résultat des dés
+        int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
         
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
         System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
