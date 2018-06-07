@@ -17,7 +17,7 @@ public class Controlleur {
     private ArrayList<Joueur> joueurs = new ArrayList<>();
     private boolean faitUnDouble;
     private Plateau plateau;
-    private Joueur joueurCourrant;
+    private Joueur joueurCourrant , banque;
 
     public int lancerDes() {
         int lancer1 = (int) Math.round(Math.random() * 5 + 1);
@@ -116,10 +116,13 @@ System.out.println(joueurs.get(0).getFortune());
 
     public void initialisationTourJeu() {
         this.plateau = new Plateau();
-        Joueur banque = new Joueur("banque", "$", 0, 0);
+        this.banque = new Joueur("banque", "$", 0, 0);
         for(int i =0;i<plateau.getCellules().size();i++)
         {
          banque.addProprieter(plateau.getCellules().get(i).getPropriete());
+         if (plateau.getCellules().get(i).getPropriete() != null){
+             plateau.getCellules().get(i).getPropriete().setProprietaire(banque);
+         }
         }
     }
 
@@ -135,7 +138,7 @@ System.out.println(joueurs.get(0).getFortune());
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
         System.out.println("Le joueur : " + joueurCourrant.getNom() + "est sur la case : " + joueurCourrant.getPosition());
         Cellule cel = joueurCourrant.getCellule();
-        if(cel.getClass().getName() != "Terrain" ||cel.getClass().getName() != "Gare" ||cel.getClass().getName() != "Compagnie")
+        if(cel.getPropriete() == null)
         {
             proprio = "banque";
         }else{
@@ -155,6 +158,7 @@ System.out.println(joueurs.get(0).getFortune());
                     case 1:
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
                         joueurCourrant.addProprieter(cel.getPropriete());
+                        banque.getPropriétésJoueur().remove(cel.getPropriete());
                         cel.getPropriete().setProprietaire(joueurCourrant);
                         System.out.println(joueurCourrant.getFortune());
                         System.out.println("! Achat confirmé !");
@@ -174,8 +178,8 @@ System.out.println(joueurs.get(0).getFortune());
                 if (proprietaire == joueurCourrant) { //Si la propriété lui appartient
                     System.out.println("Fin de tour");
                     tourDeJeu();
-                } else {// si il doit payer un loyer
-                    if (joueurCourrant.getFortune() < cel.getPropriete().getPrixLoyer()) {
+                } else if (proprietaire != joueurCourrant) {// si il doit payer un loyer
+                    if (joueurCourrant.getFortune() > cel.getPropriete().getPrixLoyer()) {
                         proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getPrixLoyer());
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixLoyer());
                         System.out.println("! La transaction a été effectuée !");
@@ -214,6 +218,7 @@ System.out.println(joueurs.get(0).getFortune());
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
                         joueurCourrant.addProprieter(cel.getPropriete());
                         cel.getPropriete().setProprietaire(joueurCourrant);
+                        banque.getPropriétésJoueur().remove(cel.getPropriete());
                         System.out.println(joueurCourrant.getFortune());
                         System.out.println("! Achat confirmé !");
                         System.out.println("Fin de tour");
@@ -233,7 +238,7 @@ System.out.println(joueurs.get(0).getFortune());
                     System.out.println("Fin de tour");
                     tourDeJeu();
                 } else {// si il doit payer un loyer
-                    if (joueurCourrant.getFortune() < cel.getPropriete().getPrixLoyer()) {
+                    if (joueurCourrant.getFortune() > cel.getPropriete().getPrixLoyer()) {
                         proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getPrixLoyer());
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixLoyer());
                         System.out.println("! La transaction a été effectuée !");
