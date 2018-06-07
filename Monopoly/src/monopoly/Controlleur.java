@@ -155,6 +155,8 @@ System.out.println(joueurs.get(0).getFortune());
                     case 1:
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
                         joueurCourrant.addProprieter(cel.getPropriete());
+                        cel.getPropriete().setProprietaire(joueurCourrant);
+                        System.out.println(joueurCourrant.getFortune());
                         System.out.println("! Achat confirmé !");
                         System.out.println("Fin de tour");
                         tourDeJeu();
@@ -177,6 +179,7 @@ System.out.println(joueurs.get(0).getFortune());
                         proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getPrixLoyer());
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixLoyer());
                         System.out.println("! La transaction a été effectuée !");
+                        System.out.println(joueurCourrant.getFortune());
                         System.out.println("Fin de tour");
                         tourDeJeu();
                     } else {
@@ -193,6 +196,8 @@ System.out.println(joueurs.get(0).getFortune());
             System.out.println("Fin de tour");
             tourDeJeu();
         }
+        //////////////////////////////////////////////FIN DU CAS DOUBLE    
+            
         } else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
             joueurs.remove(0);
             joueurs.add(joueurCourrant);
@@ -208,6 +213,8 @@ System.out.println(joueurs.get(0).getFortune());
                     case 1:
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
                         joueurCourrant.addProprieter(cel.getPropriete());
+                        cel.getPropriete().setProprietaire(joueurCourrant);
+                        System.out.println(joueurCourrant.getFortune());
                         System.out.println("! Achat confirmé !");
                         System.out.println("Fin de tour");
                         tourDeJeu();
@@ -230,6 +237,7 @@ System.out.println(joueurs.get(0).getFortune());
                         proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getPrixLoyer());
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixLoyer());
                         System.out.println("! La transaction a été effectuée !");
+                        System.out.println(joueurCourrant.getFortune());
                         System.out.println("Fin de tour");
                         tourDeJeu();
                     } else {
