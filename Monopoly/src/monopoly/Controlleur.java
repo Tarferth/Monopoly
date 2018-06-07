@@ -144,6 +144,8 @@ System.out.println(joueurs.get(0).getFortune());
 
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
+        System.out.println("\n\n\n--------------------------------------------");
+        System.out.println("C'est au tour de: " + joueurCourrant.getNom());
         String proprio;
         
         //int de = lancerDes(); // Jeu avec lancé de dés aléatoire
