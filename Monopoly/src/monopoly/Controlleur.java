@@ -32,6 +32,22 @@ public class Controlleur {
         return lancer1 + lancer2;
 
     }
+    
+    public int lancerDesTruqué(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("|**               Choisissez la valeur du 1er dé :                 **|");
+        int lancerTruqué1 = sc.nextInt();
+        System.out.println("|**               Choisissez la valeur du 2eme dé :                **|");
+        int lancerTruqué2 = sc.nextInt();
+        if (lancerTruqué1 == lancerTruqué2) {
+            faitUnDouble = true;
+        } else {
+            faitUnDouble = false;
+        }
+        System.out.println("dé truqué 1 : "+ lancerTruqué1);
+        System.out.println("dé truqué 2 : "+ lancerTruqué2);
+        return lancerTruqué1 + lancerTruqué2;
+    }
 
     public void nouveauJoueur() {
         Scanner sc = new Scanner(System.in);
@@ -128,12 +144,10 @@ System.out.println(joueurs.get(0).getFortune());
 
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
-        for(Joueur j : joueurs){
-            System.out.println(j.getPosition());
-        }
         String proprio;
         
-        int de = lancerDes() ;
+        //int de = lancerDes(); // Jeu avec lancé de dés aléatoire
+        int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
         
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
         System.out.println("Le joueur : " + joueurCourrant.getNom() + "est sur la case : " + joueurCourrant.getPosition());
@@ -160,7 +174,7 @@ System.out.println(joueurs.get(0).getFortune());
                         joueurCourrant.addProprieter(cel.getPropriete());
                         banque.getPropriétésJoueur().remove(cel.getPropriete());
                         cel.getPropriete().setProprietaire(joueurCourrant);
-                        System.out.println(joueurCourrant.getFortune());
+                        System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " +joueurCourrant.getFortune());
                         System.out.println("! Achat confirmé !");
                         System.out.println("Fin de tour");
                         tourDeJeu();
@@ -242,7 +256,7 @@ System.out.println(joueurs.get(0).getFortune());
                         proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getPrixLoyer());
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixLoyer());
                         System.out.println("! La transaction a été effectuée !");
-                        System.out.println(joueurCourrant.getFortune());
+                        System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " +joueurCourrant.getFortune());
                         System.out.println("Fin de tour");
                         tourDeJeu();
                     } else {
