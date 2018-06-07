@@ -50,7 +50,7 @@ public class Cellule {
     }
     
     public String getNomCellule(){
-        return this.getPropriete().getNom();
+            return this.getPropriete().getNom();
     }
     
     public void removePion(Joueur pion){

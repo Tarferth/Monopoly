@@ -40,7 +40,13 @@ public class Controlleur {
         String symbole = sc.nextLine();
         System.out.println("! Inscription validée !");
         Joueur j1 = new Joueur(nom, symbole, 1500, 0);
-        joueurs.add(j1); // création d'un nouveau joueur (nom, symboel,argent et position)
+        j1.setCellule(plateau.getCellule(0));
+        joueurs.add(j1);
+        System.out.println(joueurs.get(0).getNom());
+System.out.println(joueurs.get(0).getCellule().getNumero());
+System.out.println(joueurs.get(0).getPosition());
+System.out.println(joueurs.get(0).getFortune());
+// création d'un nouveau joueur (nom, symboel,argent et position)
     }
 
     public void inscriptionJoueur() {
