@@ -59,7 +59,7 @@ public class Joueur {
     }
 
     public int getPosition() {
-        return this.cellule.getNumero();
+        return this.getCellule().getNumero();
     }
 
     public HashMap getPropriétésJoueur() {

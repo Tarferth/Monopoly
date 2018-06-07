@@ -118,6 +118,9 @@ public class Controlleur {
 
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
+        for(Joueur j : joueurs){
+            System.out.println(j.getPosition());
+        }
         String proprio;
         int de = lancerDes();
         de = de + joueurCourrant.getPosition();
