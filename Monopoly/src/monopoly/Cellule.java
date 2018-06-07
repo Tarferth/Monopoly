@@ -20,10 +20,12 @@ public class Cellule {
 
     public Cellule(String nom, int numero) {
         this.numero = numero;
+        this.pions = new ArrayList<>();
     }
 
     public Cellule(int numero) {
         this.numero = numero;
+        this.pions = new ArrayList<>();
     }
 
     
