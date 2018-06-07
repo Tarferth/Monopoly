@@ -7,6 +7,9 @@ package monopoly;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,7 +59,7 @@ public class Controlleur {
         System.out.println("|**               Choisissez votre symbole :             **|");
         String symbole = sc.nextLine();
         System.out.println("! Inscription validée !");
-        Joueur j1 = new Joueur(nom, symbole, 100, 0);
+        Joueur j1 = new Joueur(nom, symbole, 1500, 0);
         j1.setCellule(plateau.getCellule(0));
         joueurs.add(j1);
         System.out.println(joueurs.get(0).getNom());
@@ -146,8 +149,10 @@ System.out.println(joueurs.get(0).getFortune());
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
         String proprio;
         
+        
+        
         //int de = lancerDes(); // Jeu avec lancé de dés aléatoire
-        int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
+        int de = lancerDes(); // Jeu avec choix du résultat des dés
         
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
         System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
@@ -220,12 +225,19 @@ System.out.println(joueurs.get(0).getFortune());
                     } else if(joueurCourrant.getFortune()<cel.getPropriete().getLoyer() ){
                         System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                         System.out.println("! Vous avez perdu !");
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Controlleur.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         perdu(joueurCourrant);
                          if (finDeLaPartie())
                         {
                             System.out.println("La partie est finie le joueur "+joueurs.get(0).getNom()+" a gagné !");
                             System.exit(0);
                         }
+                         
+                         
                     }
                 }
             } else {
@@ -302,12 +314,18 @@ System.out.println(joueurs.get(0).getFortune());
                     } else if (joueurCourrant.getFortune()< cel.getPropriete().getLoyer()) {
                         System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                         System.out.println("! Vous avez perdu !");
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Controlleur.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         perdu(joueurCourrant);
                         if (finDeLaPartie())
                         {
                             System.out.println("La partie est finie le joueur "+joueurs.get(0).getNom()+" a gagné !");
                             System.exit(0);
                         }
+                       
                     }
                 }
             } 
@@ -324,7 +342,7 @@ System.out.println(joueurs.get(0).getFortune());
 
     public void perdu(Joueur j) {
         this.joueurs.remove(j);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        
     }
 
     public boolean finDeLaPartie() {
@@ -355,5 +373,6 @@ System.out.println(joueurs.get(0).getFortune());
         System.out.println("Nom de la propriété: " + joueurCourrant.getCellule().getNomCellule());
         System.out.println("Prix d'achat: " + joueurCourrant.getCellule().getPropriete().getPrixAchat());
         System.out.println("Prix du loyer: " + joueurCourrant.getCellule().getPropriete().getLoyer());
+ 
     }
 }
