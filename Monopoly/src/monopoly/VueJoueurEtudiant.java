@@ -107,7 +107,7 @@ public class VueJoueurEtudiant  {
     
      public static void main(String [] args) {
         // Instanciation de la fenêtre 
-        VueJoueurEtudiant vueJoueur = new VueJoueurEtudiant("Manon",Pion.ROUGE.getCouleur() );
+        VueJoueurEtudiant vueJoueur = new VueJoueurEtudiant("Manon",Color.RED );
     }
 }
 

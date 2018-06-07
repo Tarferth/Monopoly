@@ -13,26 +13,49 @@ public abstract class Propriete {
     private int prixAchat;
     private Joueur proprio;
     private String nom;
+    private Cellule cellule;
+    private int prixLoyer;
 
-    public Propriete(int prixAchat, String nom) {
+    public Propriete(int prixAchat, String nom, Cellule cellule) {
         this.prixAchat = prixAchat;
         this.nom = nom;
+        this.cellule = cellule;
     }
 
+    public Propriete() {
+    }
+    
 
+    public int getPrixLoyer() {
+        return prixLoyer;
+    }
+
+    public void setPrixLoyer(int prixLoyer) {
+        this.prixLoyer = prixLoyer;
+    }
+    
     public String getNom() {
-        return nom;
+        return this.nom;
     }
-    
-    
     
     public int getPrixAchat(){
         return this.prixAchat;
     }
-    public Joueur getProprietaire(){
-        return this.proprio;
-    }
+    
     public void setProprietaire(Joueur joueur){
         this.proprio = joueur;
     }
+    
+    public Joueur getProprietaire() {
+        return this.proprio;
+    }
+    
+    public Cellule getCellule() {
+        return this.cellule;
+    }
+    
+   public abstract int getLoyer();
+   
+       
+   
 }

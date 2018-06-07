@@ -10,14 +10,21 @@ package monopoly;
  * @author crosv
  */
 public class Compagnie extends Propriete{
-    
 
-    public Compagnie(int loyer, int prixAchat, String nom) {
-        super(prixAchat, nom);
+    public Compagnie(int prixAchat, String nom, Cellule cellule) {
+        super(prixAchat, nom, cellule);
     }
     
-    public int getPrix(){
-        return (this.getProprietaire().getNbGarePossédées())*25;
+    public int getLoyer(){
+        if (this.getProprietaire().getNbCompagnies() == 1)
+        {
+            return this.getProprietaire().getDe()*4;
+        }
+        else if (this.getProprietaire().getNbCompagnies()==2)
+        {
+            return this.getProprietaire().getDe()*10;
+        }
+        return 0;
     }
     
 }

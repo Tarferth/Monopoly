@@ -9,33 +9,34 @@ package monopoly;
  *
  * @author crosv
  */
-public class Terrain extends Propriete{
+public class Terrain extends Propriete {
+    
     private String couleur;
     private int loyer;
 
-    public Terrain(String couleur, int loyer, int prixAchat, String nom) {
-        super(prixAchat, nom);
+    public Terrain(String couleur, int loyer, int prixAchat, String nom, Cellule cellule) {
+        super(prixAchat, nom, cellule);
         this.couleur = couleur;
         this.loyer = loyer;
     }
-
     
-
-    public String getCouleur() {
-        return couleur;
-    }
-
-    public int getPrix(String couleur)
-    {
-        if (aToutesLesPropriete)
+    public int getLoyer(){
+        if(this.getProprietaire().couleurComplete(couleur))
         {
-            return loyer*2;
+            return this.loyer*2;
         }
         else
         {
-            return loyer;
+            return this.loyer;
         }
     }
+    
+    public String getCouleur()
+    {
+        return this.couleur;
+    }   
+    
+    
     
     
 }

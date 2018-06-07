@@ -6,7 +6,6 @@
 package monopoly;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *
@@ -15,15 +14,19 @@ import java.util.HashMap;
 public class Cellule {
     
     private int numero;
-    private ArrayList<Joueur> pions = new ArrayList<>();
+    private ArrayList<Joueur> pions;
+    private Propriete propriete = null;
+    
 
     public Cellule(String nom, int numero) {
         this.numero = numero;
     }
 
-    public int getNumero() {
-        return numero;
+    public Cellule(int numero) {
+        this.numero = numero;
     }
+
+    
 
     public ArrayList<Joueur> getPions() {
         return pions;
@@ -31,16 +34,38 @@ public class Cellule {
 
     public void setNumero(int numero) {
         this.numero = numero;
+        this.pions = new ArrayList<>();
+    }
+
+    public void setPropriete(Propriete propriete) {
+        this.propriete = propriete;
     }
     
-    public void removePion(Cellule c){
-        if(pions.contains(c))
+    public Propriete getPropriete() {
+        return this.propriete;
+    }
+    
+    public int getNumero() {
+        return this.numero;
+    }
+    
+    public String getNomCellule(){
+        return this.getPropriete().getNom();
+    }
+    
+    public void removePion(Joueur pion){
+        if (this.pions.contains(pion))
         {
-        pions.remove(c);
+        this.pions.remove(pion);
         }
     }
+    public void addPions(Joueur j){
+        this.pions.add(j);
+    }
     
-    public void addPions(Joueur pion){
-        pions.add(pion);
-    } 
+    public void getPion(Cellule c){
+        for (int  i = 0; i<pions.size() ; i++) {
+            System.out.println(pions.get(i));
+        }
+    }
 }
