@@ -5,33 +5,42 @@
  */
 package monopoly;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author fourrieq
  */
 public class Cellule {
-    private String nom;
+    
     private int numero;
-    private Plateau plateau;
+    private ArrayList<Joueur> pions = new ArrayList<>();
 
     public Cellule(String nom, int numero) {
-        this.nom = nom;
+        this.numero = numero;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public ArrayList<Joueur> getPions() {
+        return pions;
+    }
+
+    public void setNumero(int numero) {
         this.numero = numero;
     }
     
-    public String getNomCase(int numero){
-        // A FAIRE
+    public void removePion(Cellule c){
+        if(pions.contains(c))
+        {
+        pions.remove(c);
+        }
     }
-    public Joueur getProprietaire(){
-        // A FAIRE
-    }
-    public void removePion(Cellule cAvant){
-        
-    }
+    
     public void addPions(Joueur pion){
-        
-    }
-    public void test(){
-        
-    }
+        pions.add(pion);
+    } 
 }

@@ -9,9 +9,22 @@ package monopoly;
  *
  * @author fourrieq
  */
-public class Proprieter {
+public abstract class Propriete {
     private int prixAchat;
     private Joueur proprio;
+    private String nom;
+
+    public Propriete(int prixAchat, String nom) {
+        this.prixAchat = prixAchat;
+        this.nom = nom;
+    }
+
+
+    public String getNom() {
+        return nom;
+    }
+    
+    
     
     public int getPrixAchat(){
         return this.prixAchat;
