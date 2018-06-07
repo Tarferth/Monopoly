@@ -20,8 +20,9 @@ public class Terrain extends Propriete {
         this.loyer = loyer;
     }
     
+    @Override
     public int getLoyer(){
-        if(this.getProprietaire().couleurComplete(couleur))
+        if(this.getProprietaire().couleurComplete(couleur)==true)
         {
             return this.loyer*2;
         }

@@ -40,7 +40,7 @@ public class Controlleur {
         System.out.println("|**               Choisissez votre symbole :             **|");
         String symbole = sc.nextLine();
         System.out.println("! Inscription validée !");
-        Joueur j1 = new Joueur(nom, symbole, 1500, 0);
+        Joueur j1 = new Joueur(nom, symbole, 300, 0);
         j1.setCellule(plateau.getCellule(0));
         joueurs.add(j1);
         System.out.println(joueurs.get(0).getNom());
@@ -136,7 +136,7 @@ System.out.println(joueurs.get(0).getFortune());
         int de = lancerDes() ;
         
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
-        System.out.println("Le joueur : " + joueurCourrant.getNom() + "est sur la case : " + joueurCourrant.getPosition());
+        System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
         Cellule cel = joueurCourrant.getCellule();
         if(cel.getPropriete() == null)
         {
@@ -179,14 +179,17 @@ System.out.println(joueurs.get(0).getFortune());
                     System.out.println("Fin de tour");
                     tourDeJeu();
                 } else if (proprietaire != joueurCourrant) {// si il doit payer un loyer
-                    if (joueurCourrant.getFortune() > cel.getPropriete().getPrixLoyer()) {
-                        proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getPrixLoyer());
-                        joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixLoyer());
+                    if (joueurCourrant.getFortune() > cel.getPropriete().getLoyer()) {
+                        proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getLoyer());
+                        joueurCourrant.setFortune((joueurCourrant.getFortune()) - (cel.getPropriete().getLoyer()));
+                        System.out.println(cel.getPropriete().getNom());
+                        System.out.println(cel.getPropriete().getProprietaire().getNom());
+                        System.out.println(cel.getPropriete().getLoyer());
                         System.out.println("! La transaction a été effectuée !");
                         System.out.println(joueurCourrant.getFortune());
                         System.out.println("Fin de tour");
                         tourDeJeu();
-                    } else {
+                    } else if(joueurCourrant.getFortune()<cel.getPropriete().getLoyer() ){
                         System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                         System.out.println("! Vous avez perdu !");
                         perdu(joueurCourrant);
@@ -203,7 +206,7 @@ System.out.println(joueurs.get(0).getFortune());
         //////////////////////////////////////////////FIN DU CAS DOUBLE    
             
         } else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
-            joueurs.remove(0);
+            joueurs.remove(0); 
             joueurs.add(joueurCourrant);
         }
         if (cel.getPropriete() != null) {
@@ -232,26 +235,31 @@ System.out.println(joueurs.get(0).getFortune());
                         System.out.println("! Entrée non valide !");
                 }
 
-            } else if (proprio != "banque") { // si le joueur tombe sur une propriété achetée
+            } 
+            else if (proprio != "banque") { // si le joueur tombe sur une propriété achetée
                 Joueur proprietaire = cel.getPropriete().getProprietaire();
                 if (proprietaire == joueurCourrant) { //Si la propriété lui appartient
                     System.out.println("Fin de tour");
                     tourDeJeu();
                 } else {// si il doit payer un loyer
-                    if (joueurCourrant.getFortune() > cel.getPropriete().getPrixLoyer()) {
-                        proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getPrixLoyer());
-                        joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixLoyer());
+                    if (joueurCourrant.getFortune() > cel.getPropriete().getLoyer()) {
+                        proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getLoyer());
+                        joueurCourrant.setFortune((joueurCourrant.getFortune()) - (cel.getPropriete().getLoyer()));
+                        System.out.println(cel.getPropriete().getLoyer());
+                        System.out.println(cel.getPropriete().getNom());
+                        System.out.println(cel.getPropriete().getProprietaire().getNom());
                         System.out.println("! La transaction a été effectuée !");
                         System.out.println(joueurCourrant.getFortune());
                         System.out.println("Fin de tour");
                         tourDeJeu();
-                    } else {
+                    } else if (joueurCourrant.getFortune()< cel.getPropriete().getLoyer()) {
                         System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                         System.out.println("! Vous avez perdu !");
                         perdu(joueurCourrant);
                     }
                 }
-            } else {
+            } 
+            else {
                 System.out.println("! Vous n'avez rien à faire !");
                 tourDeJeu();
             }
@@ -263,7 +271,8 @@ System.out.println(joueurs.get(0).getFortune());
     }
 
     public void perdu(Joueur j) {
-        joueurs.remove(0);
+        this.joueurs.remove(j);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 
     public boolean finDeLaPartie() {

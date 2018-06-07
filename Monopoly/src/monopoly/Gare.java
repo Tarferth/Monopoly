@@ -15,9 +15,10 @@ public class Gare extends Propriete{
         super(prixAchat, nom, cellule);
     }
     
+    @Override
     public int getLoyer()
     {
-        return this.getProprietaire().getNbGarePossédées()*25;
+        return (this.getProprietaire().getNbGarePossédées())*25;
     }
     
     

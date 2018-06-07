@@ -14,7 +14,7 @@ public abstract class Propriete {
     private Joueur proprio;
     private String nom;
     private Cellule cellule;
-    private int prixLoyer;
+   
 
     public Propriete(int prixAchat, String nom, Cellule cellule) {
         this.prixAchat = prixAchat;
@@ -24,15 +24,8 @@ public abstract class Propriete {
 
     public Propriete() {
     }
-    
+   
 
-    public int getPrixLoyer() {
-        return prixLoyer;
-    }
-
-    public void setPrixLoyer(int prixLoyer) {
-        this.prixLoyer = prixLoyer;
-    }
     
     public String getNom() {
         return this.nom;
