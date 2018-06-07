@@ -24,6 +24,7 @@ public class Plateau {
         {
             cellules.add(new Cellule(i));
         }
+        
         cellules.get(1).setPropriete(new Terrain ("rose",2,60,"Boulevard_de_Belleville",cellules.get(1)));
         cellules.get(3).setPropriete(new Terrain ("rose",4,60,"Rue_Lecourbe",cellules.get(3)));
         cellules.get(5).setPropriete(new Gare (200,"Gare_MontParnasse",cellules.get(5)));

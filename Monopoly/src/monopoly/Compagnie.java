@@ -15,16 +15,21 @@ public class Compagnie extends Propriete{
         super(prixAchat, nom, cellule);
     }
     
+    @Override
     public int getLoyer(){
         if (this.getProprietaire().getNbCompagnies() == 1)
         {
-            return this.getProprietaire().getDe()*4;
+            return (this.getProprietaire().getDe())*4;
         }
         else if (this.getProprietaire().getNbCompagnies()==2)
         {
-            return this.getProprietaire().getDe()*10;
+            return (this.getProprietaire().getDe())*10;
         }
-        return 0;
+        else 
+                {
+                    System.out.println("La valeur des dés multipliée par 4 si le propriétaire a 1 compagnie par 10 s'il en a 2");
+                    return 0;
+                }
+        
     }
-    
 }
