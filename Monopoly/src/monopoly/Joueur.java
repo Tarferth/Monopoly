@@ -40,6 +40,10 @@ public class Joueur {
 
     }
 
+    public String getSymbole() {
+        return symbole;
+    }
+    
     public void setCellule(Cellule cellule) {
         this.cellule = cellule;
     }

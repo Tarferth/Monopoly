@@ -25,7 +25,7 @@ public class Gare extends Propriete{
         else
         { 
             System.out.println("Nombre de gares du propriétaire multiplié par 25");
-            return 0;
+            return 1;
             
         }
     }

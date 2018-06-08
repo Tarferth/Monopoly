@@ -62,10 +62,10 @@ public class Controlleur {
         Joueur j1 = new Joueur(nom, symbole, 1500, 0);
         j1.setCellule(plateau.getCellule(0));
         joueurs.add(j1);
-        System.out.println(joueurs.get(0).getNom());
-System.out.println(joueurs.get(0).getCellule().getNumero());
-System.out.println(joueurs.get(0).getPosition());
-System.out.println(joueurs.get(0).getFortune());
+        System.out.println("Nom du joueur : " + j1.getNom());
+        System.out.println("Symbole du joueur : " + j1.getSymbole());
+        System.out.println("Position initiale : "+j1.getPosition());
+        System.out.println("Fortune du joueur : "+j1.getFortune());
 // création d'un nouveau joueur (nom, symboel,argent et position)
     }
 
@@ -102,6 +102,7 @@ System.out.println(joueurs.get(0).getFortune());
 
             default:
                 System.out.println("! Il faut un minimum de 2 joueurs ou un maximum de 6 joueurs !");
+                inscriptionJoueur();
         }
 
         tourDeJeu();
@@ -130,6 +131,7 @@ System.out.println(joueurs.get(0).getFortune());
                 return;
             default:
                 System.out.println("! Entrée non valide !");
+                Menu();
         }
     }
 
@@ -148,13 +150,13 @@ System.out.println(joueurs.get(0).getFortune());
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
         System.out.println("\n\n\n--------------------------------------------");
-        System.out.println("C'est au tour de: " + joueurCourrant.getNom());
+        System.out.println("C'est au tour de: " + joueurCourrant.getNom() + " qui est sur la case: " + joueurCourrant.getPosition());
         String proprio;
         
         
         
-        //int de = lancerDes(); // Jeu avec lancé de dés aléatoire
-        int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
+        int de = lancerDes(); // Jeu avec lancé de dés aléatoire
+        //int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
         
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
         System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
@@ -221,7 +223,13 @@ System.out.println(joueurs.get(0).getFortune());
                         System.out.println(cel.getPropriete().getProprietaire().getNom());
                         System.out.println(cel.getPropriete().getLoyer());
                         System.out.println("! La transaction a été effectuée !");
-                        System.out.println(joueurCourrant.getFortune());
+                        System.out.println("Vous avez payé : " + cel.getPropriete().getLoyer() + " au joueur : "+ cel.getPropriete().getProprietaire());
+                        System.out.println("Fortune du joueur "+joueurCourrant.getNom()+ " : "+joueurCourrant.getFortune());
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Controlleur.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         System.out.println("Fin de tour");
                         tourDeJeu();
                     } else if(joueurCourrant.getFortune()<cel.getPropriete().getLoyer() ){
@@ -310,8 +318,14 @@ System.out.println(joueurs.get(0).getFortune());
                         System.out.println(cel.getPropriete().getNom());
                         System.out.println(cel.getPropriete().getProprietaire().getNom());
                         System.out.println("! La transaction a été effectuée !");
+                        System.out.println("Vous avez payé : " + cel.getPropriete().getLoyer() + " au joueur : "+ cel.getPropriete().getProprietaire().getNom());
                         System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " +joueurCourrant.getFortune());
                         System.out.println("Fin de tour");
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Controlleur.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         tourDeJeu();
                     } else if (joueurCourrant.getFortune()< cel.getPropriete().getLoyer()) {
                         System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
@@ -377,4 +391,6 @@ System.out.println(joueurs.get(0).getFortune());
         System.out.println("Prix du loyer: " + joueurCourrant.getCellule().getPropriete().getLoyer());
  
     }
+    
+    
 }
