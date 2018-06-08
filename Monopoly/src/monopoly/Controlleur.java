@@ -155,7 +155,7 @@ public class Controlleur {
         
         
         
-        int de = lancerDes(); // Jeu avec lancé de dés aléatoire
+        int de = lancerDesTruqué(); // Jeu avec lancé de dés aléatoire
         //int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
         
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
@@ -223,7 +223,7 @@ public class Controlleur {
                         System.out.println(cel.getPropriete().getProprietaire().getNom());
                         System.out.println(cel.getPropriete().getLoyer());
                         System.out.println("! La transaction a été effectuée !");
-                        System.out.println("Vous avez payé : " + cel.getPropriete().getLoyer() + " au joueur : "+ cel.getPropriete().getProprietaire());
+                        System.out.println("Vous avez payé : " + cel.getPropriete().getLoyer() + " au joueur : "+ cel.getPropriete().getProprietaire().getNom());
                         System.out.println("Fortune du joueur "+joueurCourrant.getNom()+ " : "+joueurCourrant.getFortune());
                         try {
                             Thread.sleep(3000);

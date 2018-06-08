@@ -20,7 +20,8 @@ public class Gare extends Propriete{
     {
         if(this.getProprietaire().getNom() != "banque")
         {
-        return (this.getProprietaire().getNbGarePossédées())*25;
+            int a = this.getProprietaire().getNbGarePossédées();
+        return a*25;
         }
         else
         { 
