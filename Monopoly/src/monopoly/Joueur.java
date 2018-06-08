@@ -51,7 +51,7 @@ public class Joueur {
     
     
     public void addProprieter(Propriete p) {
-        this.possedé.put(this.nom, p);
+        this.possedé.put(nom, p);
     }
 
     public void payerLoyer(int montantLoyer) {
@@ -73,7 +73,7 @@ public class Joueur {
     public int getNbGarePossédées() {
         int g = 0;
         for (Propriete i : possedé.values()) {
-            if (i.getClass().getName() == "Gare")// test sur sortie d'un getname
+            if (i.getNom().contains("Gare"))// test sur sortie d'un getname
             {
                 g++;
             }
@@ -84,10 +84,18 @@ public class Joueur {
     public int getNbCompagnies() {
         int g = 0;
         for (Propriete i : possedé.values()) {
-            if (i.getClass().getName() == "Compagnie")// test sur sortie d'un getname
+            if (i.getNom().contains("Compagnie"))// test sur sortie d'un getname
             {
+                System.out.println(i.getNom());
                 g++;
+                
+                
             }
+            
+        }
+        for (Propriete i : possedé.values())
+        {
+            System.out.println(i.getNom());
         }
         return g;
 
@@ -126,7 +134,7 @@ public class Joueur {
             case "rouge":
 
                 for (Terrain i : terrains.values()) {
-                    if (i.getCouleur() == couleur) {
+                    if (i.getCouleur().contains(couleur)) {
                         compteur++;
                     }
                 }
@@ -137,7 +145,7 @@ public class Joueur {
             case "jaune":
 
                 for (Terrain i : terrains.values()) {
-                    if (i.getCouleur() == couleur) {
+                    if (i.getCouleur().contains(couleur)) {
                         compteur++;
                     }
                 }
@@ -147,7 +155,7 @@ public class Joueur {
             case "vert":
 
                 for (Terrain i : terrains.values()) {
-                    if (i.getCouleur() == couleur) {
+                    if (i.getCouleur().contains(couleur)) {
                         compteur++;
                     }
                 }
@@ -157,7 +165,7 @@ public class Joueur {
 
             case "orange":
                 for (Terrain i : terrains.values()) {
-                    if (i.getCouleur() == couleur) {
+                    if (i.getCouleur().contains(couleur)) {
                         compteur++;
                     }
                 }
@@ -167,7 +175,7 @@ public class Joueur {
 
             case "bleu_clair":
                 for (Terrain i : terrains.values()) {
-                    if (i.getCouleur() == couleur) {
+                    if (i.getCouleur().contains(couleur)) {
                         compteur++;
                     }
                 }
@@ -176,7 +184,7 @@ public class Joueur {
                 }
             case "violet":
                 for (Terrain i : terrains.values()) {
-                    if (i.getCouleur() == couleur) {
+                    if (i.getCouleur().contains(couleur)) {
                         compteur++;
                     }
                 }
@@ -185,7 +193,7 @@ public class Joueur {
                 }
             case "bleu_fonce":
                 for (Terrain i : terrains.values()) {
-                    if (i.getCouleur() == couleur) {
+                    if (i.getCouleur().contains(couleur)) {
                         compteur++;
                     }
                 }
@@ -195,7 +203,7 @@ public class Joueur {
 
             case "rose":
                 for (Terrain i : terrains.values()) {
-                    if (i.getCouleur() == couleur) {
+                    if (i.getCouleur().contains(couleur) ) {
                         compteur++;
                     }
                 }

@@ -157,7 +157,7 @@ public class Controlleur {
         
         int de = lancerDesTruqué(); // Jeu avec lancé de dés aléatoire
         //int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
-        
+        joueurCourrant.setDe(de);
         deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
         System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
         Cellule cel = joueurCourrant.getCellule();

@@ -18,15 +18,15 @@ public class Gare extends Propriete{
     @Override
     public int getLoyer()
     {
-        if(this.getProprietaire().getNom() != "banque")
+        if(this.getProprietaire().getNom() == "banque")
         {
-            int a = this.getProprietaire().getNbGarePossédées();
-        return a*25;
+            System.out.println("Nombre de gares du propriétaire multiplié par 25");
+            return 1;
         }
         else
         { 
-            System.out.println("Nombre de gares du propriétaire multiplié par 25");
-            return 1;
+            return this.getProprietaire().getNbGarePossédées()*25;
+                    
             
         }
     }
