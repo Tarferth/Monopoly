@@ -22,16 +22,17 @@ public class Terrain extends Propriete {
     
     @Override
     public int getLoyer(){
-        if(this.getProprietaire().couleurComplete(couleur)==true)
-        {
-            return this.loyer*2;
-        }
-        else
+        if(this.getProprietaire().couleurComplete(couleur) == false)
         {
             return this.loyer;
         }
+        else
+        {
+            return this.loyer*2;
+        }
     }
     
+    @Override
     public String getCouleur()
     {
         return this.couleur;

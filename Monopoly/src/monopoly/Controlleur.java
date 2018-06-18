@@ -140,7 +140,7 @@ public class Controlleur {
         this.banque = new Joueur("banque", "$", 0, 0);
         for(int i =0;i<plateau.getCellules().size();i++)
         {
-         banque.addProprieter(plateau.getCellules().get(i).getPropriete());
+         banque.getPropriétésJoueur().add((plateau.getCellules().get(i).getPropriete()));
          if (plateau.getCellules().get(i).getPropriete() != null){
              plateau.getCellules().get(i).getPropriete().setProprietaire(banque);
          }
@@ -151,7 +151,7 @@ public class Controlleur {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
         System.out.println("\n\n\n--------------------------------------------");
         System.out.println("C'est au tour de: " + joueurCourrant.getNom() + " qui est sur la case: " + joueurCourrant.getPosition());
-        String proprio;
+        Joueur proprio;
         
         
         
@@ -163,15 +163,15 @@ public class Controlleur {
         Cellule cel = joueurCourrant.getCellule();
         if(cel.getPropriete() == null)
         {
-            proprio = "banque";
+            proprio = banque;
         }else{
-            proprio = cel.getPropriete().getProprietaire().getNom();
+            proprio = cel.getPropriete().getProprietaire();
         }
         
 
         if (faitUnDouble) { //rejoue si le joueur fait un double
             if (cel.getPropriete() != null) {
-            if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
+            if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
                 Scanner sc = new Scanner(System.in);
                 System.out.println("|**                     1- Voir l'offre                    **|");
@@ -200,24 +200,19 @@ public class Controlleur {
                                     break;
                                 default:
                                     System.out.println("! Entrée non valide !");
+                        
+                        break;
                         }
-                        break;
-                    case 0:
-                        System.out.println("Fin de tour");
-                        tourDeJeu();
-                        break;
-                    default:
-                        System.out.println("! Entrée non valide !");
                 }
 
-            } else if (proprio != "banque") { // si le joueur tombe sur une propriété achetée
-                Joueur proprietaire = cel.getPropriete().getProprietaire();
-                if (proprietaire == joueurCourrant) { //Si la propriété lui appartient
+            } else if (proprio != banque) { // si le joueur tombe sur une propriété achetée
+                
+                if (proprio == joueurCourrant) { //Si la propriété lui appartient
                     System.out.println("Fin de tour");
                     tourDeJeu();
-                } else if (proprietaire != joueurCourrant) {// si il doit payer un loyer
-                    if (joueurCourrant.getFortune() > cel.getPropriete().getLoyer()) {
-                        proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getLoyer());
+                } else if (proprio != joueurCourrant) {// si il doit payer un loyer
+                    if (joueurCourrant.getFortune() >= cel.getPropriete().getLoyer()) {
+                        proprio.setFortune(proprio.getFortune() + cel.getPropriete().getLoyer());
                         joueurCourrant.setFortune((joueurCourrant.getFortune()) - (cel.getPropriete().getLoyer()));
                         System.out.println(cel.getPropriete().getNom());
                         System.out.println(cel.getPropriete().getProprietaire().getNom());
@@ -265,7 +260,7 @@ public class Controlleur {
             joueurs.add(joueurCourrant);
         }
         if (cel.getPropriete() != null) {
-            if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == "banque") {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
+            if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
                 Scanner sc = new Scanner(System.in);
                 System.out.println("|**                     1- Voir l'offre                    **|");
@@ -305,14 +300,14 @@ public class Controlleur {
                 }
 
             } 
-            else if (proprio != "banque") { // si le joueur tombe sur une propriété achetée
-                Joueur proprietaire = cel.getPropriete().getProprietaire();
-                if (proprietaire == joueurCourrant) { //Si la propriété lui appartient
+            else if (proprio != banque) { // si le joueur tombe sur une propriété achetée
+                
+                if (proprio == joueurCourrant) { //Si la propriété lui appartient
                     System.out.println("Fin de tour");
                     tourDeJeu();
                 } else {// si il doit payer un loyer
                     if (joueurCourrant.getFortune() > cel.getPropriete().getLoyer()) {
-                        proprietaire.setFortune(proprietaire.getFortune() + cel.getPropriete().getLoyer());
+                        proprio.setFortune(proprio.getFortune() + cel.getPropriete().getLoyer());
                         joueurCourrant.setFortune((joueurCourrant.getFortune()) - (cel.getPropriete().getLoyer()));
                         System.out.println(cel.getPropriete().getLoyer());
                         System.out.println(cel.getPropriete().getNom());

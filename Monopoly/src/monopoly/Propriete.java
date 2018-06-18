@@ -49,6 +49,7 @@ public abstract class Propriete {
     
    public abstract int getLoyer();
    
+   public abstract String getCouleur();
        
    
 }

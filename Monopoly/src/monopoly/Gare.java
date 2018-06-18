@@ -25,10 +25,16 @@ public class Gare extends Propriete{
         }
         else
         { 
-            return this.getProprietaire().getNbGarePossédées()*25;
+            int nb = this.getProprietaire().getNbGarePossédées();
+            return nb*25;
                     
             
         }
+    }
+
+    @Override
+    public String getCouleur() {
+        return "Gare";
     }
     
     

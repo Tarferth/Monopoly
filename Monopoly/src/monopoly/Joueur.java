@@ -20,20 +20,20 @@ public class Joueur {
     private int fortune;
     private int position;
     private Cellule cellule;
-    private HashMap<String, Propriete> possedé;
+    private ArrayList<Propriete> possedé;
     private int De;
-    private HashMap<String, Terrain> terrains;
+    private ArrayList<Propriete> terrains;
 
     public Joueur(String nom, String symbole, int fortune, int position) {
         this.nom = nom;
         this.symbole = symbole;
         this.fortune = fortune;
         this.position = position;
-        this.possedé = new HashMap<>();
-        this.terrains = new HashMap<>();
-        for (Propriete i : possedé.values()) {
-            if (i.getClass().getName() == "Terrain") {
-                terrains.put(i.getNom(), (Terrain) i);
+        this.possedé = new ArrayList<>();
+        this.terrains = new ArrayList<>();
+        for (int i =0;i<possedé.size();i++) {
+            if (possedé.get(i).getClass().getName()== "Terrain") {
+                terrains.add(possedé.get(i));
             }
         }
         
@@ -51,7 +51,11 @@ public class Joueur {
     
     
     public void addProprieter(Propriete p) {
-        this.possedé.put(nom, p);
+        this.possedé.add(p);
+        if(p.getNom().contains("Gare")== false ||p.getNom().contains("Compagnie")== false )
+        {
+            terrains.add(p);
+        }
     }
 
     public void payerLoyer(int montantLoyer) {
@@ -66,14 +70,15 @@ public class Joueur {
         return this.getCellule().getNumero();
     }
 
-    public HashMap getPropriétésJoueur() {
+    public ArrayList getPropriétésJoueur() {
         return this.possedé;
     }
 
     public int getNbGarePossédées() {
         int g = 0;
-        for (Propriete i : possedé.values()) {
-            if (i.getNom().contains("Gare"))// test sur sortie d'un getname
+        for (int i=0;i<possedé.size();i++)
+        {
+            if (possedé.get(i).getNom().contains("Gare"))
             {
                 g++;
             }
@@ -83,19 +88,12 @@ public class Joueur {
 
     public int getNbCompagnies() {
         int g = 0;
-        for (Propriete i : possedé.values()) {
-            if (i.getNom().contains("Compagnie"))// test sur sortie d'un getname
-            {
-                System.out.println(i.getNom());
-                g++;
-                
-                
-            }
-            
-        }
-        for (Propriete i : possedé.values())
+        for(int i=0;i<possedé.size();i++)
         {
-            System.out.println(i.getNom());
+            if(possedé.get(i).getNom().contains("Compagnie"))
+            {
+                g++;
+            }
         }
         return g;
 
@@ -133,87 +131,100 @@ public class Joueur {
 
             case "rouge":
 
-                for (Terrain i : terrains.values()) {
-                    if (i.getCouleur().contains(couleur)) {
+                for (int i=0;i<terrains.size();i++) {
+                    if (terrains.get(i).getCouleur()=="rouge") {
                         compteur++;
                     }
                 }
                 if (compteur == 3) {
                     c = true;
+                    
                 }
-
+                break;
+                
             case "jaune":
 
-                for (Terrain i : terrains.values()) {
-                    if (i.getCouleur().contains(couleur)) {
+                 for (int i=0;i<terrains.size();i++) {
+                    if (terrains.get(i).getCouleur()=="jaune") {
                         compteur++;
                     }
                 }
                 if (compteur == 3) {
                     c = true;
                 }
+                break;
+                
             case "vert":
 
-                for (Terrain i : terrains.values()) {
-                    if (i.getCouleur().contains(couleur)) {
+                 for (int i=0;i<terrains.size();i++) {
+                    if (terrains.get(i).getCouleur()=="vert") {
                         compteur++;
                     }
                 }
                 if (compteur == 3) {
                     c = true;
                 }
-
+                break;
+                
             case "orange":
-                for (Terrain i : terrains.values()) {
-                    if (i.getCouleur().contains(couleur)) {
+                 for (int i=0;i<terrains.size();i++) {
+                    if (terrains.get(i).getCouleur()=="orange") {
                         compteur++;
                     }
                 }
                 if (compteur == 3) {
                     c = true;
                 }
-
+                break;
+                
             case "bleu_clair":
-                for (Terrain i : terrains.values()) {
-                    if (i.getCouleur().contains(couleur)) {
+                for (int i=0;i<terrains.size();i++) {
+                    if (terrains.get(i).getCouleur()=="bleu_clair") {
                         compteur++;
                     }
                 }
                 if (compteur == 3) {
                     c = true;
                 }
+                break;
+                
             case "violet":
-                for (Terrain i : terrains.values()) {
-                    if (i.getCouleur().contains(couleur)) {
+                 for (int i=0;i<terrains.size();i++) {
+                    if (terrains.get(i).getCouleur()=="violet") {
                         compteur++;
                     }
                 }
                 if (compteur == 3) {
                     c = true;
                 }
+                break;
+                
             case "bleu_fonce":
-                for (Terrain i : terrains.values()) {
-                    if (i.getCouleur().contains(couleur)) {
+                 for (int i=0;i<terrains.size();i++) {
+                    if (terrains.get(i).getCouleur()=="bleu_fonce") {
                         compteur++;
                     }
                 }
                 if (compteur == 2) {
                     c = true;
                 }
-
+                break;
+                
             case "rose":
-                for (Terrain i : terrains.values()) {
-                    if (i.getCouleur().contains(couleur) ) {
+                 for (int i=0;i<terrains.size();i++) {
+                    if (terrains.get(i).getCouleur()=="rose") {
                         compteur++;
                     }
                 }
                 if (compteur == 2) {
                     c = true;
                 }
+                break;
 
             default:
 
                 c = false;
+                break;
         }
         return c;
     }
