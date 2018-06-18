@@ -35,34 +35,25 @@ public class Vue_Accueil {
 
         JLabel imageMonopoly = new JLabel(new ImageIcon("src/Images/Monopoly.svg.png"));
         JPanel panelBouton = new JPanel(new GridLayout(2,3));
-        JButton boutonVide;
+        JPanel panelVide;
         
-        panelBouton.add(boutonVide = new JButton("dgdgd"));
-        boutonVide.setVisible(false);
+        panelBouton.add(panelVide = new JPanel());
         JPanel panelJouer = new JPanel(new GridLayout(3,1));
-        panelJouer.add(boutonVide = new JButton("dgdgd"));
-        boutonVide.setVisible(false);
+        panelJouer.add(panelVide = new JPanel());
         panelJouer.add(bouton_Jouer = new JButton("Jouer"));
-        panelJouer.add(boutonVide = new JButton("dgdgd"));
-        boutonVide.setVisible(false);
+        panelJouer.add(panelVide = new JPanel());
         panelBouton.add(panelJouer);
         
-        panelBouton.add(boutonVide = new JButton("dgdgd"));
-        boutonVide.setVisible(false);
-        panelBouton.add(boutonVide = new JButton("dgdgd"));
-        boutonVide.setVisible(false);
+        panelBouton.add(panelVide = new JPanel());
+        panelBouton.add(panelVide = new JPanel());
         
         JPanel panelQuitter = new JPanel(new GridLayout(3,1));
         panelQuitter.add(bouton_Quitter = new JButton("Quitter"));
-        panelQuitter.add(boutonVide = new JButton("dgdgd"));
-        boutonVide.setVisible(false);
-        panelQuitter.add(boutonVide = new JButton("dgdgd"));
-        boutonVide.setVisible(false);
+        panelQuitter.add(panelVide = new JPanel());
+        panelQuitter.add(panelVide = new JPanel());
         panelBouton.add(panelQuitter);
         
-        panelBouton.add(boutonVide = new JButton("dgdgd"));
-        boutonVide.setVisible(false);
-        
+        panelBouton.add(panelVide = new JPanel());        
         
         mainPanel.add(imageMonopoly);
         mainPanel.add(panelBouton);
