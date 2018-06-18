@@ -28,22 +28,40 @@ public class Vue_Accueil {
     public Vue_Accueil(){
         f_Accueil = new JFrame();
         f_Accueil.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        // Définit la taille de la fenêtre en pixels
-        f_Accueil.setSize(800, 800);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        f_Accueil.setLocation(dim.width/2-f_Accueil.getSize().width/2, dim.height/2-f_Accueil.getSize().height/2);
+        f_Accueil.setSize(dim);
         
         JPanel mainPanel = new JPanel(new GridLayout(2,1));
 
         JLabel imageMonopoly = new JLabel(new ImageIcon("src/Images/Monopoly.svg.png"));
         JPanel panelBouton = new JPanel(new GridLayout(2,3));
-        JLabel labelVide = new JLabel(" ");
-        panelBouton.add(labelVide);
-        panelBouton.add(bouton_Jouer = new JButton("Jouer"));
-        panelBouton.add(labelVide);
-        panelBouton.add(labelVide);
-        panelBouton.add(bouton_Quitter = new JButton("Quitter"));
-        panelBouton.add(labelVide);
+        JButton boutonVide;
+        
+        panelBouton.add(boutonVide = new JButton("dgdgd"));
+        boutonVide.setVisible(false);
+        JPanel panelJouer = new JPanel(new GridLayout(3,1));
+        panelJouer.add(boutonVide = new JButton("dgdgd"));
+        boutonVide.setVisible(false);
+        panelJouer.add(bouton_Jouer = new JButton("Jouer"));
+        panelJouer.add(boutonVide = new JButton("dgdgd"));
+        boutonVide.setVisible(false);
+        panelBouton.add(panelJouer);
+        
+        panelBouton.add(boutonVide = new JButton("dgdgd"));
+        boutonVide.setVisible(false);
+        panelBouton.add(boutonVide = new JButton("dgdgd"));
+        boutonVide.setVisible(false);
+        
+        JPanel panelQuitter = new JPanel(new GridLayout(3,1));
+        panelQuitter.add(bouton_Quitter = new JButton("Quitter"));
+        panelQuitter.add(boutonVide = new JButton("dgdgd"));
+        boutonVide.setVisible(false);
+        panelQuitter.add(boutonVide = new JButton("dgdgd"));
+        boutonVide.setVisible(false);
+        panelBouton.add(panelQuitter);
+        
+        panelBouton.add(boutonVide = new JButton("dgdgd"));
+        boutonVide.setVisible(false);
         
         
         mainPanel.add(imageMonopoly);
