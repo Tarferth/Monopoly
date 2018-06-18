@@ -17,21 +17,28 @@ public class Compagnie extends Propriete{
     
     @Override
     public int getLoyer(){
+        int r =1 ;
        if(this.getProprietaire().getNom() == "banque")
                 {
                     System.out.println("La valeur des dés multipliée par 4 si le propriétaire a 1 compagnie par 10 s'il en a 2");
-                    
+                    r = 0;
                 }
-       else if (this.getProprietaire().getNbCompagnies() == 1)
-        {
-            return (this.getProprietaire().getDe())*4;
-        }
-        else if (this.getProprietaire().getNbCompagnies()==2)
-        {
-            return (this.getProprietaire().getDe())*10;
-        }
-        
-        return 1;
-        
+       else if (this.getProprietaire().getNbCompagnies()==1)
+       {
+           return this.getCellule().getPions().get(this.getCellule().getPions().size()-1).getDe()*4;
+       }
+       else if (this.getProprietaire().getNbCompagnies()==2)
+       {
+           return this.getCellule().getPions().get(this.getCellule().getPions().size()-1).getDe()*10;
+       }
+      
+            return r;
+            
+          
+    }
+
+    @Override
+    public String getCouleur() {
+        return "Compagnie";
     }
 }
