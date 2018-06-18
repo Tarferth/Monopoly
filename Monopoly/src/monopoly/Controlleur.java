@@ -249,7 +249,23 @@ public class Controlleur {
                 System.out.println("! Vous n'avez rien à faire !");
                 tourDeJeu();
             }
-        } else {
+        } 
+            else if (cel.getImpot() != null)
+            {
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-cel.getImpot().getMontant());
+                System.out.println("Vous êtes sur la case "+cel.getImpot().getNom()+", vous payez "+cel.getImpot().getMontant());
+                System.out.println("Fortune actuelle : "+joueurCourrant.getFortune());
+                tourDeJeu();
+            }
+            
+            else if (cel.getNumero() == 30)
+            {
+                prison(joueurCourrant);
+                tourDeJeu();
+            }
+            
+            
+            else {
             System.out.println("Fin de tour");
             tourDeJeu();
         }
@@ -344,7 +360,22 @@ public class Controlleur {
                 System.out.println("! Vous n'avez rien à faire !");
                 tourDeJeu();
             }
-        } else {
+        } 
+        else if (cel.getImpot() != null)
+            {
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-cel.getImpot().getMontant());
+                System.out.println("Vous êtes sur la case "+cel.getImpot().getNom()+", vous payez "+cel.getImpot().getMontant());
+                System.out.println("Fortune actuelle : "+joueurCourrant.getFortune());
+                tourDeJeu();
+            }
+        else if (cel.getNumero() == 30)
+            {
+                prison(joueurCourrant);
+                tourDeJeu();
+            }
+        
+        
+        else {
             System.out.println("Fin de tour");
             tourDeJeu();
         }
@@ -385,6 +416,61 @@ public class Controlleur {
         System.out.println("Prix d'achat: " + joueurCourrant.getCellule().getPropriete().getPrixAchat());
         System.out.println("Prix du loyer: " + joueurCourrant.getCellule().getPropriete().getLoyer());
  
+    }
+    
+    public void prison(Joueur j)
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        j.setPrisonnier(true);
+        j.getCellule().removePion(j);
+        j.setCellule(plateau.getCellule(10));
+        plateau.getCellule(10).addPions(j);
+        
+        while (j.isPrisonnier())
+        {
+            int compteur =0;
+            
+            if(compteur == 3)
+            {
+                j.setPrisonnier(false);
+                System.out.println("Vous avez purgé votre peine.");
+                tourDeJeu();
+            }
+            
+            else
+            {
+                System.out.println("|**                     Vous êtes en prison                **|");
+                System.out.println("|**                     1- Lancer les dés                  **|");
+                System.out.println("|**                     0- Payer l'amende (50)             **|");
+                int nb = sc.nextInt();
+                switch (nb) {
+                                
+                    case 1 : 
+                            lancerDes();
+                            if (faitUnDouble)
+                            {
+                                j.setPrisonnier(false);
+                                System.out.println("Vous vous êtes échappé de prison.");
+                                tourDeJeu();
+                            }
+                            else
+                            {
+                                compteur++;
+                            }
+                            break;
+                        
+                    case 0 :
+                            j.setFortune(j.getFortune()-50);
+                            j.setPrisonnier(false);
+                            System.out.println("Vous avez payé l'amende.");
+                            System.out.println("Fortune actuelle : " + j.getFortune());
+                            tourDeJeu();
+                            break;
+                    
+                }
+            }
+        }
     }
     
     

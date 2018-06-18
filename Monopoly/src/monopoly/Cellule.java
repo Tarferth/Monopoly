@@ -16,7 +16,7 @@ public class Cellule {
     private int numero;
     private ArrayList<Joueur> pions;
     private Propriete propriete = null;
-    
+    private Impôt impot;
 
     public Cellule(String nom, int numero) {
         this.numero = numero;
@@ -26,6 +26,20 @@ public class Cellule {
     public Cellule(int numero) {
         this.numero = numero;
         this.pions = new ArrayList<>();
+    }
+    
+    public Cellule(int numero,Impôt impot)
+    {
+        this.numero = numero;
+        this.impot = impot;
+    }
+
+    public void setImpot(Impôt impot) {
+        this.impot = impot;
+    }
+
+    public Impôt getImpot() {
+        return impot;
     }
 
     

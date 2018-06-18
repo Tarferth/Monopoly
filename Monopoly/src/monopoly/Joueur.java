@@ -23,6 +23,7 @@ public class Joueur {
     private ArrayList<Propriete> possedé;
     private int De;
     private ArrayList<Propriete> terrains;
+    private boolean prisonnier = false;
 
     public Joueur(String nom, String symbole, int fortune, int position) {
         this.nom = nom;
@@ -123,6 +124,15 @@ public class Joueur {
         return this.nom;
     }
 
+    public boolean isPrisonnier() {
+        return prisonnier;
+    }
+
+    public void setPrisonnier(boolean prisonnier) {
+        this.prisonnier = prisonnier;
+    }
+
+    
     public boolean couleurComplete(String couleur) {
         int compteur = 0;
         boolean c = false;

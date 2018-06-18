@@ -27,6 +27,7 @@ public class Plateau {
         
         cellules.get(1).setPropriete(new Terrain ("rose",2,60,"Boulevard_de_Belleville",cellules.get(1)));
         cellules.get(3).setPropriete(new Terrain ("rose",4,60,"Rue_Lecourbe",cellules.get(3)));
+        cellules.get(4).setImpot(new Impôt ("Impôts sur le revenu",200));
         cellules.get(5).setPropriete(new Gare (200,"Gare_MontParnasse",cellules.get(5)));
         cellules.get(6).setPropriete(new Terrain ("bleu_clair",6,100,"Rue_de_Vaugirard",cellules.get(6)));
         cellules.get(8).setPropriete(new Terrain ("bleu_clair",6,100,"Rue_de_Courcelles",cellules.get(8)));
@@ -52,6 +53,7 @@ public class Plateau {
         cellules.get(34).setPropriete(new Terrain ("vert",28,320,"Boulevard_des_Capucines",cellules.get(34)));
         cellules.get(35).setPropriete(new Gare (200,"Gare_Saint-Lazarre",cellules.get(35)));
         cellules.get(37).setPropriete(new Terrain ("bleu_fonce",35,350,"Avenue_des_Champs-Elysées",cellules.get(37)));
+        cellules.get(38).setImpot(new Impôt("Taxe de luxe",100));
         cellules.get(39).setPropriete(new Terrain ("bleu_fonce",50,400,"Rue_de_la_Paix",cellules.get(39)));
         
         
