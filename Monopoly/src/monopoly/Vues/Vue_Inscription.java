@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import monopoly.Message;
 import monopoly.Observe;
+import monopoly.TypesMessage;
 
 /**
  *
@@ -102,8 +103,7 @@ public class Vue_Inscription extends Observe{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Message m = new Message();
-                m.nbJoueurs = 2;
+                Message m = new Message(TypesMessage.AFFICHER_INSCRIPTION_2, 2);
                 notifierObservateur(m);
             }
         });
@@ -112,6 +112,8 @@ public class Vue_Inscription extends Observe{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m = new Message(TypesMessage.AFFICHER_INSCRIPTION_2, 3);
+                notifierObservateur(m);
             }
         });
         
@@ -119,6 +121,8 @@ public class Vue_Inscription extends Observe{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m = new Message(TypesMessage.AFFICHER_INSCRIPTION_2, 4);
+                notifierObservateur(m);
             }
         });
         
@@ -126,6 +130,8 @@ public class Vue_Inscription extends Observe{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m = new Message(TypesMessage.AFFICHER_INSCRIPTION_2, 5);
+                notifierObservateur(m);
             }
         });
         
@@ -133,6 +139,8 @@ public class Vue_Inscription extends Observe{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m = new Message(TypesMessage.AFFICHER_INSCRIPTION_2, 6);
+                notifierObservateur(m);
             }
         });
         
@@ -140,6 +148,8 @@ public class Vue_Inscription extends Observe{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m = new Message(TypesMessage.RETOUR_ACCUEIL);
+                notifierObservateur(m);
             }
         });
     }
@@ -147,7 +157,11 @@ public class Vue_Inscription extends Observe{
     public void afficher() {
         this.f_Inscription.setVisible(true);
     }
-
+    
+    public void cacher(){
+        this.f_Inscription.setVisible(false);
+    }
+    
     public static void main(String [] args) {
         Vue_Inscription exemple1 = new Vue_Inscription();
         exemple1.afficher();

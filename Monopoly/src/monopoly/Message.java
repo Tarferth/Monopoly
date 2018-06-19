@@ -5,11 +5,40 @@
  */
 package monopoly;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Quentin
  */
 public class Message {
-    public TypesMessage message;
-    public int nbJoueurs;
+    private TypesMessage message;
+    private int nbJoueurs;
+    private ArrayList<Joueur> listeJoueurs;
+    
+    public Message(TypesMessage message, int nbJoueurs){
+        this.message = message;
+        this.nbJoueurs = nbJoueurs;
+    }
+    public Message(TypesMessage message){
+        this.message = message;
+    }
+    public Message(TypesMessage message, ArrayList<Joueur> listeJoueurs){
+        this.message = message;
+        this.listeJoueurs = listeJoueurs;
+    }
+
+    public TypesMessage getMessage() {
+        return message;
+    }
+
+    public int getNbJoueurs() {
+        return nbJoueurs;
+    }
+
+    public ArrayList<Joueur> getListeJoueurs() {
+        return listeJoueurs;
+    }
+    
+    
 }

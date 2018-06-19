@@ -15,12 +15,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import monopoly.Message;
+import monopoly.Observe;
+import monopoly.TypesMessage;
 
 /**
  *
  * @author fourrieq
  */
-public class Vue_Accueil {
+public class Vue_Accueil extends Observe{
     private JFrame f_Accueil; 
     private JButton bouton_Jouer;
     private JButton bouton_Quitter;
@@ -65,8 +68,8 @@ public class Vue_Accueil {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
-               
+                Message m = new Message(TypesMessage.AFFICHER_INSCRIPTION_1);
+                notifierObservateur(m);
             }
         });
         
@@ -74,7 +77,8 @@ public class Vue_Accueil {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Message m = new Message(TypesMessage.QUITTER);
+                notifierObservateur(m);
             }
         });
         
@@ -83,7 +87,9 @@ public class Vue_Accueil {
     public void afficher() {
         this.f_Accueil.setVisible(true);
     }
-
+    public void cacher(){
+        this.f_Accueil.setVisible(false);
+    }
     public static void main(String [] args) {
         Vue_Accueil exemple1 = new Vue_Accueil();
         exemple1.afficher();

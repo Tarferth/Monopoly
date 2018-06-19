@@ -7,9 +7,10 @@ package monopoly;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import monopoly.Vues.Vue_Accueil;
+import monopoly.Vues.Vue_Inscription;
 import monopoly.Vues.Vue_Inscription2;
 
 /**
@@ -18,16 +19,76 @@ import monopoly.Vues.Vue_Inscription2;
  */
 public class Controlleur implements Observateur{
 
-    private ArrayList<Joueur> joueurs = new ArrayList<>();
+    private ArrayList<Joueur> joueurs;
     private boolean faitUnDouble;
     private Plateau plateau;
     private Joueur joueurCourrant, banque;
     private int cagnotte = 0;
+    Vue_Inscription ihmInscription1;
+    Vue_Inscription2 ihmInscription2;
+    Vue_Accueil ihmAccueil;
     
 
     int compteurP = 0;
     boolean phase2 = false;
-
+    public Controlleur(){
+       this.ihmAccueil = new Vue_Accueil();
+       this.ihmAccueil.addObservateur(this);
+    }
+    
+    @Override
+    public void traiterMessage(Message m) {
+        switch(m.getMessage()){
+            case AFFICHER_INSCRIPTION_2:
+                this.ihmInscription2 = new Vue_Inscription2(m.getNbJoueurs());
+                this.ihmInscription2.addObservateur(this);
+                this.afficherIhmInscription2();
+                this.cacherIhmInscription1();
+                break;
+            case RETOUR_INSCRIPTION_1:
+                this.afficherIhmInscription1();
+                this.cacherIhmInscription2();
+                break;    
+            case RETOUR_ACCUEIL:
+                this.afficherIhmAccueil();
+                this.cacherIhmInscription1();
+                break;
+            case AFFICHER_INSCRIPTION_1:
+                this.ihmInscription1 = new Vue_Inscription();
+                this.ihmInscription1.addObservateur(this);
+                this.afficherIhmInscription1();
+                this.cacherIhmAccueil();
+                break;
+            case LANCEMENT_PARTIE:
+                        // Afficher l'ihm du jeu
+                this.joueurs = m.getListeJoueurs();         // ArrayList listeJoueurs qui contient les joueurs
+                this.cacherIhmInscription2();               // On cache la fenetre d'inscription2
+                break;
+            case QUITTER:
+                this.cacherIhmAccueil();
+                break;
+        }
+    }
+    public void cacherIhmAccueil(){
+        this.ihmAccueil.cacher();
+    }
+    public void afficherIhmAccueil(){
+        this.ihmAccueil.afficher();
+    }
+    public void afficherIhmInscription1(){
+        this.ihmInscription1.afficher();
+    }
+    public void afficherIhmInscription2(){
+        this.ihmInscription2.afficher();
+    }
+    public void cacherIhmInscription1(){
+        this.ihmInscription1.cacher();
+    }
+    public void cacherIhmInscription2(){
+        this.ihmInscription2.cacher();
+    }
+    
+    
     public int lancerDes() {
         int lancer1 = (int) Math.round(Math.random() * 5 + 1);
         int lancer2 = (int) Math.round(Math.random() * 5 + 1);
@@ -497,12 +558,6 @@ public class Controlleur implements Observateur{
         
     }
 
-    @Override
-    public void traiterMessage(Message m) {
-        System.out.println("ici");
-        if (m.message == TypesMessage.INSCRIPTION1){
-            
-        }
-    }
+    
 
 }

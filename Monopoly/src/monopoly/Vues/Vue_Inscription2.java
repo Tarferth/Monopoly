@@ -12,12 +12,16 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import monopoly.Joueur;
+import monopoly.Message;
 import monopoly.Observe;
+import monopoly.TypesMessage;
 
 /**
  *
@@ -25,14 +29,29 @@ import monopoly.Observe;
  */
 public class Vue_Inscription2 extends Observe{
     private JFrame f_Inscription2;
-    // Bouton du centre
     private int nbJoueurs;
+    // Bouton du centre
     private JButton boutonRetour = new JButton("Retour");
     private JButton boutonConfirmer = new JButton("Confirmer");
     
+    // Champ Nom
+    private JTextField champNomJ1;
+    private JTextField champNomJ2;
+    private JTextField champNomJ3;
+    private JTextField champNomJ4;
+    private JTextField champNomJ5;
+    private JTextField champNomJ6;
+    
+    // Champ Symbole
+    private JTextField champSymboleJ1;
+    private JTextField champSymboleJ2;
+    private JTextField champSymboleJ3;
+    private JTextField champSymboleJ4;
+    private JTextField champSymboleJ5;
+    private JTextField champSymboleJ6;
+    
     public Vue_Inscription2(int nbJoueurs){
         this.nbJoueurs = nbJoueurs;
-        
         f_Inscription2 = new JFrame();
         f_Inscription2.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -84,7 +103,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir1.add(labelNomJ1);
                                 break;
                             case 9:
-                                JTextField champNomJ1 = new JTextField();
+                                this.champNomJ1 = new JTextField();
                                 champsARemplir1.add(champNomJ1);
                                 break;
                             case 17:
@@ -92,7 +111,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir1.add(labelSymboleJ1);
                                 break;
                             case 19:
-                                JTextField champSymboleJ1 = new JTextField();
+                                this.champSymboleJ1 = new JTextField();
                                 champsARemplir1.add(champSymboleJ1);
                                 break;
                             default:
@@ -118,7 +137,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir2.add(labelNomJ2);
                                 break;
                             case 9:
-                                JTextField champNomJ2 = new JTextField();
+                                this.champNomJ2 = new JTextField();
                                 champsARemplir2.add(champNomJ2);
                                 break;
                             case 17:
@@ -126,7 +145,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir2.add(labelSymboleJ2);
                                 break;
                             case 19:
-                                JTextField champSymboleJ2 = new JTextField();
+                                this.champSymboleJ2 = new JTextField();
                                 champsARemplir2.add(champSymboleJ2);
                                 break;
                             default:
@@ -136,8 +155,9 @@ public class Vue_Inscription2 extends Observe{
                     panelJoueur2.add(champsARemplir2, BorderLayout.CENTER);
                     centre.add(panelJoueur2);
                 }
-                if(nbJoueurs >= 3){
+                if(nbJoueurs > 2){
                     // Joueur 3
+                    System.out.println("ICI ligne 140");
                     JPanel panelJoueur3 = new JPanel(new BorderLayout());
                 
                     JPanel pJoueur3 = new JPanel();
@@ -153,7 +173,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir3.add(labelNomJ3);
                                 break;
                             case 9:
-                                JTextField champNomJ3 = new JTextField();
+                                this.champNomJ3 = new JTextField();
                                 champsARemplir3.add(champNomJ3);
                                 break;
                             case 17:
@@ -161,7 +181,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir3.add(labelSymboleJ3);
                                 break;
                             case 19:
-                                JTextField champSymboleJ3 = new JTextField();
+                                this.champSymboleJ3 = new JTextField();
                                 champsARemplir3.add(champSymboleJ3);
                                 break;
                             default:
@@ -188,7 +208,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir4.add(labelNomJ4);
                                 break;
                             case 9:
-                                JTextField champNomJ4 = new JTextField();
+                                this.champNomJ4 = new JTextField();
                                 champsARemplir4.add(champNomJ4);
                                 break;
                             case 17:
@@ -196,7 +216,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir4.add(labelSymboleJ4);
                                 break;
                             case 19:
-                                JTextField champSymboleJ4 = new JTextField();
+                                this.champSymboleJ4 = new JTextField();
                                 champsARemplir4.add(champSymboleJ4);
                                 break;
                             default:
@@ -223,7 +243,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir5.add(labelNomJ5);
                                 break;
                             case 9:
-                                JTextField champNomJ5 = new JTextField();
+                                this.champNomJ5 = new JTextField();
                                 champsARemplir5.add(champNomJ5);
                                 break;
                             case 17:
@@ -231,7 +251,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir5.add(labelSymboleJ5);
                                 break;
                             case 19:
-                                JTextField champSymboleJ5 = new JTextField();
+                                this.champSymboleJ5 = new JTextField();
                                 champsARemplir5.add(champSymboleJ5);
                                 break;
                             default:
@@ -258,7 +278,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir6.add(labelNomJ6);
                                 break;
                             case 9:
-                                JTextField champNomJ6 = new JTextField();
+                                this.champNomJ6 = new JTextField();
                                 champsARemplir6.add(champNomJ6);
                                 break;
                             case 17:
@@ -266,7 +286,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir6.add(labelSymboleJ6);
                                 break;
                             case 19:
-                                JTextField champSymboleJ6 = new JTextField();
+                                this.champSymboleJ6 = new JTextField();
                                 champsARemplir6.add(champSymboleJ6);
                                 break;
                             default:
@@ -301,17 +321,45 @@ public class Vue_Inscription2 extends Observe{
         boutonConfirmer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ArrayList<Joueur> listeJoueurs = new ArrayList<>();
+                listeJoueurs.add(new Joueur(champNomJ1.getText(), champSymboleJ1.getText(), 1500, 0));
+                listeJoueurs.add(new Joueur(champNomJ2.getText(), champSymboleJ2.getText(), 1500, 0));
+                if (nbJoueurs > 2) {
+                    listeJoueurs.add(new Joueur(champNomJ3.getText(), champSymboleJ3.getText(), 1500, 0));
+                }
+                if (nbJoueurs > 3) {
+                    listeJoueurs.add(new Joueur(champNomJ4.getText(), champSymboleJ4.getText(), 1500, 0));
+                }
+                if (nbJoueurs > 4) {
+                    listeJoueurs.add(new Joueur(champNomJ5.getText(), champSymboleJ5.getText(), 1500, 0));
+                }
+                if (nbJoueurs > 5) {
+                    listeJoueurs.add(new Joueur(champNomJ6.getText(), champSymboleJ6.getText(), 1500, 0));
+                }
+                Message m = new Message(TypesMessage.LANCEMENT_PARTIE, listeJoueurs);
+                notifierObservateur(m);
             }
         });
         
         boutonRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m = new Message(TypesMessage.RETOUR_INSCRIPTION_1);
+                notifierObservateur(m);
             }
         });
     }
+
+    public void setNbJoueurs(int nbJoueurs) {
+        this.nbJoueurs = nbJoueurs;
+    }
+    
     public void afficher() {
         this.f_Inscription2.setVisible(true);
+    }
+    
+    public void cacher(){
+        this.f_Inscription2.setVisible(false);
     }
 
     public static void main(String [] args) {
