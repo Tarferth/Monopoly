@@ -499,7 +499,7 @@ public class Controlleur implements Observateur{
 
     @Override
     public void traiterMessage(Message m) {
-                        System.out.println("ici");
+        System.out.println("ici");
         if (m.message == TypesMessage.INSCRIPTION1){
             
         }
