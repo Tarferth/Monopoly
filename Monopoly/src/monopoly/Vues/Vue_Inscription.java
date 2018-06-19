@@ -5,8 +5,6 @@
  */
 package monopoly.Vues;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -17,12 +15,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import monopoly.Message;
+import monopoly.Observe;
 
 /**
  *
  * @author fourrieq
  */
-public class Vue_Inscription {
+public class Vue_Inscription extends Observe{
     private JFrame f_Inscription;
     // Bouton du centre
     private JButton bouton2J = new JButton("2 joueurs");
@@ -102,6 +102,9 @@ public class Vue_Inscription {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m = new Message();
+                m.nbJoueurs = 2;
+                notifierObservateur(m);
             }
         });
         
