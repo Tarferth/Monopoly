@@ -23,9 +23,11 @@ public class Controlleur implements Observateur{
     private Plateau plateau;
     private Joueur joueurCourrant, banque;
     private int cagnotte = 0;
+    private int compteurDouble =0;
 
     int compteurP = 0;
     boolean phase2 = false;
+    String jX;
 
     public int lancerDes() {
         int lancer1 = (int) Math.round(Math.random() * 5 + 1);
@@ -156,10 +158,14 @@ public class Controlleur implements Observateur{
         System.out.println("\n\n\n--------------------------------------------");
         System.out.println("C'est au tour de: " + joueurCourrant.getNom() + " qui est sur la case: " + joueurCourrant.getPosition());
         Joueur proprio;
+        if (joueurCourrant.getNom()==jX && phase2 == true)
+            {
+                parcGratuit2();
+            }
 
         if (joueurCourrant.isPrisonnier() == false) {
-            int de = lancerDesTruqué(); // Jeu avec lancé de dés aléatoire
-            //int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
+            //int de = lancerDes(); // Jeu avec lancé de dés aléatoire
+            int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
             joueurCourrant.setDe(de);
             deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
             System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
@@ -168,13 +174,16 @@ public class Controlleur implements Observateur{
                 parcGratuit1();
                 System.out.println(phase2);
             }
+            
             if (cel.getPropriete() == null) {
                 proprio = banque;
             } else {
                 proprio = cel.getPropriete().getProprietaire();
             }
 
-            if (faitUnDouble) { //rejoue si le joueur fait un double
+            if (faitUnDouble && compteurDouble != 2) { //rejoue si le joueur fait un double
+                compteurDouble++;
+                
                 if (cel.getPropriete() != null) {
                     if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
@@ -265,12 +274,27 @@ public class Controlleur implements Observateur{
                     System.out.println("Fin de tour");
                     tourDeJeu();
                 }
+              
                 //////////////////////////////////////////////FIN DU CAS DOUBLE    
 
-            } else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
+            } 
+            else if (compteurDouble == 2 )
+                {
+                    System.out.println("Vous avez fait 3 doubles à la suite vous allez en prison.");
+                    compteurDouble =0;
+                    prison(joueurCourrant);
+                    joueurs.remove(0);
+                    joueurs.add(joueurCourrant);
+                    tourDeJeu();
+                    
+                }
+            
+            else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
                 joueurs.remove(0);
                 joueurs.add(joueurCourrant);
+                compteurDouble = 0;
             }
+            
             if (cel.getPropriete() != null) {
                 if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
@@ -373,6 +397,8 @@ public class Controlleur implements Observateur{
             joueurs.add(joueurCourrant);
             tourDeJeu();
         }
+        
+        
     }
 
     public void perdu(Joueur j) {
@@ -422,7 +448,7 @@ public class Controlleur implements Observateur{
         plateau.getCellule(10).addPions(j);
 
         System.out.println(compteurP);
-        if (compteurP == 2) {
+        if (compteurP == 3) {
             j.setPrisonnier(false);
             System.out.println("Vous devez payer l'amende");
             j.setFortune(j.getFortune() - 50);
@@ -461,11 +487,14 @@ public class Controlleur implements Observateur{
         joueurCourrant.setFortune(joueurCourrant.getFortune() + cagnotte);
         cagnotte = 0;
         phase2 = true;
+        jX = joueurCourrant.getNom();
         System.out.println("Vous êtes dans le parc gratuit vous remportez la cagnotte !");
         System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
         System.out.println("Vous pouvez aussi choisir de ne pas jouer au prochain tour.");
-        parcGratuit2();
-
+        if (faitUnDouble == true)
+        {
+            parcGratuit2();
+        }
     }
 
     public void parcGratuit2() {
@@ -482,6 +511,9 @@ public class Controlleur implements Observateur{
                 break;
             case 0:
                 phase2 = false;
+                joueurs.remove(0);
+                joueurs.add(joueurCourrant);
+                tourDeJeu();
                 break;
 
         }
