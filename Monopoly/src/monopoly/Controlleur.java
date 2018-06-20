@@ -10,12 +10,13 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import monopoly.Vues.Vue_Inscription2;
 
 /**
  *
  * @author fourrieq
  */
-public class Controlleur {
+public class Controlleur implements Observateur{
 
     private ArrayList<Joueur> joueurs = new ArrayList<>();
     private boolean faitUnDouble;
@@ -485,6 +486,14 @@ public class Controlleur {
 
         }
 
+    }
+
+    @Override
+    public void traiterMessage(Message m) {
+        System.out.println("ici");
+        if (m.message == TypesMessage.INSCRIPTION1){
+            
+        }
     }
 
 }
