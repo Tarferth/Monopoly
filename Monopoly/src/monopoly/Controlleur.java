@@ -23,6 +23,9 @@ public class Controlleur implements Observateur{
     private Plateau plateau;
     private Joueur joueurCourrant, banque;
     private int cagnotte = 0, compteurDouble =0, maisonsDispo= 32, hotelsDispo =12;
+    private Communaute caisse;
+    private Chance chance;
+    
    
 
     int compteurP = 0;
@@ -152,6 +155,8 @@ public class Controlleur implements Observateur{
                 plateau.getCellules().get(i).getPropriete().setMaisons();
             }
         }
+        this.caisse = new Communaute();
+        this.chance = new Chance();
     }
 
     public void tourDeJeu() {
@@ -313,7 +318,15 @@ public class Controlleur implements Observateur{
                     System.out.println("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
                     System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
                     tourDeJeu();
-                } else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
+                }
+                else if (cel.getNumero()==2 || cel.getNumero() == 17 || cel.getNumero() == 33)
+                {
+                    piocherUneCarteCommunaute();
+                    tourDeJeu();
+                }
+                    
+                    
+                else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
                     prison(joueurCourrant);
                     tourDeJeu();
                 } else {
@@ -475,7 +488,21 @@ public class Controlleur implements Observateur{
                 System.out.println("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
                 tourDeJeu();
-            } else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
+            } 
+            else if (cel.getNumero()==2 || cel.getNumero() == 17 || cel.getNumero() == 33)
+                {
+                    piocherUneCarteCommunaute();
+                    tourDeJeu();
+                }
+            
+            else if (cel.getNumero()==7 || cel.getNumero() == 22 || cel.getNumero() == 36)
+                {
+                    piocherUneCarteChance();
+                    tourDeJeu();
+                }
+            
+            
+            else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
                 prison(joueurCourrant);
                 tourDeJeu();
             } else {
@@ -618,6 +645,314 @@ public class Controlleur implements Observateur{
         if (m.message == TypesMessage.INSCRIPTION1){
             
         }
+    }
+    
+    public void piocherUneCarteCommunaute()
+    {
+        Carte carte = caisse.getCartes().get(0);
+        ArrayList<Carte> cartes = caisse.getCartes();
+        
+        switch (carte.getDescription()) 
+        {
+            case "Liberer prison" :
+                joueurCourrant.getInventaire().add(carte);
+                cartes.remove(carte);
+                break;
+                
+            case "Payer 10" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-10);
+                System.out.println("Fortune actuelle : "+joueurCourrant.getFortune() );
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Tout le monde vous donne 10" :
+                int somme =0;
+                for (int i=1 ; i<joueurs.size();i++)
+                {
+                    joueurs.get(i).setFortune(joueurs.get(i).getFortune()-10);
+                    somme = somme +10;
+                }
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+somme);
+                System.out.println("Tout le monde vous donne 10 pour votre anniversaire");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Gagner 200" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+200);
+                System.out.println("Vous gagnez 200");
+                System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Aller a Belleville" : 
+                joueurCourrant.setCellule(plateau.getCellules().get(1));
+                System.out.println("Vous retournez au Boulevard de Belleville");
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Payer 50" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-50);
+                System.out.println("Vous Payez 50");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Gagner 20" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+20);
+                System.out.println("Vous gagner 20");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Payer 100" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-100);
+                System.out.println("Vous payer 100");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+               
+            case "Gagner 100" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+100);
+                System.out.println("Vous gagner 100");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Aller en prison" :
+                prison(joueurCourrant);
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;    
+                
+                
+            case "Gagner 50" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+50);
+                System.out.println("Vous gagner 50");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;    
+                
+                
+            case "Aller au depart" : 
+                joueurCourrant.setCellule(plateau.getCellules().get(0));
+                System.out.println("Vous retournez au Depart");
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Gagner 25" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+25);
+                System.out.println("Vous gagner 25");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                   
+            
+                
+            case "Gagner 10" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+10);
+                System.out.println("Vous gagner 10");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;     
+        }
+                
+    }
+    
+     public void piocherUneCarteChance()
+    {
+        Carte carte = chance.getCartes().get(0);
+        ArrayList<Carte> cartes = chance.getCartes();
+        int deplacement;
+        int sommeTot,sommeM=0,sommeH=0;
+        
+        switch (carte.getDescription()) 
+        {
+            case "Liberer prison" :
+                joueurCourrant.getInventaire().add(carte);
+                cartes.remove(carte);
+                break;
+                
+            case "Reculez de 3 cases" :
+                joueurCourrant.setCellule(plateau.getCellule(joueurCourrant.getCellule().getNumero()-3));
+                System.out.println("Vous reculez de 3 cases.");
+                System.out.println("Position actuelle : " + joueurCourrant.getCellule().getNumero());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Payer 15" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-15);
+                System.out.println("Vous Payez 15");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Reparations" :
+                
+                
+                for(int i=0 ; i<joueurCourrant.getTerrains().size();i++)
+                {
+                   sommeM = sommeM + joueurCourrant.getTerrains().get(i).getNbMaison();
+                   sommeH = sommeH + joueurCourrant.getTerrains().get(i).getHotel();
+                }
+                sommeTot = 25*sommeM + 100*sommeH;
+                
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-sommeTot);
+                System.out.println("Vous payez 25 par maison et 100 par hotel soit : " +sommeTot);
+                System.out.println("Fortune Actuelle : " + joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Payer 20" : 
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-20);
+                System.out.println("Vous Payez 20");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Aller au depart" : 
+                joueurCourrant.setCellule(plateau.getCellules().get(0));
+                System.out.println("Vous retournez au Depart");
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Deplacer Henri-Martin" :
+                
+                
+                
+                if(joueurCourrant.getCellule().getNumero() > 24)
+                {
+                    deplacement = (24 - joueurCourrant.getCellule().getNumero())+40;
+                }
+                else
+                {
+                    deplacement = 24 - joueurCourrant.getCellule().getNumero();
+                }
+                deplacer(joueurCourrant, deplacement);
+                System.out.println("Vous vous déplacez jusqu'à Henri-Martin (cellule 24).");
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Deplacer gare de lyon" :
+                
+                if(joueurCourrant.getCellule().getNumero() > 15)
+                {
+                    deplacement = (15 - joueurCourrant.getCellule().getNumero())+40;
+                }
+                else
+                {
+                    deplacement = 15 - joueurCourrant.getCellule().getNumero();
+                }
+                deplacer(joueurCourrant, deplacement);
+                System.out.println("Vous vous déplacez jusqu'à la gare de Lyon (cellule 15).");
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+               
+            case "Payer 150" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-150);
+                System.out.println("Vous payer 150");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Aller en prison" :
+                prison(joueurCourrant);
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;    
+                
+                
+            case "Gagner 50" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+50);
+                System.out.println("Vous gagner 50");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;    
+                
+                
+            
+                
+            case "Gagner 100" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+100);
+                System.out.println("Vous gagner 100");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                   
+            case "Gagner 150" :
+                joueurCourrant.setFortune(joueurCourrant.getFortune()+150);
+                System.out.println("Vous gagner 150");
+                System.out.println("Fortune actuelle : "+ joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+            case "Aller rue de la paix" : 
+                joueurCourrant.setCellule(plateau.getCellules().get(39));
+                System.out.println("Vous aller à rue de la paix (cellule 39).");
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;    
+                
+            case "Deplacer Villette" :
+                
+                if(joueurCourrant.getCellule().getNumero() > 11)
+                {
+                    deplacement = (11 - joueurCourrant.getCellule().getNumero())+40;
+                }
+                else
+                {
+                    deplacement = 11 - joueurCourrant.getCellule().getNumero();
+                }
+                deplacer(joueurCourrant, deplacement);
+                System.out.println("Vous vous déplacez jusqu'au boulevard de la Villette (cellule 11).");
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break; 
+                
+                
+                case "Impots voirie" :
+                
+                
+                for(int i=0 ; i<joueurCourrant.getTerrains().size();i++)
+                {
+                   sommeM = sommeM + joueurCourrant.getTerrains().get(i).getNbMaison();
+                   sommeH = sommeH + joueurCourrant.getTerrains().get(i).getHotel();
+                }
+                sommeTot = 40*sommeM + 115*sommeH;
+                
+                joueurCourrant.setFortune(joueurCourrant.getFortune()-sommeTot);
+                System.out.println("Vous payez 40 par maison et 115 par hotel soit : " +sommeTot);
+                System.out.println("Fortune Actuelle : " + joueurCourrant.getFortune());
+                cartes.remove(cartes.get(0));
+                cartes.add(carte);
+                break;
+                
+                
+        }
+                
     }
 
 }

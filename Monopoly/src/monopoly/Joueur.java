@@ -24,6 +24,7 @@ public class Joueur {
     private int De;
     private ArrayList<Propriete> terrains;
     private boolean prisonnier = false;
+    private ArrayList<Carte> inventaire;
 
     public Joueur(String nom, String symbole, int fortune, int position) {
         this.nom = nom;
@@ -37,8 +38,12 @@ public class Joueur {
                 terrains.add(possedé.get(i));
             }
         }
-        
+       this.inventaire = new ArrayList<>();
 
+    }
+
+    public ArrayList<Carte> getInventaire() {
+        return inventaire;
     }
 
     public String getSymbole() {
@@ -138,6 +143,10 @@ public class Joueur {
 
     public void setPrisonnier(boolean prisonnier) {
         this.prisonnier = prisonnier;
+    }
+
+    public ArrayList<Propriete> getTerrains() {
+        return terrains;
     }
 
     
