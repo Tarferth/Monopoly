@@ -50,6 +50,18 @@ public abstract class Propriete {
    public abstract int getLoyer();
    
    public abstract String getCouleur();
+   
+   public abstract int getNbMaison();
+   
+   public abstract void addMaison();
+   
+   public abstract void addHotel();
+   
+   public abstract int getPrixMaison();
+   
+   public abstract void setMaisons();
+   
+   public abstract int getHotel();
        
    
 }
