@@ -22,7 +22,6 @@ public class Controlleur {
     private Plateau plateau;
     private Joueur joueurCourrant, banque;
     private int cagnotte = 0;
-    
 
     int compteurP = 0;
     boolean phase2 = false;
@@ -164,15 +163,9 @@ public class Controlleur {
             deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
             System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
             Cellule cel = joueurCourrant.getCellule();
-            if(cel.getNumero()==20 && phase2 == false)
-            {
+            if (cel.getNumero() == 20 && phase2 == false) {
                 parcGratuit1();
                 System.out.println(phase2);
-            }
-            else if (phase2 == true && cel.getNumero()==20)
-            {   
-                parcGratuit2();
-                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             }
             if (cel.getPropriete() == null) {
                 proprio = banque;
@@ -271,7 +264,7 @@ public class Controlleur {
                     System.out.println("Fin de tour");
                     tourDeJeu();
                 }
-        //////////////////////////////////////////////FIN DU CAS DOUBLE    
+                //////////////////////////////////////////////FIN DU CAS DOUBLE    
 
             } else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
                 joueurs.remove(0);
@@ -430,7 +423,8 @@ public class Controlleur {
         System.out.println(compteurP);
         if (compteurP == 2) {
             j.setPrisonnier(false);
-            System.out.println("Vous avez purgé votre peine.");
+            System.out.println("Vous devez payer l'amende");
+            j.setFortune(j.getFortune() - 50);
         } else {
             System.out.println("|**                     Vous êtes en prison                **|");
             System.out.println("|**                     1- Lancer les dés                  **|");
@@ -460,40 +454,37 @@ public class Controlleur {
         }
 
     }
-    
-    public void parcGratuit1()
-    {
-        
-        joueurCourrant.setFortune(joueurCourrant.getFortune()+ cagnotte);
+
+    public void parcGratuit1() {
+
+        joueurCourrant.setFortune(joueurCourrant.getFortune() + cagnotte);
         cagnotte = 0;
         phase2 = true;
         System.out.println("Vous êtes dans le parc gratuit vous remportez la cagnotte !");
         System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
-        System.out.println("Vous pourrez aussi choisir de ne pas jouer au prochain tour.");
-        
+        System.out.println("Vous pouvez aussi choisir de ne pas jouer au prochain tour.");
+        parcGratuit2();
+
     }
-    
-    public void parcGratuit2()
-    {
-        
-            Scanner sc = new Scanner(System.in);
-            System.out.println("|**               Vous êtes dans le parc Gratuit           **|");
-            System.out.println("|**                     1- Lancer les dés                  **|");
-            System.out.println("|**                     0- Attendre                        **|");
-            int nb = sc.nextInt();
-            switch (nb) {
-                
-                case 1  :
-                        phase2 = false;
-                        break;
-                case 0  :
-                        phase2 = false;
-                        joueurs.remove(0);
-                        joueurs.add(joueurCourrant);
-                        break;  
-                
-            }
-        
+
+    public void parcGratuit2() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("|**               Vous êtes dans le parc Gratuit           **|");
+        System.out.println("|**                     1- Lancer les dés                  **|");
+        System.out.println("|**                     0- Attendre                        **|");
+        int nb = sc.nextInt();
+        switch (nb) {
+
+            case 1:
+                phase2 = false;
+                break;
+            case 0:
+                phase2 = false;
+                break;
+
+        }
+
     }
 
 }
