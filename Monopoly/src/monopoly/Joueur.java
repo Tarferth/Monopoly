@@ -49,6 +49,14 @@ public class Joueur {
         this.cellule = cellule;
     }
 
+    public void addProprieter2(Propriete p) {
+        this.possedé.add(p);
+        if(p.getNom().contains("Gare")== false ||p.getNom().contains("Compagnie")== false )
+        {
+            terrains.add(p);
+        }
+        p.setProprietaire(this);
+    }
     
     
     public void addProprieter(Propriete p) {
@@ -237,5 +245,41 @@ public class Joueur {
                 break;
         }
         return c;
+    }
+    
+    public boolean peutConstruire(String couleur)
+    {
+        Terrain min;
+        int difference =0;
+        ArrayList<Terrain> t = new ArrayList<>();
+        for (int i=0;i<terrains.size();i++)
+        {
+            if(terrains.get(i).getCouleur()== couleur)
+            {
+                t.add((Terrain) terrains.get(i));
+            }
+        }
+        min = t.get(0);
+        for (int i =0 ; i<t.size();i++)
+        {
+            if(t.get(i).getNbMaison() < min.getNbMaison())
+            {
+                difference = min.getNbMaison()-t.get(i).getNbMaison();
+                min = t.get(i);      
+            }
+            else
+            {
+                difference = t.get(i).getNbMaison()-min.getNbMaison();
+            }
+        }
+        if (difference ==2 && this.getCellule().getPropriete() != min)
+        {
+            System.out.println("Construisez d'abord sur les autres terrains");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }

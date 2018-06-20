@@ -22,8 +22,8 @@ public class Controlleur implements Observateur{
     private boolean faitUnDouble;
     private Plateau plateau;
     private Joueur joueurCourrant, banque;
-    private int cagnotte = 0;
-    private int compteurDouble =0;
+    private int cagnotte = 0, compteurDouble =0, maisonsDispo= 32, hotelsDispo =12;
+   
 
     int compteurP = 0;
     boolean phase2 = false;
@@ -149,6 +149,7 @@ public class Controlleur implements Observateur{
             banque.getPropriétésJoueur().add((plateau.getCellules().get(i).getPropriete()));
             if (plateau.getCellules().get(i).getPropriete() != null) {
                 plateau.getCellules().get(i).getPropriete().setProprietaire(banque);
+                plateau.getCellules().get(i).getPropriete().setMaisons();
             }
         }
     }
@@ -181,7 +182,7 @@ public class Controlleur implements Observateur{
                 proprio = cel.getPropriete().getProprietaire();
             }
 
-            if (faitUnDouble && compteurDouble != 2) { //rejoue si le joueur fait un double
+            if (faitUnDouble && compteurDouble != 3) { //rejoue si le joueur fait un double
                 compteurDouble++;
                 
                 if (cel.getPropriete() != null) {
@@ -221,10 +222,55 @@ public class Controlleur implements Observateur{
 
                     } else if (proprio != banque) { // si le joueur tombe sur une propriété achetée
 
-                        if (proprio == joueurCourrant) { //Si la propriété lui appartient
+                        
+                        if (proprio == joueurCourrant && joueurCourrant.couleurComplete(cel.getPropriete().getCouleur())&& (maisonsDispo != 0 || hotelsDispo !=0 ) && joueurCourrant.peutConstruire(cel.getPropriete().getCouleur()))
+                        {
+                            Scanner sc = new Scanner(System.in);
+                        System.out.println("|**                     1- Acheter une maison ("+cel.getPropriete().getPrixMaison()+")                    **|");
+                        System.out.println("|**                     0- Passer son Tour                 **|");
+                        int nb = sc.nextInt();
+                        switch (nb) {
+                            
+                            case 1:
+                                    if(cel.getPropriete().getNbMaison()!=4 )
+                                    {
+                                        cel.getPropriete().addMaison();
+                                        maisonsDispo--;
+                                        System.out.println("Une maison a été ajouté au terrain "+cel.getPropriete().getNom()+" Il y a "+cel.getPropriete().getNbMaison()+" maisons sur ce terrain.");
+                                        System.out.println("Nouveau Loyer : " + cel.getPropriete().getLoyer());
+                                        tourDeJeu();
+                                    }
+                                    else if (cel.getPropriete().getNbMaison()==4 )
+                                    {
+                                        cel.getPropriete().addHotel();
+                                        hotelsDispo--;
+                                        System.out.println("Un hotel a été ajouté au terrain "+cel.getPropriete().getNom());
+                                        System.out.println("Nouveau Loyer : " + cel.getPropriete().getLoyer());
+                                        tourDeJeu();
+                                    }
+                                    else if(cel.getPropriete().getHotel() == 1)
+                                    {
+                                        System.out.println("Vous ne pouvez plus rien construire sur ce terrain.");
+                                    }
+                                    break;
+                                
+                            case 0 : 
+                                    System.out.println("Fin de tour");
+                                    tourDeJeu();
+                                    break;
+                            default :
+                                    System.out.println("Entrée non valide !");
+                                    
+                            
+                        }
+                        }
+                    
+                         else if (proprio == joueurCourrant) { //Si la propriété lui appartient
                             System.out.println("Fin de tour");
                             tourDeJeu();
-                        } else if (proprio != joueurCourrant) {// si il doit payer un loyer
+                        }
+                        
+                        else if (proprio != joueurCourrant) {// si il doit payer un loyer
                             if (joueurCourrant.getFortune() >= cel.getPropriete().getLoyer()) {
                                 proprio.setFortune(proprio.getFortune() + cel.getPropriete().getLoyer());
                                 joueurCourrant.setFortune((joueurCourrant.getFortune()) - (cel.getPropriete().getLoyer()));
@@ -278,7 +324,7 @@ public class Controlleur implements Observateur{
                 //////////////////////////////////////////////FIN DU CAS DOUBLE    
 
             } 
-            else if (compteurDouble == 2 )
+            else if (compteurDouble == 3 )
                 {
                     System.out.println("Vous avez fait 3 doubles à la suite vous allez en prison.");
                     compteurDouble =0;
@@ -337,10 +383,56 @@ public class Controlleur implements Observateur{
 
                 } else if (proprio != banque) { // si le joueur tombe sur une propriété achetée
 
-                    if (proprio == joueurCourrant) { //Si la propriété lui appartient
+                    
+                    if (proprio == joueurCourrant && joueurCourrant.couleurComplete(cel.getPropriete().getCouleur())&& (maisonsDispo != 0 || hotelsDispo !=0 ) && joueurCourrant.peutConstruire(cel.getPropriete().getCouleur()))
+                        {
+                            Scanner sc = new Scanner(System.in);
+                        System.out.println("|**                     1- Acheter une maison ("+cel.getPropriete().getPrixMaison()+")                    **|");
+                        System.out.println("|**                     0- Passer son Tour                 **|");
+                        int nb = sc.nextInt();
+                        switch (nb) {
+                            
+                            case 1:
+                                    if(cel.getPropriete().getNbMaison()!=4 )
+                                    {
+                                        cel.getPropriete().addMaison();
+                                        maisonsDispo--;
+                                        System.out.println("Une maison a été ajouté au terrain "+cel.getPropriete().getNom()+" Il y a "+cel.getPropriete().getNbMaison()+" maisons sur ce terrain.");
+                                        System.out.println("Nouveau Loyer : " + cel.getPropriete().getLoyer());
+                                        tourDeJeu();
+                                    }
+                                    else if (cel.getPropriete().getNbMaison()==4 )
+                                    {
+                                        cel.getPropriete().addHotel();
+                                        hotelsDispo--;
+                                        System.out.println("Un hotel a été ajouté au terrain "+cel.getPropriete().getNom());
+                                        System.out.println("Nouveau Loyer : " + cel.getPropriete().getLoyer());
+                                        tourDeJeu();
+                                    }
+                                    else if(cel.getPropriete().getHotel() == 1)
+                                    {
+                                        System.out.println("Vous ne pouvez plus rien construire sur ce terrain.");
+                                    }
+                                    break;
+                                
+                            case 0 : 
+                                    System.out.println("Fin de tour");
+                                    tourDeJeu();
+                                    break;
+                            default :
+                                    System.out.println("Entrée non valide !");
+                                    
+                            
+                        }
+                        }
+                   
+                    
+                    else if (proprio == joueurCourrant) { //Si la propriété lui appartient
                         System.out.println("Fin de tour");
                         tourDeJeu();
-                    } else {// si il doit payer un loyer
+                    }
+                    
+                    else {// si il doit payer un loyer
                         if (joueurCourrant.getFortune() > cel.getPropriete().getLoyer()) {
                             proprio.setFortune(proprio.getFortune() + cel.getPropriete().getLoyer());
                             joueurCourrant.setFortune((joueurCourrant.getFortune()) - (cel.getPropriete().getLoyer()));

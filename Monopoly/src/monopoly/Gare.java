@@ -36,6 +36,34 @@ public class Gare extends Propriete{
     public String getCouleur() {
         return "Gare";
     }
+
+    @Override
+    public int getNbMaison() {
+        return 0;
+    }
+
+    @Override
+    public void addMaison() {
+    }
+
+    @Override
+    public void addHotel() {
+        
+    }
+
+    @Override
+    public int getPrixMaison() {
+        return 0;
+    }
+
+    @Override
+    public void setMaisons() {
+    }
+
+    @Override
+    public int getHotel() {
+        return 0;
+    }
     
     
 }
