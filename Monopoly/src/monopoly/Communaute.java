@@ -17,7 +17,7 @@ public class Communaute {
     private ArrayList<Carte> cartes = new ArrayList<>();
 
     public Communaute() {
-        cartes.add(new Carte("Liberer prison"));
+        cartes.add(new Carte("Liberer prison Co"));
         cartes.add(new Carte("Payer 10"));
         cartes.add(new Carte("Tout le monde vous donne 10"));
         cartes.add(new Carte("Gagner 200"));

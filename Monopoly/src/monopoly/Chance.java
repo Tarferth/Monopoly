@@ -16,7 +16,7 @@ public class Chance {
     private ArrayList<Carte> cartes = new ArrayList<>();
 
     public Chance() {
-        cartes.add(new Carte("Liberer prison"));
+        cartes.add(new Carte("Liberer prison Ch"));
         cartes.add(new Carte("Reculez de 3 cases"));
         cartes.add(new Carte("Payer 15"));
         cartes.add(new Carte("Reparations"));
