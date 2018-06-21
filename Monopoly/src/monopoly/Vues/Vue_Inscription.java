@@ -161,7 +161,7 @@ public class Vue_Inscription extends Observe{
     public void cacher(){
         this.f_Inscription.setVisible(false);
     }
-    
+      
     public static void main(String [] args) {
         Vue_Inscription exemple1 = new Vue_Inscription();
         exemple1.afficher();

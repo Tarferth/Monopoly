@@ -10,7 +10,6 @@ package monopoly;
  * @author moreasim
  */
 public class Monopoly {
-
     /**
      * @param args the command line arguments
      */
