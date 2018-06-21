@@ -156,7 +156,7 @@ public class Joueur {
 
         switch (couleur) {
 
-            case "rouge":
+            case "RED":
 
                 for (int i=0;i<terrains.size();i++) {
                     if (terrains.get(i).getCouleur()=="rouge") {
@@ -169,7 +169,7 @@ public class Joueur {
                 }
                 break;
                 
-            case "jaune":
+            case "YELLOW":
 
                  for (int i=0;i<terrains.size();i++) {
                     if (terrains.get(i).getCouleur()=="jaune") {
@@ -181,7 +181,7 @@ public class Joueur {
                 }
                 break;
                 
-            case "vert":
+            case "GREEN":
 
                  for (int i=0;i<terrains.size();i++) {
                     if (terrains.get(i).getCouleur()=="vert") {
@@ -193,7 +193,7 @@ public class Joueur {
                 }
                 break;
                 
-            case "orange":
+            case "ORANGE":
                  for (int i=0;i<terrains.size();i++) {
                     if (terrains.get(i).getCouleur()=="orange") {
                         compteur++;
@@ -204,7 +204,7 @@ public class Joueur {
                 }
                 break;
                 
-            case "bleu_clair":
+            case "CYAN":
                 for (int i=0;i<terrains.size();i++) {
                     if (terrains.get(i).getCouleur()=="bleu_clair") {
                         compteur++;
@@ -215,7 +215,7 @@ public class Joueur {
                 }
                 break;
                 
-            case "violet":
+            case "PURPLE":
                  for (int i=0;i<terrains.size();i++) {
                     if (terrains.get(i).getCouleur()=="violet") {
                         compteur++;
@@ -226,7 +226,7 @@ public class Joueur {
                 }
                 break;
                 
-            case "bleu_fonce":
+            case "BLUE":
                  for (int i=0;i<terrains.size();i++) {
                     if (terrains.get(i).getCouleur()=="bleu_fonce") {
                         compteur++;
@@ -237,7 +237,7 @@ public class Joueur {
                 }
                 break;
                 
-            case "rose":
+            case "PINK":
                  for (int i=0;i<terrains.size();i++) {
                     if (terrains.get(i).getCouleur()=="rose") {
                         compteur++;

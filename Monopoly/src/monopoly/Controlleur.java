@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import monopoly.Vues.Vue_Accueil;
 import monopoly.Vues.Vue_Inscription;
 import monopoly.Vues.Vue_Inscription2;
+import monopoly.Vues.Vue_Plateau;
 
 /**
  *
@@ -26,9 +27,10 @@ public class Controlleur implements Observateur {
     private int cagnotte = 0, compteurDouble = 0, maisonsDispo = 32, hotelsDispo = 12;
     private Communaute caisse;
     private Chance chance;
-    Vue_Inscription ihmInscription1;
-    Vue_Inscription2 ihmInscription2;
-    Vue_Accueil ihmAccueil;
+    private Vue_Inscription ihmInscription1;
+    private Vue_Inscription2 ihmInscription2;
+    private Vue_Accueil ihmAccueil;
+    private Vue_Plateau Vplateau;
 
     int compteurP = 0;
     boolean phase2 = false;
@@ -223,6 +225,9 @@ public class Controlleur implements Observateur {
         }
         this.caisse = new Communaute();
         this.chance = new Chance();
+        this.Vplateau = new Vue_Plateau();
+        this.Vplateau.setCellules(plateau);
+                
     }
 
     public void tourDeJeu() {
@@ -337,13 +342,17 @@ public class Controlleur implements Observateur {
                 } else if (cel.getImpot() != null) {
                     joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getImpot().getMontant());
                     cagnotte = cagnotte + cel.getImpot().getMontant();
+                    this.Vplateau.setCagnotte(cagnotte);
                     System.out.println("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
                     System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
                     tourDeJeu();
                 } else if (cel.getNumero() == 2 || cel.getNumero() == 17 || cel.getNumero() == 33) {
                     piocherUneCarteCommunaute();
                     tourDeJeu();
-                } else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
+                }else if (cel.getNumero() == 7 || cel.getNumero() == 22 || cel.getNumero() == 36) {
+                piocherUneCarteChance();
+                tourDeJeu();
+            } else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
                     prison(joueurCourrant);
                     tourDeJeu();
                 } else {
@@ -453,6 +462,7 @@ public class Controlleur implements Observateur {
             } else if (cel.getImpot() != null) {
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getImpot().getMontant());
                 cagnotte = cagnotte + cel.getImpot().getMontant();
+                this.Vplateau.setCagnotte(cagnotte);
                 System.out.println("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
                 tourDeJeu();
@@ -574,6 +584,7 @@ public class Controlleur implements Observateur {
 
         joueurCourrant.setFortune(joueurCourrant.getFortune() + cagnotte);
         cagnotte = 0;
+        this.Vplateau.setCagnotte(cagnotte);
         phase2 = true;
         jX = joueurCourrant.getNom();
         System.out.println("Vous êtes dans le parc gratuit vous remportez la cagnotte !");
