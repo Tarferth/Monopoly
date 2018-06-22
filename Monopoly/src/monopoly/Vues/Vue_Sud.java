@@ -52,10 +52,10 @@ public class Vue_Sud extends JPanel{
     }
 
     private String getNomJCourant() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Patrick";
     }
 
     private Color getCouleurJCourant() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        return Color.BLACK;
+        }
 }

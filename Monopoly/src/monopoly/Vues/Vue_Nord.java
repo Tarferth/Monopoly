@@ -73,14 +73,14 @@ public class Vue_Nord extends JPanel{
     }
 
     private String getNom(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Jean";
     }
 
     private Color getCouleur(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Color.black;
     }
 
     private int getNbJoueurs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 4;
     }
 }
