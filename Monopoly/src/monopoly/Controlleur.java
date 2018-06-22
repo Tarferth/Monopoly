@@ -223,7 +223,7 @@ public class Controlleur implements Observateur {
             banque.getPropriétésJoueur().add((plateau.getCellules().get(i).getPropriete()));
             if (plateau.getCellules().get(i).getPropriete() != null) {
                 plateau.getCellules().get(i).getPropriete().setProprietaire(banque);
-                plateau.getCellules().get(i).getPropriete().setMaisons();
+                plateau.getCellules().get(i).getPropriete().resetMaisons();
             }
         }
         this.caisse = new Communaute();
