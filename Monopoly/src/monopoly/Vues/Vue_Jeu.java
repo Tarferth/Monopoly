@@ -18,16 +18,19 @@ import javax.swing.JPanel;
  */
 public class Vue_Jeu extends JPanel{
     JFrame f_Jeu;
-    
-    
+    Vue_Ouest ouest;
     public Vue_Jeu()
     {
         f_Jeu = new JFrame();
+        ouest = new Vue_Ouest();
         f_Jeu.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         f_Jeu.setSize(dim);
         this.setLayout(new BorderLayout());
-        
+        JLabel t = new JLabel("AAAAAAAAAAAAA");
+        this.add(t);
+        this.add(ouest,BorderLayout.WEST);
+        f_Jeu.add(this);
         
     }
     
