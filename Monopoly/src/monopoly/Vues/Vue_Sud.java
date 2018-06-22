@@ -19,13 +19,14 @@ import javax.swing.JPanel;
 public class Vue_Sud extends JPanel{
     private JPanel vue_Sud;
     private JButton boutonAcheter, boutonPasserSonTour;
+    private JLabel nomJCourrant;
     
     public Vue_Sud(){
         this.vue_Sud = new JPanel(new BorderLayout());
         
         JPanel joueurCourantHaut = new JPanel(new GridLayout(1,2));
-        JLabel nomJ1 = new JLabel(getNomJCourant());
-        joueurCourantHaut.add(nomJ1);
+        this.nomJCourrant = new JLabel("Joueur 1");
+        joueurCourantHaut.add(nomJCourrant);
         joueurCourantHaut.setBackground(getCouleurJCourant());
         this.vue_Sud.add(joueurCourantHaut, BorderLayout.NORTH);
         
