@@ -16,6 +16,8 @@ import javax.swing.JPanel;
  */
 public class Vue_Nord extends JPanel{
     private JPanel vue_Nord;
+    private JLabel nomJ1, nomJ2, nomJ3, nomJ4, nomJ5, nomJ6;
+    
     
     public Vue_Nord(){
         
@@ -23,14 +25,14 @@ public class Vue_Nord extends JPanel{
         
         // 1er joueur
         JPanel joueur1 = new JPanel();
-        JLabel nomJ1 = new JLabel(getNom(1));
+        this.nomJ1 = new JLabel("Joueur 1");
         joueur1.add(nomJ1);
         joueur1.setBackground(getCouleur(1));
         this.vue_Nord.add(joueur1);
         
         // 2eme Joueur
         JPanel joueur2 = new JPanel();
-        JLabel nomJ2 = new JLabel(getNom(2));
+        this.nomJ2 = new JLabel("Joueur 2");
         joueur2.add(nomJ2);
         joueur2.setBackground(getCouleur(2));
         this.vue_Nord.add(joueur2);
@@ -38,7 +40,7 @@ public class Vue_Nord extends JPanel{
         if (getNbJoueurs() > 2) {
             // 3eme Joueur
             JPanel joueur3 = new JPanel();
-            JLabel nomJ3 = new JLabel(getNom(3));
+            this.nomJ3 = new JLabel("Joueur 3");
             joueur3.add(nomJ3);
             joueur3.setBackground(getCouleur(3));
             this.vue_Nord.add(joueur3);
@@ -47,7 +49,7 @@ public class Vue_Nord extends JPanel{
         if (getNbJoueurs() > 3) {
             // 4eme Joueur
             JPanel joueur4 = new JPanel();
-            JLabel nomJ4 = new JLabel(getNom(4));
+            this.nomJ4 = new JLabel("Joueur 4");
             joueur4.add(nomJ4);
             joueur4.setBackground(getCouleur(4));
             this.vue_Nord.add(joueur4);
@@ -56,7 +58,7 @@ public class Vue_Nord extends JPanel{
         if (getNbJoueurs() > 4) {
             // 5eme Joueur
             JPanel joueur5 = new JPanel();
-            JLabel nomJ5 = new JLabel(getNom(5));
+            this.nomJ5 = new JLabel("Joueur 5");
             joueur5.add(nomJ5);
             joueur5.setBackground(getCouleur(5));
             this.vue_Nord.add(joueur5);
@@ -65,16 +67,12 @@ public class Vue_Nord extends JPanel{
         if (getNbJoueurs() > 5) {
             // 6eme Joueur
             JPanel joueur6 = new JPanel();
-            JLabel nomJ6 = new JLabel(getNom(6));
+            this.nomJ6 = new JLabel("Joueur 6");
             joueur6.add(nomJ6);
             joueur6.setBackground(getCouleur(6));
             this.vue_Nord.add(joueur6);
         }
         this.add(vue_Nord);
-    }
-
-    private String getNom(int i) {
-        return "Jean";
     }
 
     private Color getCouleur(int i) {
@@ -84,4 +82,29 @@ public class Vue_Nord extends JPanel{
     private int getNbJoueurs() {
         return 4;
     }
+
+    public JLabel getNomJ1() {
+        return nomJ1;
+    }
+
+    public JLabel getNomJ2() {
+        return nomJ2;
+    }
+
+    public JLabel getNomJ3() {
+        return nomJ3;
+    }
+
+    public JLabel getNomJ4() {
+        return nomJ4;
+    }
+
+    public JLabel getNomJ5() {
+        return nomJ5;
+    }
+
+    public JLabel getNomJ6() {
+        return nomJ6;
+    }
+    
 }

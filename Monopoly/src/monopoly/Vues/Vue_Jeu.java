@@ -68,7 +68,22 @@ public class Vue_Jeu extends Observe{
                 
             }
         });
-        
+        southPanel.getBoutonAcheter().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Message m = new Message(TypesMessage.ACHETER);
+                notifierObservateur(m);
+            }
+        });
+        southPanel.getBoutonPasserSonTour().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Message m = new Message(TypesMessage.PASSER_TOUR);
+                notifierObservateur(m);
+            }
+        });
     }
     
     public void afficher()

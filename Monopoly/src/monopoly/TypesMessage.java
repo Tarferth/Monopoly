@@ -16,6 +16,8 @@ public enum TypesMessage {
     LANCEMENT_PARTIE, // L'utilisateur clique sur confirmer apres avoir remplie les noms/symboles
     QUITTER, // L'utilisateur quitte l'application
     AFFICHER_INSCRIPTION_1,//le joueur clique sur jouer
-    LANCER_DES
+    LANCER_DES,
+    ACHETER,
+    PASSER_TOUR
     
 }
