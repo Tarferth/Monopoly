@@ -49,6 +49,7 @@ public class Vue_Sud extends JPanel{
         joueurCourantAction.add(vide);
         joueurCourantAction.add(vide);
         this.vue_Sud.add(joueurCourantAction, BorderLayout.CENTER);
+        this.add(vue_Sud);
     }
 
     private String getNomJCourant() {

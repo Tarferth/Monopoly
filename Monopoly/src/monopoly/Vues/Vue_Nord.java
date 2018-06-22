@@ -70,6 +70,8 @@ public class Vue_Nord extends JPanel{
             joueur6.setBackground(getCouleur(6));
             this.vue_Nord.add(joueur6);
         }
+        
+        this.add(vue_Nord);
     }
 
     private String getNom(int i) {
