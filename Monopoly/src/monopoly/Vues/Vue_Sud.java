@@ -18,13 +18,15 @@ import javax.swing.JPanel;
  */
 public class Vue_Sud extends JPanel{
     private JPanel vue_Sud;
+    private JButton boutonAcheter, boutonPasserSonTour;
+    private JLabel nomJCourrant;
     
     public Vue_Sud(){
         this.vue_Sud = new JPanel(new BorderLayout());
         
         JPanel joueurCourantHaut = new JPanel(new GridLayout(1,2));
-        JLabel nomJ1 = new JLabel(getNomJCourant());
-        joueurCourantHaut.add(nomJ1);
+        this.nomJCourrant = new JLabel("Joueur 1");
+        joueurCourantHaut.add(nomJCourrant);
         joueurCourantHaut.setBackground(getCouleurJCourant());
         this.vue_Sud.add(joueurCourantHaut, BorderLayout.NORTH);
         
@@ -37,10 +39,10 @@ public class Vue_Sud extends JPanel{
         joueurCourantAction.add(vide);
         joueurCourantAction.add(vide);
         // liste des actions
-        JButton boutonAcheter = new JButton("Acheter");
+        this.boutonAcheter = new JButton("Acheter");
         joueurCourantAction.add(boutonAcheter);
         joueurCourantAction.add(vide);
-        JButton boutonPasserSonTour = new JButton("Passer son tour");
+        this.boutonPasserSonTour = new JButton("Passer son tour");
         joueurCourantAction.add(boutonPasserSonTour);
         joueurCourantAction.add(vide);
         joueurCourantAction.add(vide);
@@ -50,6 +52,14 @@ public class Vue_Sud extends JPanel{
         joueurCourantAction.add(vide);
         this.vue_Sud.add(joueurCourantAction, BorderLayout.CENTER);
         this.add(vue_Sud);
+    }
+
+    public JButton getBoutonAcheter() {
+        return boutonAcheter;
+    }
+
+    public JButton getBoutonPasserSonTour() {
+        return boutonPasserSonTour;
     }
 
     private String getNomJCourant() {
