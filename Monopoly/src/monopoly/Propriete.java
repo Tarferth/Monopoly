@@ -59,7 +59,7 @@ public abstract class Propriete {
    
    public abstract int getPrixMaison();
    
-   public abstract void setMaisons();
+   public abstract void resetMaisons();
    
    public abstract int getHotel();
        

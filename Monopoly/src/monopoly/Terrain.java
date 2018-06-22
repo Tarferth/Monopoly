@@ -107,7 +107,7 @@ public class Terrain extends Propriete {
     }
 
     @Override
-    public void setMaisons() {
+    public void resetMaisons() {
         maisons = 0;
         hotel = 0;
     }
