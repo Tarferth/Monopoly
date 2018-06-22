@@ -45,7 +45,11 @@ public class Vue_Jeu extends Observe{
         Vue_Plateau plateau = new Vue_Plateau();
         mainPanel.add(plateau,BorderLayout.CENTER);
         
+        Vue_Nord northPanel = new Vue_Nord();
+        this.add(northPanel, BorderLayout.NORTH);
         
+        Vue_Sud southPanel = new Vue_Sud();
+        this.add(southPanel, BorderLayout.SOUTH);
         
         f_Jeu.add(mainPanel);
         

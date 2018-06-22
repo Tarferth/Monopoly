@@ -935,4 +935,13 @@ public class Controlleur implements Observateur {
         }
     }
 
+    public ArrayList<Joueur> getJoueurs() {
+        return joueurs;
+    }
+
+    public Joueur getJoueurCourrant() {
+        return joueurCourrant;
+    }
+    
+
 }
