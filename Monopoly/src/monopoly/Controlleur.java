@@ -87,6 +87,10 @@ public class Controlleur implements Observateur {
                 this.Vjeu.getWestPanel().getDe2().setText(String.valueOf(de2));
                 this.Vjeu.getMainPanel().invalidate();
                 break;
+            case ACHETER:
+                break;
+            case PASSER_TOUR:
+                break;
                 
         }
     }
