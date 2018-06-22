@@ -6,7 +6,9 @@
 package monopoly.Vues;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,7 +16,7 @@ import javax.swing.JPanel;
  *
  * @author Quentin
  */
-public class Vue_Sud {
+public class Vue_Sud extends JPanel{
     private JPanel vue_Sud;
     
     public Vue_Sud(){
@@ -26,8 +28,34 @@ public class Vue_Sud {
         joueurCourantHaut.setBackground(getCouleurJCourant());
         this.vue_Sud.add(joueurCourantHaut, BorderLayout.NORTH);
         
-        JPanel joueurCourantAction = new JPanel(new GridLayout(5,4));
+        JPanel joueurCourantAction = new JPanel(new GridLayout(3,5));
+        JPanel vide = new JPanel();
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
         // liste des actions
+        JButton boutonAcheter = new JButton("Acheter");
+        joueurCourantAction.add(boutonAcheter);
+        joueurCourantAction.add(vide);
+        JButton boutonPasserSonTour = new JButton("Passer son tour");
+        joueurCourantAction.add(boutonPasserSonTour);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
+        joueurCourantAction.add(vide);
         this.vue_Sud.add(joueurCourantAction, BorderLayout.CENTER);
+    }
+
+    private String getNomJCourant() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Color getCouleurJCourant() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
