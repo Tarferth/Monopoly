@@ -5,6 +5,7 @@
  */
 package monopoly.Vues;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,7 +18,8 @@ public class Vue_Nord extends JPanel{
     private JPanel vue_Nord;
     
     public Vue_Nord(){
-        this.vue_Nord = new JPanel(new GridLayout(1,getNbJoueurs));
+        
+        this.vue_Nord = new JPanel(new GridLayout(1,getNbJoueurs()));
         
         // 1er joueur
         JPanel joueur1 = new JPanel(new GridLayout(2, 1));
@@ -33,7 +35,7 @@ public class Vue_Nord extends JPanel{
         joueur2.setBackground(getCouleur(2));
         this.vue_Nord.add(joueur2);
         
-        if (getNbJoueurs > 2) {
+        if (getNbJoueurs() > 2) {
             // 3eme Joueur
             JPanel joueur3 = new JPanel();
             JLabel nomJ3 = new JLabel(getNom(3));
@@ -42,7 +44,7 @@ public class Vue_Nord extends JPanel{
             this.vue_Nord.add(joueur3);
         }
         
-        if (getNbJoueurs > 3) {
+        if (getNbJoueurs() > 3) {
             // 4eme Joueur
             JPanel joueur4 = new JPanel();
             JLabel nomJ4 = new JLabel(getNom(4));
@@ -51,7 +53,7 @@ public class Vue_Nord extends JPanel{
             this.vue_Nord.add(joueur4);
         }
         
-        if (getNbJoueurs > 4) {
+        if (getNbJoueurs() > 4) {
             // 5eme Joueur
             JPanel joueur5 = new JPanel();
             JLabel nomJ5 = new JLabel(getNom(5));
@@ -60,7 +62,7 @@ public class Vue_Nord extends JPanel{
             this.vue_Nord.add(joueur5);
         }
         
-        if (getNbJoueurs > 5) {
+        if (getNbJoueurs() > 5) {
             // 6eme Joueur
             JPanel joueur6 = new JPanel();
             JLabel nomJ6 = new JLabel(getNom(6));
@@ -68,5 +70,17 @@ public class Vue_Nord extends JPanel{
             joueur6.setBackground(getCouleur(6));
             this.vue_Nord.add(joueur6);
         }
+    }
+
+    private String getNom(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Color getCouleur(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private int getNbJoueurs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
