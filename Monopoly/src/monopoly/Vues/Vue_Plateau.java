@@ -8,6 +8,7 @@ package monopoly.Vues;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -31,9 +32,17 @@ public class Vue_Plateau extends JPanel{
       //  Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
       //  f_Plateau.setSize(dim);
         
-        JPanel vide;
-        
+        JPanel vide = new JPanel();
+        JPanel vide1 = new JPanel();
+        JPanel vide2 = new JPanel();
+        JPanel vide3 = new JPanel();
+        vide.add(new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAA"));
+        vide1.add(new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAA"));
+        vide2.add(new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAA"));
+        vide3.add(new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAA"));
+        JPanel cadre = new JPanel(new BorderLayout());
         JPanel  mainPanel = new JPanel(new GridLayout(11,11));
+        
         for (int i = 1; i <= 121; i++) {
             switch(i){                              
                 case 1:
@@ -56,6 +65,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom2 = new JPanel();
                     JLabel labelNom2 = new JLabel(this.getNomTuile(1));
+                    labelNom2.setFont(new Font("Prop", 1, 9));
                     nom2.add(labelNom2);
                     tuile2.add(nom2);
                     
@@ -77,6 +87,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom3 = new JPanel();
                     JLabel labelNom3 = new JLabel("Caisse de communauté");
+                    labelNom3.setFont(new Font("Prop", 1, 9));
                     nom3.add(labelNom3);
                     tuile3.add(nom3);
                     
@@ -92,6 +103,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom4 = new JPanel();
                     JLabel labelNom4 = new JLabel(this.getNomTuile(3));
+                    labelNom4.setFont(new Font("Prop", 1, 9));
                     nom4.add(labelNom4);
                     tuile4.add(nom4);
                     
@@ -113,6 +125,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom5 = new JPanel();
                     JLabel labelNom5 = new JLabel("Impôts sur le revenu");
+                    labelNom5.setFont(new Font("Prop", 1, 9));
                     nom5.add(labelNom5);
                     tuile5.add(nom5);
                     
@@ -130,6 +143,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom6 = new JPanel();
                     JLabel labelNom6 = new JLabel(this.getNomTuile(5));
+                    labelNom6.setFont(new Font("Prop", 1, 9));
                     nom6.add(labelNom6);
                     tuile6.add(nom6);
                     
@@ -151,6 +165,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom7 = new JPanel();
                     JLabel labelNom7 = new JLabel(this.getNomTuile(6));
+                    labelNom7.setFont(new Font("Prop", 1, 9));
                     nom7.add(labelNom7);
                     tuile7.add(nom7);
                     
@@ -172,6 +187,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom8 = new JPanel();
                     JLabel labelNom8 = new JLabel("Chance");
+                    labelNom8.setFont(new Font("Prop", 1, 9));
                     nom8.add(labelNom8);
                     tuile8.add(nom8);
                     
@@ -189,6 +205,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom9 = new JPanel();
                     JLabel labelNom9 = new JLabel(this.getNomTuile(8));
+                    labelNom9.setFont(new Font("Prop", 1, 9));
                     nom9.add(labelNom9);
                     tuile9.add(nom9);
                     
@@ -210,6 +227,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom10 = new JPanel();
                     JLabel labelNom10 = new JLabel(this.getNomTuile(9));
+                    labelNom10.setFont(new Font("Prop", 1, 9));
                     nom10.add(labelNom10);
                     tuile10.add(nom10);
                     
@@ -231,6 +249,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom11 = new JPanel();
                     JLabel labelNom11 = new JLabel("Prison/Visite");
+                    labelNom11.setFont(new Font("Prop", 1, 9));
                     nom11.add(labelNom11);
                     tuile11.add(nom11);
                     
@@ -248,6 +267,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom40 = new JPanel();
                     JLabel labelNom40 = new JLabel(this.getNomTuile(39));
+                    labelNom40.setFont(new Font("Prop", 1, 9));
                     nom40.add(labelNom40);
                     carte40.add(nom40);
                     
@@ -273,6 +293,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom12 = new JPanel();
                     JLabel labelNom12 = new JLabel(this.getNomTuile(11));
+                    labelNom12.setFont(new Font("Prop", 1, 9));
                     nom12.add(labelNom12);
                     carte12.add(nom12);
                     
@@ -298,6 +319,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom39 = new JPanel();
                     JLabel labelNom39 = new JLabel("Taxe de luxe");
+                    labelNom39.setFont(new Font("Prop", 1, 9));
                     nom39.add(labelNom39);
                     carte39.add(nom39);
                     
@@ -319,6 +341,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom13 = new JPanel();
                     JLabel labelNom13 = new JLabel(this.getNomTuile(12));
+                    labelNom13.setFont(new Font("Prop", 1, 9));
                     nom13.add(labelNom13);
                     carte13.add(nom13);
                     
@@ -344,6 +367,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom38 = new JPanel();
                     JLabel labelNom38 = new JLabel(this.getNomTuile(37));
+                    labelNom38.setFont(new Font("Prop", 1, 9));
                     nom38.add(labelNom38);
                     carte38.add(nom38);
                     
@@ -373,6 +397,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom14 = new JPanel();
                     JLabel labelNom14 = new JLabel(this.getNomTuile(13));
+                    labelNom14.setFont(new Font("Prop", 1, 9));
                     nom14.add(labelNom14);
                     carte14.add(nom14);
                     
@@ -398,6 +423,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom37 = new JPanel();
                     JLabel labelNom37 = new JLabel("Chance");
+                    labelNom37.setFont(new Font("Prop", 1, 9));
                     nom37.add(labelNom37);
                     carte37.add(nom37);
                     
@@ -418,6 +444,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom15 = new JPanel();
                     JLabel labelNom15 = new JLabel(this.getNomTuile(14));
+                    labelNom15.setFont(new Font("Prop", 1, 9));
                     nom15.add(labelNom15);
                     carte15.add(nom15);
                     
@@ -443,6 +470,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom36 = new JPanel();
                     JLabel labelNom36 = new JLabel(this.getNomTuile(35));
+                    labelNom36.setFont(new Font("Prop", 1, 9));
                     nom36.add(labelNom36);
                     carte36.add(nom36);
                     
@@ -487,6 +515,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom16 = new JPanel();
                     JLabel labelNom16 = new JLabel(this.getNomTuile(15));
+                    labelNom16.setFont(new Font("Prop", 1, 9));
                     nom16.add(labelNom16);
                     carte16.add(nom16);
                     
@@ -512,6 +541,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom35 = new JPanel();
                     JLabel labelNom35 = new JLabel(this.getNomTuile(34));
+                    labelNom35.setFont(new Font("Prop", 1, 9));
                     nom35.add(labelNom35);
                     carte35.add(nom35);
                     
@@ -537,6 +567,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom17 = new JPanel();
                     JLabel labelNom17 = new JLabel(this.getNomTuile(16));
+                    labelNom17.setFont(new Font("Prop", 1, 9));
                     nom17.add(labelNom17);
                     carte17.add(nom17);
                     
@@ -562,6 +593,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom34 = new JPanel();
                     JLabel labelNom34 = new JLabel("Caisse de communauté");
+                    labelNom34.setFont(new Font("Prop", 1, 9));
                     nom34.add(labelNom34);
                     carte34.add(nom34);
                     
@@ -586,6 +618,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom18 = new JPanel();
                     JLabel labelNom18 = new JLabel("Caisse de Communauté");
+                    labelNom18.setFont(new Font("Prop", 1, 9));
                     nom18.add(labelNom18);
                     carte18.add(nom18);
                     
@@ -605,6 +638,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom33 = new JPanel();
                     JLabel labelNom33 = new JLabel(this.getNomTuile(32));
+                    labelNom33.setFont(new Font("Prop", 1, 9));
                     nom33.add(labelNom33);
                     carte33.add(nom33);
                     
@@ -630,6 +664,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom19 = new JPanel();
                     JLabel labelNom19 = new JLabel(this.getNomTuile(18));
+                    labelNom19.setFont(new Font("Prop", 1, 9));
                     nom19.add(labelNom19);
                     carte19.add(nom19);
                     
@@ -655,6 +690,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom32 = new JPanel();
                     JLabel labelNom32 = new JLabel(this.getNomTuile(31));
+                    labelNom32.setFont(new Font("Prop", 1, 9));
                     nom32.add(labelNom32);
                     carte32.add(nom32);
                     
@@ -680,6 +716,7 @@ public class Vue_Plateau extends JPanel{
                     
                     JPanel nom20 = new JPanel();
                     JLabel labelNom20 = new JLabel(this.getNomTuile(19));
+                    labelNom20.setFont(new Font("Prop", 1, 9));
                     nom20.add(labelNom20);
                     carte20.add(nom20);
                     
@@ -703,6 +740,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom31 = new JPanel();
                     JLabel labelNom31 = new JLabel("Allez en prison");
+                    labelNom31.setFont(new Font("Prop", 1, 9));
                     nom31.add(labelNom31);
                     tuile31.add(nom31);
                     
@@ -724,6 +762,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom30 = new JPanel();
                     JLabel labelNom30 = new JLabel(this.getNomTuile(29));
+                    labelNom30.setFont(new Font("Prop", 1, 9));
                     nom30.add(labelNom30);
                     tuile30.add(nom30);
                     
@@ -745,6 +784,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom29 = new JPanel();
                     JLabel labelNom29 = new JLabel(this.getNomTuile(28));
+                    labelNom29.setFont(new Font("Prop", 1, 9));
                     nom29.add(labelNom29);
                     tuile29.add(nom29);
                     
@@ -766,6 +806,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom28 = new JPanel();
                     JLabel labelNom28 = new JLabel(this.getNomTuile(27));
+                    labelNom28.setFont(new Font("Prop", 1, 9));
                     nom28.add(labelNom28);
                     tuile28.add(nom28);
                     
@@ -787,6 +828,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom27 = new JPanel();
                     JLabel labelNom27 = new JLabel(this.getNomTuile(26));
+                    labelNom27.setFont(new Font("Prop", 1, 9));
                     nom27.add(labelNom27);
                     tuile27.add(nom27);
                     
@@ -808,6 +850,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom26 = new JPanel();
                     JLabel labelNom26 = new JLabel(this.getNomTuile(25));
+                    labelNom26.setFont(new Font("Prop", 1, 9));
                     nom26.add(labelNom26);
                     tuile26.add(nom26);
                     
@@ -829,6 +872,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom25 = new JPanel();
                     JLabel labelNom25 = new JLabel(this.getNomTuile(24));
+                    labelNom25.setFont(new Font("Prop", 1, 9));
                     nom25.add(labelNom25);
                     tuile25.add(nom25);
                     
@@ -850,6 +894,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom24 = new JPanel();
                     JLabel labelNom24 = new JLabel(this.getNomTuile(23));
+                    labelNom24.setFont(new Font("Prop", 1, 9));
                     nom24.add(labelNom24);
                     tuile24.add(nom24);
                     
@@ -867,6 +912,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom23 = new JPanel();
                     JLabel labelNom23 = new JLabel("Chance");
+                    labelNom23.setFont(new Font("Prop", 1, 9));
                     nom23.add(labelNom23);
                     tuile23.add(nom23);
                     
@@ -888,6 +934,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom22 = new JPanel();
                     JLabel labelNom22 = new JLabel(this.getNomTuile(21));
+                    labelNom22.setFont(new Font("Prop", 1, 9));
                     nom22.add(labelNom22);
                     tuile22.add(nom22);
                     
@@ -903,6 +950,7 @@ public class Vue_Plateau extends JPanel{
 
                     JPanel nom21 = new JPanel();
                     JLabel labelNom21 = new JLabel("Parc Gratuit");
+                    labelNom21.setFont(new Font("Prop", 1, 9));
                     nom21.add(labelNom21);
                     tuile21.add(nom21);
                     
@@ -924,7 +972,11 @@ public class Vue_Plateau extends JPanel{
         }
         
         //this.f_Plateau.add(mainPanel);
-       this.add(mainPanel);
+        Dimension dim = new Dimension(1200,700 );
+        mainPanel.setPreferredSize(dim);
+        cadre.add(mainPanel,BorderLayout.CENTER);
+        
+        this.add(cadre);
     }
     
     public String getNomTuile(int numéro){

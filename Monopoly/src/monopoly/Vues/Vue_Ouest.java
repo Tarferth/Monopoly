@@ -31,6 +31,7 @@ public class Vue_Ouest extends JPanel {
     private JPanel mainPanel;
     private List liste;
     private JButton lancer;
+    private JLabel de1,de2;
     
     public Vue_Ouest()
     {
@@ -57,8 +58,8 @@ public class Vue_Ouest extends JPanel {
         JPanel panelValeur = new JPanel(new GridLayout(1,2));
         panelLancer.add(panelValeur);
         
-        JLabel de1 = new JLabel("      1");
-        JLabel de2 = new JLabel("      2");
+         de1 = new JLabel("   1");
+         de2 = new JLabel("       2   ");
         de1.setFont(new Font("DE",1,25));
         de2.setFont(new Font("DE",1,25));
         
@@ -70,5 +71,17 @@ public class Vue_Ouest extends JPanel {
         
     }
     
+    public JButton getBouton()
+    {
+        return this.lancer;
+    }
+
+    public JLabel getDe1() {
+        return de1;
+    }
+
+    public JLabel getDe2() {
+        return de2;
+    }
     
 }

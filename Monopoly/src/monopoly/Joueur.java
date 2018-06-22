@@ -81,7 +81,7 @@ public class Joueur {
     }
 
     public int getPosition() {
-        return this.getCellule().getNumero();
+        return this.position;
     }
 
     public ArrayList getPropriétésJoueur() {

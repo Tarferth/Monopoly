@@ -33,6 +33,7 @@ public class Controlleur implements Observateur {
     private Vue_Accueil ihmAccueil;
     private Vue_Plateau Vplateau;
     private Vue_Jeu Vjeu ;
+    private int de1,de2;
 
     int compteurP = 0;
     boolean phase2 = false;
@@ -41,6 +42,7 @@ public class Controlleur implements Observateur {
     public Controlleur() {
         this.ihmAccueil = new Vue_Accueil();
         this.ihmAccueil.addObservateur(this);
+        
     }
 
     @Override
@@ -71,11 +73,19 @@ public class Controlleur implements Observateur {
                 this.joueurs = m.getListeJoueurs();         // ArrayList listeJoueurs qui contient les joueurs
                 this.initialisationTourJeu();
                 this.cacherIhmInscription2();               // On cache la fenetre d'inscription2
+                this.Vjeu.addObservateur(this);
                 this.Vjeu.afficher();
                 break;
             case QUITTER:
                 this.cacherIhmAccueil(); 
                 System.exit(0);
+                break;
+                
+            case LANCER_DES:
+                this.tourDeJeu();
+                this.Vjeu.getWestPanel().getDe1().setText(String.valueOf(de1));
+                this.Vjeu.getWestPanel().getDe2().setText(String.valueOf(de2));
+                this.Vjeu.getMainPanel().invalidate();
                 break;
                 
         }
@@ -115,6 +125,8 @@ public class Controlleur implements Observateur {
         }
         System.out.println("dé 1 : " + lancer1);
         System.out.println("dé 2 : " + lancer2);
+        this.de1 = lancer1;
+        this.de2 = lancer2;
         return lancer1 + lancer2;
 
     }
@@ -244,8 +256,8 @@ public class Controlleur implements Observateur {
         }
 
         if (joueurCourrant.isPrisonnier() == false) {
-            //int de = lancerDes(); // Jeu avec lancé de dés aléatoire
-            int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
+            int de = lancerDes(); // Jeu avec lancé de dés aléatoire
+            //int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
             joueurCourrant.setDe(de);
             deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
             System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
