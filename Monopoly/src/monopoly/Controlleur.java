@@ -44,7 +44,7 @@ public class Controlleur implements Observateur {
         this.ihmAccueil.addObservateur(this);
         
     }
-
+    
     @Override
     public void traiterMessage(Message m) {
         switch (m.getMessage()) {
@@ -204,7 +204,7 @@ public class Controlleur implements Observateur {
 
         tourDeJeu();
     }
-
+    
     public void Menu() {
 
         Scanner sc = new Scanner(System.in);

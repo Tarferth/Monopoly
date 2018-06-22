@@ -42,13 +42,6 @@ public class Vue_Inscription2 extends Observe{
     private JTextField champNomJ5;
     private JTextField champNomJ6;
     
-    // Champ Symbole
-    private JTextField champSymboleJ1;
-    private JTextField champSymboleJ2;
-    private JTextField champSymboleJ3;
-    private JTextField champSymboleJ4;
-    private JTextField champSymboleJ5;
-    private JTextField champSymboleJ6;
     
     public Vue_Inscription2(int nbJoueurs){
         this.nbJoueurs = nbJoueurs;
@@ -111,7 +104,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir1.add(labelSymboleJ1);
                                 break;
                             case 19:
-                                this.champSymboleJ1 = new JTextField();
+                                JLabel champSymboleJ1 = new JLabel("1");
                                 champsARemplir1.add(champSymboleJ1);
                                 break;
                             default:
@@ -145,7 +138,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir2.add(labelSymboleJ2);
                                 break;
                             case 19:
-                                this.champSymboleJ2 = new JTextField();
+                                JLabel champSymboleJ2 = new JLabel("2");
                                 champsARemplir2.add(champSymboleJ2);
                                 break;
                             default:
@@ -181,7 +174,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir3.add(labelSymboleJ3);
                                 break;
                             case 19:
-                                this.champSymboleJ3 = new JTextField();
+                                JLabel champSymboleJ3 = new JLabel("3");
                                 champsARemplir3.add(champSymboleJ3);
                                 break;
                             default:
@@ -216,7 +209,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir4.add(labelSymboleJ4);
                                 break;
                             case 19:
-                                this.champSymboleJ4 = new JTextField();
+                                JLabel champSymboleJ4 = new JLabel("4");
                                 champsARemplir4.add(champSymboleJ4);
                                 break;
                             default:
@@ -251,7 +244,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir5.add(labelSymboleJ5);
                                 break;
                             case 19:
-                                this.champSymboleJ5 = new JTextField();
+                                JLabel champSymboleJ5 = new JLabel("5");
                                 champsARemplir5.add(champSymboleJ5);
                                 break;
                             default:
@@ -286,7 +279,7 @@ public class Vue_Inscription2 extends Observe{
                                 champsARemplir6.add(labelSymboleJ6);
                                 break;
                             case 19:
-                                this.champSymboleJ6 = new JTextField();
+                                JLabel champSymboleJ6 = new JLabel("6");
                                 champsARemplir6.add(champSymboleJ6);
                                 break;
                             default:
@@ -322,19 +315,19 @@ public class Vue_Inscription2 extends Observe{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<Joueur> listeJoueurs = new ArrayList<>();
-                listeJoueurs.add(new Joueur(champNomJ1.getText(), champSymboleJ1.getText(), 1500, 0));
-                listeJoueurs.add(new Joueur(champNomJ2.getText(), champSymboleJ2.getText(), 1500, 0));
+                listeJoueurs.add(new Joueur(champNomJ1.getText(), "1", 1500, 0));
+                listeJoueurs.add(new Joueur(champNomJ2.getText(), "2", 1500, 0));
                 if (nbJoueurs > 2) {
-                    listeJoueurs.add(new Joueur(champNomJ3.getText(), champSymboleJ3.getText(), 1500, 0));
+                    listeJoueurs.add(new Joueur(champNomJ3.getText(), "3", 1500, 0));
                 }
                 if (nbJoueurs > 3) {
-                    listeJoueurs.add(new Joueur(champNomJ4.getText(), champSymboleJ4.getText(), 1500, 0));
+                    listeJoueurs.add(new Joueur(champNomJ4.getText(), "4", 1500, 0));
                 }
                 if (nbJoueurs > 4) {
-                    listeJoueurs.add(new Joueur(champNomJ5.getText(), champSymboleJ5.getText(), 1500, 0));
+                    listeJoueurs.add(new Joueur(champNomJ5.getText(), "5", 1500, 0));
                 }
                 if (nbJoueurs > 5) {
-                    listeJoueurs.add(new Joueur(champNomJ6.getText(), champSymboleJ6.getText(), 1500, 0));
+                    listeJoueurs.add(new Joueur(champNomJ6.getText(), "6", 1500, 0));
                 }
                 Message m = new Message(TypesMessage.LANCEMENT_PARTIE, listeJoueurs);
                 notifierObservateur(m);
