@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.List;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import static javax.swing.text.StyleConstants.Bold;
+import monopoly.Message;
+import monopoly.TypesMessage;
 
 /**
  *
@@ -60,6 +64,7 @@ public class Vue_Ouest extends JPanel {
         
         panelValeur.add(de1);
         panelValeur.add(de2);
+        
         
         
         

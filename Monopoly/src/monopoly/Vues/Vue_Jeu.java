@@ -10,12 +10,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import monopoly.Observe;
 
 /**
  *
  * @author crosv
  */
-public class Vue_Jeu extends JPanel{
+public class Vue_Jeu extends Observe{
     JFrame f_Jeu;
     
     public Vue_Jeu()
@@ -25,17 +26,18 @@ public class Vue_Jeu extends JPanel{
         f_Jeu.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         f_Jeu.setSize(dim);
-        this.setLayout(new BorderLayout()); // config fenetre
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout()); // config fenetre
         
         Vue_Ouest westPanel = new Vue_Ouest();
-        this.add(westPanel,BorderLayout.WEST);
+        mainPanel.add(westPanel,BorderLayout.WEST);
   
         
         Vue_Est eastPanel = new Vue_Est();
-        this.add(eastPanel,BorderLayout.EAST);
+        mainPanel.add(eastPanel,BorderLayout.EAST);
        
         Vue_Plateau plateau = new Vue_Plateau();
-        this.add(plateau,BorderLayout.CENTER);
+        mainPanel.add(plateau,BorderLayout.CENTER);
         
         Vue_Nord northPanel = new Vue_Nord();
         this.add(northPanel, BorderLayout.NORTH);
@@ -43,7 +45,8 @@ public class Vue_Jeu extends JPanel{
         Vue_Sud southPanel = new Vue_Sud();
         this.add(southPanel, BorderLayout.SOUTH);
         
-        f_Jeu.add(this);
+        f_Jeu.add(mainPanel);
+        
         
     }
     
