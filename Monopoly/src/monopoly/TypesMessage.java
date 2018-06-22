@@ -15,6 +15,7 @@ public enum TypesMessage {
     RETOUR_INSCRIPTION_1, //L'utilisateur clique sur retour pour acceder a l'inscription 1
     LANCEMENT_PARTIE, // L'utilisateur clique sur confirmer apres avoir remplie les noms/symboles
     QUITTER, // L'utilisateur quitte l'application
-    AFFICHER_INSCRIPTION_1//le joueur clique sur jouer
+    AFFICHER_INSCRIPTION_1,//le joueur clique sur jouer
+    LANCER_DES
     
 }
