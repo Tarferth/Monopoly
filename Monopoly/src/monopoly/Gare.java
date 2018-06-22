@@ -57,7 +57,7 @@ public class Gare extends Propriete{
     }
 
     @Override
-    public void setMaisons() {
+    public void resetMaisons() {
     }
 
     @Override

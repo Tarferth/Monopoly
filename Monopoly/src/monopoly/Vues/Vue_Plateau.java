@@ -20,16 +20,16 @@ import monopoly.Plateau;
  *
  * @author Quentin
  */
-public class Vue_Plateau extends Observe{
+public class Vue_Plateau extends JPanel{
     private JFrame f_Plateau; 
     private Plateau cellules = new Plateau();
     private int cagnotte;
     
     public Vue_Plateau(){
-        f_Plateau = new JFrame();
-        f_Plateau.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        f_Plateau.setSize(dim);
+      //  f_Plateau = new JFrame();
+      //  f_Plateau.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+      //  Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+      //  f_Plateau.setSize(dim);
         
         JPanel vide;
         
@@ -60,7 +60,7 @@ public class Vue_Plateau extends Observe{
                     tuile2.add(nom2);
                     
                     JPanel prix2 = new JPanel();
-                    JLabel labelPrix2 = new JLabel(getPrixTuile(1));
+                    JLabel labelPrix2 = new JLabel(this.getPrixTuile(1));
                     prix2.add(labelPrix2);
                     tuile2.add(prix2);
                     
@@ -923,7 +923,8 @@ public class Vue_Plateau extends Observe{
             }
         }
         
-        this.f_Plateau.add(mainPanel);
+        //this.f_Plateau.add(mainPanel);
+       this.add(mainPanel);
     }
     
     public String getNomTuile(int numéro){
@@ -933,13 +934,13 @@ public class Vue_Plateau extends Observe{
     
     public String getPrixTuile(int numéro){
       //  if (this.cellules.getCellule(numéro).getPropriete().getProprietaire().getNom() == "banque")
-     //   {
+        //{
         return String.valueOf(this.cellules.getCellule(numéro).getPropriete().getPrixAchat());
-      //  }
-      //  else
-      //  {
-      //      return String.valueOf(this.cellules.getCellule(numéro).getPropriete().getLoyer());
      //   }
+       // else
+       // {
+       //     return String.valueOf(this.cellules.getCellule(numéro).getPropriete().getLoyer());
+       // }
     }
     
     public Color getCouleur(int numéro){

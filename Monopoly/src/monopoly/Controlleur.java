@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import monopoly.Vues.Vue_Accueil;
 import monopoly.Vues.Vue_Inscription;
 import monopoly.Vues.Vue_Inscription2;
+import monopoly.Vues.Vue_Jeu;
 import monopoly.Vues.Vue_Plateau;
 
 /**
@@ -31,6 +32,7 @@ public class Controlleur implements Observateur {
     private Vue_Inscription2 ihmInscription2;
     private Vue_Accueil ihmAccueil;
     private Vue_Plateau Vplateau;
+    private Vue_Jeu Vjeu ;
 
     int compteurP = 0;
     boolean phase2 = false;
@@ -67,12 +69,15 @@ public class Controlleur implements Observateur {
             case LANCEMENT_PARTIE:
                 // Afficher l'ihm du jeu
                 this.joueurs = m.getListeJoueurs();         // ArrayList listeJoueurs qui contient les joueurs
+                this.initialisationTourJeu();
                 this.cacherIhmInscription2();               // On cache la fenetre d'inscription2
+                this.Vjeu.afficher();
                 break;
             case QUITTER:
-                this.cacherIhmAccueil();
+                this.cacherIhmAccueil(); 
                 System.exit(0);
                 break;
+                
         }
     }
 
@@ -149,7 +154,7 @@ public class Controlleur implements Observateur {
 
     public void inscriptionJoueur() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("|**                A combien voulez vous jouer ? :       **|");
+       // System.out.println("|**                A combien voulez vous jouer ? :       **|");
         int nb = sc.nextInt();
         switch (nb) {
             case 2:
@@ -178,9 +183,7 @@ public class Controlleur implements Observateur {
                 }
                 break;
 
-            default:
-                System.out.println("! Il faut un minimum de 2 joueurs ou un maximum de 6 joueurs !");
-                inscriptionJoueur();
+            
         }
 
         tourDeJeu();
@@ -220,13 +223,14 @@ public class Controlleur implements Observateur {
             banque.getPropriétésJoueur().add((plateau.getCellules().get(i).getPropriete()));
             if (plateau.getCellules().get(i).getPropriete() != null) {
                 plateau.getCellules().get(i).getPropriete().setProprietaire(banque);
-                plateau.getCellules().get(i).getPropriete().setMaisons();
+                plateau.getCellules().get(i).getPropriete().resetMaisons();
             }
         }
         this.caisse = new Communaute();
         this.chance = new Chance();
         this.Vplateau = new Vue_Plateau();
         this.Vplateau.setCellules(plateau);
+        this.Vjeu = new Vue_Jeu();
                 
     }
 
