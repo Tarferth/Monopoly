@@ -69,17 +69,15 @@ public class Controlleur implements Observateur {
             case LANCEMENT_PARTIE:
                 // Afficher l'ihm du jeu
                 this.joueurs = m.getListeJoueurs();         // ArrayList listeJoueurs qui contient les joueurs
+                this.initialisationTourJeu();
                 this.cacherIhmInscription2();               // On cache la fenetre d'inscription2
+                this.Vjeu.afficher();
                 break;
             case QUITTER:
-                this.cacherIhmAccueil();
+                this.cacherIhmAccueil(); 
                 System.exit(0);
                 break;
                 
-            case CONFIRMER :
-                this.ihmInscription2.cacher();
-                this.Vjeu.afficher();
-                break;
         }
     }
 
@@ -156,7 +154,7 @@ public class Controlleur implements Observateur {
 
     public void inscriptionJoueur() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("|**                A combien voulez vous jouer ? :       **|");
+       // System.out.println("|**                A combien voulez vous jouer ? :       **|");
         int nb = sc.nextInt();
         switch (nb) {
             case 2:
@@ -185,9 +183,7 @@ public class Controlleur implements Observateur {
                 }
                 break;
 
-            default:
-                System.out.println("! Il faut un minimum de 2 joueurs ou un maximum de 6 joueurs !");
-                inscriptionJoueur();
+            
         }
 
         tourDeJeu();
@@ -234,6 +230,7 @@ public class Controlleur implements Observateur {
         this.chance = new Chance();
         this.Vplateau = new Vue_Plateau();
         this.Vplateau.setCellules(plateau);
+        this.Vjeu = new Vue_Jeu();
                 
     }
 

@@ -38,7 +38,6 @@ public class Vue_Jeu extends JPanel{
   
         
         Vue_Est eastPanel = new Vue_Est();
-        
         this.add(eastPanel,BorderLayout.EAST);
        
         Vue_Plateau plateau = new Vue_Plateau();

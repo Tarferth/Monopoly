@@ -22,7 +22,7 @@ import monopoly.Plateau;
  */
 public class Vue_Plateau extends JPanel{
     private JFrame f_Plateau; 
-    private Plateau cellules = new Plateau();
+    private Plateau cellules;
     private int cagnotte;
     
     public Vue_Plateau(){

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author Quentin
  */
-public class Vue_Nord {
+public class Vue_Nord extends JPanel{
     private JPanel vue_Nord;
     
     public Vue_Nord(){
