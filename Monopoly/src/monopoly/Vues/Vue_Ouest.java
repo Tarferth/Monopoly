@@ -31,8 +31,8 @@ public class Vue_Ouest extends JPanel {
     public Vue_Ouest()
     {
               
-        mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(2,1));
+        
+        this.setLayout(new GridLayout(2,1));
         liste = new List() ;
         for (int i =0 ;i<100;i++)
         {
@@ -42,24 +42,26 @@ public class Vue_Ouest extends JPanel {
         
         
         
-        mainPanel.add(liste);
+        this.add(liste);
         
         lancer = new JButton("Lancer les dés");
         
         JPanel panelLancer = new JPanel(new GridLayout(2,1));
-        mainPanel.add(panelLancer);
+        this.add(panelLancer);
         panelLancer.add(lancer);
         
         JPanel panelValeur = new JPanel(new GridLayout(1,2));
         panelLancer.add(panelValeur);
         
-        JLabel de1 = new JLabel("           1");
-        JLabel de2 = new JLabel("           2");
+        JLabel de1 = new JLabel("      1");
+        JLabel de2 = new JLabel("      2");
         de1.setFont(new Font("DE",1,25));
         de2.setFont(new Font("DE",1,25));
         
         panelValeur.add(de1);
         panelValeur.add(de2);
+        
+        
         
     }
     

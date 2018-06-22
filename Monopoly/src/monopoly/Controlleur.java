@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import monopoly.Vues.Vue_Accueil;
 import monopoly.Vues.Vue_Inscription;
 import monopoly.Vues.Vue_Inscription2;
+import monopoly.Vues.Vue_Jeu;
 import monopoly.Vues.Vue_Plateau;
 
 /**
@@ -31,6 +32,7 @@ public class Controlleur implements Observateur {
     private Vue_Inscription2 ihmInscription2;
     private Vue_Accueil ihmAccueil;
     private Vue_Plateau Vplateau;
+    private Vue_Jeu Vjeu ;
 
     int compteurP = 0;
     boolean phase2 = false;
@@ -72,6 +74,11 @@ public class Controlleur implements Observateur {
             case QUITTER:
                 this.cacherIhmAccueil();
                 System.exit(0);
+                break;
+                
+            case CONFIRMER :
+                this.ihmInscription2.cacher();
+                this.Vjeu.afficher();
                 break;
         }
     }

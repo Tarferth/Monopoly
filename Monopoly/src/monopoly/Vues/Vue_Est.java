@@ -22,8 +22,8 @@ public class Vue_Est extends JPanel {
     
     public Vue_Est()
     {
-        f = new JFrame();
-        f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/4, Toolkit.getDefaultToolkit().getScreenSize().height);
+      //  f = new JFrame();
+      //  f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/4, Toolkit.getDefaultToolkit().getScreenSize().height);
         this.setLayout(new BorderLayout());
         JComboBox c = new JComboBox();
         JPanel main = new JPanel(new GridLayout(1,2));
@@ -38,7 +38,7 @@ public class Vue_Est extends JPanel {
         this.add(c,BorderLayout.NORTH);
         this.add(main,BorderLayout.CENTER);
         
-        f.add(this);
+        //f.add(this);
     }
     public void afficher()
     {
