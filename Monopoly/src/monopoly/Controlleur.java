@@ -7,8 +7,12 @@ package monopoly;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 import monopoly.Vues.Vue_Accueil;
 import monopoly.Vues.Vue_Inscription;
 import monopoly.Vues.Vue_Inscription2;
@@ -21,6 +25,7 @@ import monopoly.Vues.Vue_Plateau;
  */
 public class Controlleur implements Observateur {
 
+    private Timer timer;
     private ArrayList<Joueur> joueurs;
     private boolean faitUnDouble;
     private Plateau plateau;
@@ -32,8 +37,8 @@ public class Controlleur implements Observateur {
     private Vue_Inscription2 ihmInscription2;
     private Vue_Accueil ihmAccueil;
     private Vue_Plateau Vplateau;
-    private Vue_Jeu Vjeu ;
-    private int de1,de2;
+    private Vue_Jeu Vjeu;
+    private int de1, de2;
 
     int compteurP = 0;
     boolean phase2 = false;
@@ -42,7 +47,7 @@ public class Controlleur implements Observateur {
     public Controlleur() {
         this.ihmAccueil = new Vue_Accueil();
         this.ihmAccueil.addObservateur(this);
-        
+
     }
 
     @Override
@@ -77,17 +82,18 @@ public class Controlleur implements Observateur {
                 this.Vjeu.afficher();
                 break;
             case QUITTER:
-                this.cacherIhmAccueil(); 
+                this.cacherIhmAccueil();
                 System.exit(0);
                 break;
-                
+
             case LANCER_DES:
+
                 this.tourDeJeu();
                 this.Vjeu.getWestPanel().getDe1().setText(String.valueOf(de1));
                 this.Vjeu.getWestPanel().getDe2().setText(String.valueOf(de2));
-                this.Vjeu.getMainPanel().invalidate();
+
                 break;
-                
+
         }
     }
 
@@ -166,7 +172,7 @@ public class Controlleur implements Observateur {
 
     public void inscriptionJoueur() {
         Scanner sc = new Scanner(System.in);
-       // System.out.println("|**                A combien voulez vous jouer ? :       **|");
+        // System.out.println("|**                A combien voulez vous jouer ? :       **|");
         int nb = sc.nextInt();
         switch (nb) {
             case 2:
@@ -195,7 +201,6 @@ public class Controlleur implements Observateur {
                 }
                 break;
 
-            
         }
 
         tourDeJeu();
@@ -243,7 +248,7 @@ public class Controlleur implements Observateur {
         this.Vplateau = new Vue_Plateau();
         this.Vplateau.setCellules(plateau);
         this.Vjeu = new Vue_Jeu();
-                
+
     }
 
     public void tourDeJeu() {
@@ -262,6 +267,7 @@ public class Controlleur implements Observateur {
             deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
             System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
             Cellule cel = joueurCourrant.getCellule();
+
             if (cel.getNumero() == 20 && phase2 == false) {
                 parcGratuit1();
                 System.out.println(phase2);
@@ -279,37 +285,7 @@ public class Controlleur implements Observateur {
                 if (cel.getPropriete() != null) {
                     if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
 
-                        Scanner sc = new Scanner(System.in);
-                        System.out.println("|**                     1- Voir l'offre                    **|");
-                        System.out.println("|**                     0- Passer son Tour                 **|");
-                        int nb = sc.nextInt();
-                        switch (nb) {
-                            case 1:
-                                voirOffre();
-                                System.out.println("|**                     1- Acheter                            **|");
-                                System.out.println("|**                     0- Passer son Tour                    **|");
-                                int nb2 = sc.nextInt();
-                                switch (nb2) {
-                                    case 1:
-                                        joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
-                                        joueurCourrant.addProprieter(cel.getPropriete());
-                                        banque.getPropriétésJoueur().remove(cel.getPropriete());
-                                        cel.getPropriete().setProprietaire(joueurCourrant);
-                                        System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
-                                        System.out.println("! Achat confirmé !");
-                                        System.out.println("Fin de tour");
-                                        tourDeJeu();
-                                        break;
-                                    case 0:
-                                        System.out.println("Fin de tour");
-                                        tourDeJeu();
-                                        break;
-                                    default:
-                                        System.out.println("! Entrée non valide !");
-
-                                        break;
-                                }
-                        }
+                        timer();
 
                     } else if (proprio != banque) { // si le joueur tombe sur une propriété achetée
 
@@ -317,7 +293,7 @@ public class Controlleur implements Observateur {
                             construire();
                         } else if (proprio == joueurCourrant) { //Si la propriété lui appartient
                             System.out.println("Fin de tour");
-                            tourDeJeu();
+                            tourSuivant();
                         } else if (proprio != joueurCourrant) {// si il doit payer un loyer
                             if (joueurCourrant.getFortune() >= cel.getPropriete().getLoyer()) {
                                 proprio.setFortune(proprio.getFortune() + cel.getPropriete().getLoyer());
@@ -334,7 +310,7 @@ public class Controlleur implements Observateur {
                                     Logger.getLogger(Controlleur.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                                 System.out.println("Fin de tour");
-                                tourDeJeu();
+                                tourSuivant();
                             } else if (joueurCourrant.getFortune() < cel.getPropriete().getLoyer()) {
                                 System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                                 System.out.println("! Vous avez perdu !");
@@ -353,7 +329,7 @@ public class Controlleur implements Observateur {
                         }
                     } else {
                         System.out.println("! Vous n'avez rien à faire !");
-                        tourDeJeu();
+                        tourSuivant();
                     }
                 } else if (cel.getImpot() != null) {
                     joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getImpot().getMontant());
@@ -361,19 +337,19 @@ public class Controlleur implements Observateur {
                     this.Vplateau.setCagnotte(cagnotte);
                     System.out.println("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
                     System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
-                    tourDeJeu();
+                    tourSuivant();
                 } else if (cel.getNumero() == 2 || cel.getNumero() == 17 || cel.getNumero() == 33) {
                     piocherUneCarteCommunaute();
-                    tourDeJeu();
-                }else if (cel.getNumero() == 7 || cel.getNumero() == 22 || cel.getNumero() == 36) {
-                piocherUneCarteChance();
-                tourDeJeu();
-            } else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
+                    tourSuivant();
+                } else if (cel.getNumero() == 7 || cel.getNumero() == 22 || cel.getNumero() == 36) {
+                    piocherUneCarteChance();
+                    tourSuivant();
+                } else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
                     prison(joueurCourrant);
-                    tourDeJeu();
+                    tourSuivant();
                 } else {
                     System.out.println("Fin de tour");
-                    tourDeJeu();
+                    tourSuivant();
                 }
 
                 //////////////////////////////////////////////FIN DU CAS DOUBLE    
@@ -383,53 +359,16 @@ public class Controlleur implements Observateur {
                 prison(joueurCourrant);
                 joueurs.remove(0);
                 joueurs.add(joueurCourrant);
-                tourDeJeu();
+                tourSuivant();
 
             } else {// On enlève le joueur de la liste puis on le réinsère ce qui permet une rotation des joueurs
-                joueurs.remove(0);
-                joueurs.add(joueurCourrant);
+
                 compteurDouble = 0;
             }
 
             if (cel.getPropriete() != null) {
-                if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options
-
-                    Scanner sc = new Scanner(System.in);
-                    System.out.println("|**                     1- Voir l'offre                    **|");
-                    System.out.println("|**                     0- Passer son Tour                 **|");
-                    int nb = sc.nextInt();
-                    switch (nb) {
-                        case 1:
-                            voirOffre();
-                            System.out.println("|**                     1- Acheter                            **|");
-                            System.out.println("|**                     0- Passer son Tour                    **|");
-                            int nb2 = sc.nextInt();
-                            switch (nb2) {
-                                case 1:
-                                    joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getPropriete().getPrixAchat());
-                                    joueurCourrant.addProprieter(cel.getPropriete());
-                                    banque.getPropriétésJoueur().remove(cel.getPropriete());
-                                    cel.getPropriete().setProprietaire(joueurCourrant);
-                                    System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
-                                    System.out.println("! Achat confirmé !");
-                                    System.out.println("Fin de tour");
-                                    tourDeJeu();
-                                    break;
-                                case 0:
-                                    System.out.println("Fin de tour");
-                                    tourDeJeu();
-                                    break;
-                                default:
-                                    System.out.println("! Entrée non valide !");
-                            }
-                            break;
-                        case 0:
-                            System.out.println("Fin de tour");
-                            tourDeJeu();
-                            break;
-                        default:
-                            System.out.println("! Entrée non valide !");
-                    }
+                if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options    
+                    timer();
 
                 } else if (proprio != banque) { // si le joueur tombe sur une propriété achetée
 
@@ -437,7 +376,7 @@ public class Controlleur implements Observateur {
                         construire();
                     } else if (proprio == joueurCourrant) { //Si la propriété lui appartient
                         System.out.println("Fin de tour");
-                        tourDeJeu();
+                        tourSuivant();
                     } else {// si il doit payer un loyer
                         if (joueurCourrant.getFortune() > cel.getPropriete().getLoyer()) {
                             proprio.setFortune(proprio.getFortune() + cel.getPropriete().getLoyer());
@@ -454,7 +393,7 @@ public class Controlleur implements Observateur {
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(Controlleur.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            tourDeJeu();
+                            tourSuivant();
                         } else if (joueurCourrant.getFortune() < cel.getPropriete().getLoyer()) {
                             System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                             System.out.println("! Vous avez perdu !");
@@ -473,7 +412,7 @@ public class Controlleur implements Observateur {
                     }
                 } else {
                     System.out.println("! Vous n'avez rien à faire !");
-                    tourDeJeu();
+                    tourSuivant();
                 }
             } else if (cel.getImpot() != null) {
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getImpot().getMontant());
@@ -481,26 +420,26 @@ public class Controlleur implements Observateur {
                 this.Vplateau.setCagnotte(cagnotte);
                 System.out.println("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
-                tourDeJeu();
+                tourSuivant();
             } else if (cel.getNumero() == 2 || cel.getNumero() == 17 || cel.getNumero() == 33) {
                 piocherUneCarteCommunaute();
-                tourDeJeu();
+                tourSuivant();
             } else if (cel.getNumero() == 7 || cel.getNumero() == 22 || cel.getNumero() == 36) {
                 piocherUneCarteChance();
-                tourDeJeu();
+                tourSuivant();
             } else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
                 prison(joueurCourrant);
-                tourDeJeu();
+                tourSuivant();
             } else {
                 System.out.println("Fin de tour");
-                tourDeJeu();
+                tourSuivant();
             }
 
         } else {
             prison(joueurCourrant);
             joueurs.remove(0);
             joueurs.add(joueurCourrant);
-            tourDeJeu();
+            tourSuivant();
         }
 
     }
@@ -627,7 +566,7 @@ public class Controlleur implements Observateur {
                 phase2 = false;
                 joueurs.remove(0);
                 joueurs.add(joueurCourrant);
-                tourDeJeu();
+                tourSuivant();
                 break;
 
         }
@@ -925,13 +864,13 @@ public class Controlleur implements Observateur {
                     maisonsDispo--;
                     System.out.println("Une maison a été ajouté au terrain " + joueurCourrant.getCellule().getPropriete().getNom() + " Il y a " + joueurCourrant.getCellule().getPropriete().getNbMaison() + " maisons sur ce terrain.");
                     System.out.println("Nouveau Loyer : " + joueurCourrant.getCellule().getPropriete().getLoyer());
-                    tourDeJeu();
+                    tourSuivant();
                 } else if (joueurCourrant.getCellule().getPropriete().getNbMaison() == 4) {
                     joueurCourrant.getCellule().getPropriete().addHotel();
                     hotelsDispo--;
                     System.out.println("Un hotel a été ajouté au terrain " + joueurCourrant.getCellule().getPropriete().getNom());
                     System.out.println("Nouveau Loyer : " + joueurCourrant.getCellule().getPropriete().getLoyer());
-                    tourDeJeu();
+                    tourSuivant();
                 } else if (joueurCourrant.getCellule().getPropriete().getHotel() == 1) {
                     System.out.println("Vous ne pouvez plus rien construire sur ce terrain.");
                 }
@@ -939,7 +878,7 @@ public class Controlleur implements Observateur {
 
             case 0:
                 System.out.println("Fin de tour");
-                tourDeJeu();
+                tourSuivant();
                 break;
             default:
                 System.out.println("Entrée non valide !");
@@ -954,6 +893,65 @@ public class Controlleur implements Observateur {
     public Joueur getJoueurCourrant() {
         return joueurCourrant;
     }
-    
 
+    public void acheter() {
+
+        int nb = this.Vjeu.getPopup().showConfirmDialog(null, "Voulez vous achter la propriété ?", "Achat", JOptionPane.YES_NO_OPTION);
+
+        switch (nb) {
+            case 0:
+                voirOffre();
+                int nb2 = this.Vjeu.getPopup().showConfirmDialog(null, "Confirmez-vous ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+
+                switch (nb2) {
+                    case 0:
+                        joueurCourrant.setFortune(joueurCourrant.getFortune() - joueurCourrant.getCellule().getPropriete().getPrixAchat());
+                        joueurCourrant.addProprieter(joueurCourrant.getCellule().getPropriete());
+                        banque.getPropriétésJoueur().remove(joueurCourrant.getCellule().getPropriete());
+                        joueurCourrant.getCellule().getPropriete().setProprietaire(joueurCourrant);
+                        System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
+                        System.out.println("! Achat confirmé !");
+                        System.out.println("Fin de tour");
+                        tourSuivant();
+                        break;
+                    case 1:
+                        System.out.println("Fin de tour");
+                        tourSuivant();
+                        break;
+                    default:
+                        System.out.println("Fin de tour");
+                        tourSuivant();
+
+                        break;
+                }
+            case 1:
+                System.out.println("Fin de tour");
+                tourSuivant();
+                break;
+            default:
+                System.out.println("! Entrée non valide !");
+                acheter();
+                break;
+        }
+    }
+
+    public void tourSuivant() {
+        joueurs.remove(0);
+        joueurs.add(joueurCourrant);
+    }
+
+    public void timer() {
+        timer = new Timer();
+        this.Vjeu.getWestPanel().revalidate();
+        this.Vjeu.getWestPanel().repaint();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                
+                acheter();
+                timer.cancel();
+            }
+        }, 0, 50);
+    }
 }

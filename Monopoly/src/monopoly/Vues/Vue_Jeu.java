@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import monopoly.Message;
 import monopoly.Observe;
@@ -30,6 +31,7 @@ public class Vue_Jeu extends Observe{
     private Vue_Sud  southPanel; 
     private Vue_Plateau plateau;
     private JPanel mainPanel;
+    private JOptionPane popup;
     public Vue_Jeu()
     {
         
@@ -57,7 +59,6 @@ public class Vue_Jeu extends Observe{
         mainPanel.add(southPanel, BorderLayout.SOUTH);
         
         f_Jeu.add(mainPanel);
-        
         
         westPanel.getBouton().addActionListener(new ActionListener() {
 
@@ -104,6 +105,11 @@ public class Vue_Jeu extends Observe{
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public JOptionPane getPopup() {
+        popup = new JOptionPane();
+        return popup;
     }
     
     
