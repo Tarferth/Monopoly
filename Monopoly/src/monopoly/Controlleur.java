@@ -283,14 +283,14 @@ public class Controlleur implements Observateur {
         if (this.joueurs.size() > 2) {
             this.Vjeu.getNorthPanel().setNomJ3(this.joueurs.get(2).getNom());
         }
-        if (this.joueurs.size() > 3) {
-            this.Vjeu.getNorthPanel().setNomJ4(this.joueurs.get(3).getNom());
+        if (this.getJoueurs().size() > 3) {
+            this.Vjeu.getNorthPanel().setNomJ4(this.getJoueurs().get(3).getNom());
         }
-        if (this.joueurs.size() > 4) {
-            this.Vjeu.getNorthPanel().setNomJ5(this.joueurs.get(4).getNom());        
+        if (this.getJoueurs().size() > 4) {
+            this.Vjeu.getNorthPanel().setNomJ5(this.getJoueurs().get(4).getNom());        
         }
-        if (this.joueurs.size() > 5) {
-            this.Vjeu.getNorthPanel().setNomJ6(this.joueurs.get(5).getNom());
+        if (this.getJoueurs().size() > 5) {
+            this.Vjeu.getNorthPanel().setNomJ6(this.getJoueurs().get(5).getNom());
         }
     }
 
@@ -298,19 +298,19 @@ public class Controlleur implements Observateur {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
         this.Vjeu.getEastPanel().setListe(this.getJoueurCourrant().getPropriétésJoueur());
         System.out.println("\n\n\n--------------------------------------------");
-        System.out.println("C'est au tour de: " + joueurCourrant.getNom() + " qui est sur la case: " + joueurCourrant.getPosition());
+        System.out.println("C'est au tour de: " + getJoueurCourrant().getNom() + " qui est sur la case: " + this.getJoueurCourrant().getPosition());
         Joueur proprio;
-        if (joueurCourrant.getNom() == jX && phase2 == true) {
+        if (getJoueurCourrant().getNom() == jX && phase2 == true) {
             parcGratuit2();
         }
 
-        if (joueurCourrant.isPrisonnier() == false) {
+        if (getJoueurCourrant().isPrisonnier() == false) {
             int de = lancerDes(); // Jeu avec lancé de dés aléatoire
             //int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
-            joueurCourrant.setDe(de);
-            deplacer(joueurCourrant, de);//déplacement du pion du joueur courrant
-            System.out.println("Le joueur : " + joueurCourrant.getNom() + " est sur la case : " + joueurCourrant.getPosition());
-            Cellule cel = joueurCourrant.getCellule();
+            getJoueurCourrant().setDe(de);
+            deplacer(getJoueurCourrant(), de);//déplacement du pion du joueur courrant
+            System.out.println("Le joueur : " + getJoueurCourrant().getNom() + " est sur la case : " + getJoueurCourrant().getPosition());
+            Cellule cel = getJoueurCourrant().getCellule();
 
             if (cel.getNumero() == 20 && phase2 == false) {
                 parcGratuit1();
@@ -332,7 +332,7 @@ public class Controlleur implements Observateur {
             if (compteurDouble == 3) {
                 System.out.println("Vous avez fait 3 doubles à la suite vous allez en prison.");
                 compteurDouble = 0;
-                prison(joueurCourrant);
+                prison(this.getJoueurCourrant());
                 
                 tourSuivant();
                 compteurDouble=0;
@@ -342,27 +342,27 @@ public class Controlleur implements Observateur {
                 compteurDouble = 0;
 
                 if (cel.getPropriete() != null) {
-                    if (joueurCourrant.getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options    
+                    if (this.getJoueurCourrant().getFortune() >= cel.getPropriete().getPrixAchat() && proprio == banque) {// on vérifie que le joueur possède assez d'argent avant de lui proposer les options    
                         timer();
 
                     } else if (proprio != banque) { // si le joueur tombe sur une propriété achetée
 
-                        if (proprio == joueurCourrant && joueurCourrant.couleurComplete(cel.getPropriete().getCouleur()) && (maisonsDispo != 0 || hotelsDispo != 0) && joueurCourrant.peutConstruire(cel.getPropriete().getCouleur())) {
+                        if (proprio == this.getJoueurCourrant() && this.getJoueurCourrant().couleurComplete(cel.getPropriete().getCouleur()) && (maisonsDispo != 0 || hotelsDispo != 0) && joueurCourrant.peutConstruire(cel.getPropriete().getCouleur())) {
                             construire();
                             return;
-                        } else if (proprio == joueurCourrant) { //Si la propriété lui appartient
+                        } else if (proprio == this.getJoueurCourrant()) { //Si la propriété lui appartient
                             System.out.println("Fin de tour");
                             System.out.println("351");
                         } else {// si il doit payer un loyer
-                            if (joueurCourrant.getFortune() > cel.getPropriete().getLoyer()) {
+                            if (this.getJoueurCourrant().getFortune() > cel.getPropriete().getLoyer()) {
                                 proprio.setFortune(proprio.getFortune() + cel.getPropriete().getLoyer());
-                                joueurCourrant.setFortune((joueurCourrant.getFortune()) - (cel.getPropriete().getLoyer()));
+                                this.getJoueurCourrant().setFortune((this.getJoueurCourrant().getFortune()) - (cel.getPropriete().getLoyer()));
                                 System.out.println(cel.getPropriete().getLoyer());
                                 System.out.println(cel.getPropriete().getNom());
                                 System.out.println(cel.getPropriete().getProprietaire().getNom());
                                 System.out.println("! La transaction a été effectuée !");
                                 System.out.println("Vous avez payé : " + cel.getPropriete().getLoyer() + " au joueur : " + cel.getPropriete().getProprietaire().getNom());
-                                System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
+                                System.out.println("Fortune du joueur " + this.getJoueurCourrant().getNom() + ": " + this.getJoueurCourrant().getFortune());
                                 System.out.println("Fin de tour");
                                 System.out.println("363");
                                 try {
@@ -371,7 +371,7 @@ public class Controlleur implements Observateur {
                                     Logger.getLogger(Controlleur.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                                 
-                            } else if (joueurCourrant.getFortune() < cel.getPropriete().getLoyer()) {
+                            } else if (this.getJoueurCourrant().getFortune() < cel.getPropriete().getLoyer()) {
                                 System.out.println("! Vous n'avez pas assez d'argent pour payer le loyer !");
                                 System.out.println("! Vous avez perdu !");
                                 try {
@@ -379,9 +379,9 @@ public class Controlleur implements Observateur {
                                 } catch (InterruptedException ex) {
                                     Logger.getLogger(Controlleur.class.getName()).log(Level.SEVERE, null, ex);
                                 }
-                                perdu(joueurCourrant);
+                                perdu(this.getJoueurCourrant());
                                 if (finDeLaPartie()) {
-                                    System.out.println("La partie est finie le joueur " + joueurs.get(0).getNom() + " a gagné !");
+                                    System.out.println("La partie est finie le joueur " + this.getJoueurs().get(0).getNom() + " a gagné !");
                                     System.exit(0);
                                 }
 
@@ -392,11 +392,11 @@ public class Controlleur implements Observateur {
                         
                     }
                 } else if (cel.getImpot() != null) {
-                    joueurCourrant.setFortune(joueurCourrant.getFortune() - cel.getImpot().getMontant());
+                    this.getJoueurCourrant().setFortune(this.getJoueurCourrant().getFortune() - cel.getImpot().getMontant());
                     cagnotte = cagnotte + cel.getImpot().getMontant();
                     this.Vplateau.setCagnotte(cagnotte);
                     System.out.println("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
-                    System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
+                    System.out.println("Fortune actuelle : " + this.getJoueurCourrant().getFortune());
                     
                 } else if (cel.getNumero() == 2 || cel.getNumero() == 17 || cel.getNumero() == 33) {
                     piocherUneCarteCommunaute();
@@ -404,8 +404,8 @@ public class Controlleur implements Observateur {
                 } else if (cel.getNumero() == 7 || cel.getNumero() == 22 || cel.getNumero() == 36) {
                     piocherUneCarteChance();
                     
-                } else if (cel.getNumero() == 30 || joueurCourrant.isPrisonnier()) {
-                    prison(joueurCourrant);
+                } else if (cel.getNumero() == 30 || this.getJoueurCourrant().isPrisonnier()) {
+                    prison(this.getJoueurCourrant());
                     
                 } else {
                     System.out.println("Fin de tour");

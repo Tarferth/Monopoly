@@ -5,7 +5,6 @@
  */
 package monopoly.Vues;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -54,10 +53,6 @@ public class Vue_Sud extends JPanel{
     public JLabel getNomJCourrant() {
         return this.nomJCourrant;
     }
-
-    private Color getCouleurJCourant() {
-        return Color.BLACK;
-        }
 
     public JLabel getFortuneJCourrant() {
         return this.fortuneJCourrant;
