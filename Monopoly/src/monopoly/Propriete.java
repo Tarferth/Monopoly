@@ -22,7 +22,8 @@ public abstract class Propriete {
         this.cellule = cellule;
     }
 
-    public Propriete() {
+    public Propriete(String nom) {
+        this.nom = nom;
     }
    
 
