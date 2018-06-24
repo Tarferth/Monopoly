@@ -263,8 +263,9 @@ public class Controlleur implements Observateur {
         this.plateau = new Plateau();
         this.banque = new Joueur("banque", "$", 0, 0);
         for (int i = 0; i < plateau.getCellules().size(); i++) {
-            banque.getPropriétésJoueur().add((plateau.getCellules().get(i).getPropriete()));
+            
             if (plateau.getCellules().get(i).getPropriete() != null) {
+                banque.getPropriétésJoueur().add((plateau.getCellules().get(i).getPropriete()));
                 plateau.getCellules().get(i).getPropriete().setProprietaire(banque);
                 plateau.getCellules().get(i).getPropriete().resetMaisons();
             }
