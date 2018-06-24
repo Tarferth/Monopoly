@@ -281,7 +281,8 @@ public class Controlleur implements Observateur {
             this.Vjeu.getNorthPanel().setNomJ4(this.joueurs.get(3).getNom());
         }
         if (this.joueurs.size() > 4) {
-            this.Vjeu.getNorthPanel().setNomJ5(this.joueurs.get(4).getNom());        }
+            this.Vjeu.getNorthPanel().setNomJ5(this.joueurs.get(4).getNom());        
+        }
         if (this.joueurs.size() > 5) {
             this.Vjeu.getNorthPanel().setNomJ6(this.joueurs.get(5).getNom());
         }
@@ -289,12 +290,6 @@ public class Controlleur implements Observateur {
 
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
-        this.Vjeu.getSouthPanel().setFortuneJCourrant(String.valueOf(this.getJoueurCourrant().getFortune()));
-        this.Vjeu.getSouthPanel().setNomJCourrant(this.getJoueurCourrant().getNom());
-        if (this.getJoueurCourrant().getCellule() != null) {
-            this.Vjeu.getSouthPanel().setPrixCaseCourrante(String.valueOf(this.getJoueurCourrant().getCellule().getPropriete().getPrixAchat()));
-        }
-        this.Vjeu.getSouthPanel().setNomCaseCourrante(this.getJoueurCourrant().getCellule().getNomCellule());
         
         System.out.println("\n\n\n--------------------------------------------");
         System.out.println("C'est au tour de: " + joueurCourrant.getNom() + " qui est sur la case: " + joueurCourrant.getPosition());
