@@ -27,7 +27,7 @@ public class Vue_Ouest extends JPanel {
     
     public Vue_Ouest()
     {
-//        this.setLayout(new GridLayout(2,1));
+        this.setLayout(new GridLayout(2,1));
     
 //        for (int i =0 ;i<this.;i++)
 //        {
@@ -35,7 +35,7 @@ public class Vue_Ouest extends JPanel {
 //            liste.add(j.getText());
 //        }
 //        
-//        this.add(liste);
+        this.add(liste);
         
         lancer = new JButton("Lancer les dés");
         
@@ -80,6 +80,7 @@ public class Vue_Ouest extends JPanel {
 
             this.liste.add(listePropriete.get(i).getNom());
         }
+        this.add(liste);
     }
 
 
