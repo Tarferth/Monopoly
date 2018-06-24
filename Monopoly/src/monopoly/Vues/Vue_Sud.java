@@ -64,20 +64,20 @@ public class Vue_Sud extends JPanel{
         this.vue_Sud = vue_Sud;
     }
 
-    public void setNomJCourrant(JLabel nomJCourrant) {
-        this.nomJCourrant = nomJCourrant;
+    public void setNomJCourrant(String nomJCourrant) {
+        this.nomJCourrant.setText(nomJCourrant);
     }
 
     public void setFortuneJCourrant(String fortuneJCourrant) {
         this.fortuneJCourrant.setText(fortuneJCourrant);
     }
 
-    public void setPrixCaseCourrante(JLabel prixCaseCourrante) {
-        this.prixCaseCourrante = prixCaseCourrante;
+    public void setPrixCaseCourrante(String prixCaseCourrante) {
+        this.prixCaseCourrante.setText(prixCaseCourrante);
     }
 
-    public void setNomCaseCourrante(JLabel nomCaseCourrante) {
-        this.nomCaseCourrante = nomCaseCourrante;
+    public void setNomCaseCourrante(String nomCaseCourrante) {
+        this.nomCaseCourrante.setText(nomCaseCourrante);
     }
     
 }
