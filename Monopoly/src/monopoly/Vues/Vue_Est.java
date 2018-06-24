@@ -6,13 +6,9 @@
 package monopoly.Vues;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.List;
-import java.awt.Toolkit;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import monopoly.Propriete;
 
@@ -43,14 +39,12 @@ public class Vue_Est extends JPanel {
         f.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        Vue_Est exemple1 = new Vue_Est();
-        exemple1.afficher();
 
-    }
 
     public void setListe(ArrayList<Propriete> listePropriete) {
-        
+        if (this.getListe().getItemCount() > 0) {
+            this.getListe().removeAll();
+        }
         for (int i = 0; i < listePropriete.size(); i++) {
 
             this.liste.add(listePropriete.get(i).getNom());

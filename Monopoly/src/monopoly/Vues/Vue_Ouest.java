@@ -21,7 +21,7 @@ import monopoly.Propriete;
  */
 public class Vue_Ouest extends JPanel {
     
-    private List liste;
+    private List liste = new List();
     private JButton lancer;
     private JLabel de1,de2;
     
@@ -68,7 +68,9 @@ public class Vue_Ouest extends JPanel {
     }
 
      public void setListe(ArrayList<Propriete> listePropriete) {
-         liste = new List();
+        if (this.getListe().getItemCount() > 0) {
+            this.getListe().removeAll();
+        }
         for (int i =0 ;i<listePropriete.size();i++)
         {
             this.liste.add(listePropriete.get(i).getNom());
