@@ -277,11 +277,11 @@ public class Controlleur implements Observateur {
         this.Vjeu = new Vue_Jeu();
         
         this.Vjeu.getWestPanel().setListe(this.banque.getPropriétésJoueur());
-        
-        this.Vjeu.getNorthPanel().setNomJ1(this.getJoueurs().get(0).getNom());
-        this.Vjeu.getNorthPanel().setNomJ2(this.getJoueurs().get(1).getNom());
-        if (this.getJoueurs().size() > 2) {
-            this.Vjeu.getNorthPanel().setNomJ3(this.getJoueurs().get(2).getNom());
+
+        this.Vjeu.getNorthPanel().setNomJ1(this.joueurs.get(0).getNom());
+        this.Vjeu.getNorthPanel().setNomJ2(this.joueurs.get(1).getNom());
+        if (this.joueurs.size() > 2) {
+            this.Vjeu.getNorthPanel().setNomJ3(this.joueurs.get(2).getNom());
         }
         if (this.getJoueurs().size() > 3) {
             this.Vjeu.getNorthPanel().setNomJ4(this.getJoueurs().get(3).getNom());
@@ -296,7 +296,7 @@ public class Controlleur implements Observateur {
 
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
-        
+        this.Vjeu.getEastPanel().setListe(this.getJoueurCourrant().getPropriétésJoueur());
         System.out.println("\n\n\n--------------------------------------------");
         System.out.println("C'est au tour de: " + getJoueurCourrant().getNom() + " qui est sur la case: " + this.getJoueurCourrant().getPosition());
         Joueur proprio;

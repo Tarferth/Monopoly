@@ -35,6 +35,7 @@ public class Vue_Ouest extends JPanel {
         lancer.setPreferredSize(new Dimension(180, 70));
         
         JPanel panelLancer = new JPanel(new GridLayout(2,1));
+        
         this.add(panelLancer);
         panelLancer.add(lancer);
         
