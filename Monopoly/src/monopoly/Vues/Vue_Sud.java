@@ -16,18 +16,20 @@ import javax.swing.JPanel;
  * @author Quentin
  */
 public class Vue_Sud extends JPanel{
-    private JLabel nomJCourrant;
+    private JLabel nomJCourrant, labelConsole;
     private JLabel fortuneJCourrant, prixCaseCourrante, nomCaseCourrante;
+    
     
     public Vue_Sud(){
         
         
-        this.setLayout(new GridLayout(2,1));
+        this.setLayout(new GridLayout(1,2));
+        JPanel infoJoueur = new JPanel(new GridLayout(2,1));
         JPanel rouge = new JPanel();
         rouge.setBackground(Color.red);
         this.nomJCourrant = new JLabel("AAAAAAAAA");
         rouge.add(nomJCourrant);
-        this.add(rouge);
+        infoJoueur.add(rouge);
         
         JPanel infos = new JPanel();
         JPanel joueurCase = new JPanel(new GridLayout(3,1));
@@ -39,7 +41,13 @@ public class Vue_Sud extends JPanel{
         this.fortuneJCourrant = new JLabel("ccccccccc");
         joueurCase.add(fortuneJCourrant);
         infos.add(joueurCase);
-        this.add(infos);
+        infoJoueur.add(infos);
+        this.add(infoJoueur);
+        
+        JPanel console = new JPanel();
+        this.labelConsole = new JLabel("Etat");
+        console.add(labelConsole);
+        this.add(console);
         
     }
     
@@ -61,6 +69,14 @@ public class Vue_Sud extends JPanel{
 
     public JLabel getNomCaseCourrante() {
         return this.nomCaseCourrante;
+    }
+
+    public JLabel getLabelConsole() {
+        return labelConsole;
+    }
+
+    public void setLabelConsole(JLabel labelConsole) {
+        this.labelConsole = labelConsole;
     }
 
     
