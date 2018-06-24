@@ -76,9 +76,14 @@ public class Controlleur implements Observateur {
             case LANCEMENT_PARTIE:
                 // Afficher l'ihm du jeu
                 this.joueurs = m.getListeJoueurs();         // ArrayList listeJoueurs qui contient les joueurs
+                this.joueurCourrant = joueurs.get(0);
                 this.initialisationTourJeu();
                 this.cacherIhmInscription2();               // On cache la fenetre d'inscription2
                 this.Vjeu.addObservateur(this);
+                this.Vjeu.getSouthPanel().getNomJCourrant().setText(this.joueurCourrant.getNom());
+                this.Vjeu.getSouthPanel().getNomCaseCourrante().setText(this.plateau.getCellule(0).getNom());
+                this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText("");
+                this.Vjeu.getSouthPanel().getFortuneJCourrant().setText("Fortune actuelle : "+this.joueurCourrant.getFortune());
                 this.Vjeu.afficher();
                 break;
             case QUITTER:
@@ -91,6 +96,24 @@ public class Controlleur implements Observateur {
                 this.tourDeJeu();
                 this.Vjeu.getWestPanel().getDe1().setText(String.valueOf(de1));
                 this.Vjeu.getWestPanel().getDe2().setText(String.valueOf(de2));
+                this.Vjeu.getSouthPanel().getNomJCourrant().setText(this.joueurCourrant.getNom());
+                
+                if (joueurCourrant.getCellule().getPropriete().getProprietaire() == banque)
+                {
+                    this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText("Prix de la propriété : "+ this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getPropriete().getPrixAchat());
+                    this.Vjeu.getSouthPanel().getNomCaseCourrante().setText("Vous êtes sur la case : "+this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getNomCellule());
+                }
+                else if (joueurCourrant.getCellule().getPropriete().getProprietaire() == null)
+                {
+                    this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText("Pas à vendre (" + this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getNomCellule());
+                    this.Vjeu.getSouthPanel().getNomCaseCourrante().setText("Vous êtes sur la case : "+this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getNom());
+                }
+                else
+                {
+                    this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText( "Loyer a payer : "+ this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getPropriete().getLoyer());
+                    this.Vjeu.getSouthPanel().getNomCaseCourrante().setText("Vous êtes sur la case : "+this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getNomCellule());
+                }
+                this.Vjeu.getSouthPanel().getFortuneJCourrant().setText("Fortune actuelle : " + this.joueurCourrant.getFortune());
 
                 break;
 
@@ -853,6 +876,7 @@ public class Controlleur implements Observateur {
                         break;
                     case 1:
                         System.out.println("Fin de tour");
+                        
                         tourSuivant();
                         break;
                     default:
@@ -881,14 +905,18 @@ public class Controlleur implements Observateur {
         timer = new Timer();
         this.Vjeu.getWestPanel().revalidate();
         this.Vjeu.getWestPanel().repaint();
+        this.Vjeu.getSouthPanel().revalidate();
+        this.Vjeu.getSouthPanel().repaint();
         timer.schedule(new TimerTask() {
 
             @Override
             public void run() {
 
                 acheter();
+                
                 timer.cancel();
             }
         }, 0, 50);
+        
     }
 }
