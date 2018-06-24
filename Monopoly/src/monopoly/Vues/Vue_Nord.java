@@ -5,7 +5,6 @@
  */
 package monopoly.Vues;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -111,7 +110,6 @@ public class Vue_Nord extends JPanel{
     }
 
     public void setNomJ3(String nomJ3) {
-        this.nomJ3 = new JLabel();
         this.nomJ3.setText(nomJ3);
     }
 

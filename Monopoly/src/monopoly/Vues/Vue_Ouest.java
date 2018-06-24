@@ -10,7 +10,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.List;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,9 +29,8 @@ public class Vue_Ouest extends JPanel {
     {
         this.setPreferredSize(new Dimension(190, 350));
         this.setLayout(new GridLayout(2, 1));
-
+        
         lancer = new JButton("Lancer les dés");
-        lancer.setPreferredSize(new Dimension(180, 70));
         
         JPanel panelLancer = new JPanel(new GridLayout(2,1));
         
