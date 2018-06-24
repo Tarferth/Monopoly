@@ -73,13 +73,14 @@ public class Vue_Ouest extends JPanel {
         return liste;
     }
 
-    // public void setListe(ArrayList<Propriete> listePropriete) {
-    //    for (int i =0 ;i<listePropriete.size();i++)
-    //    {
-    //        System.out.println(listePropriete.get(i).getNom());
-    //        this.liste.add(new JLabel(listePropriete.get(i).getNom()).getText());
-    //    }
-    //}
+    public void setListe(ArrayList<Propriete> listePropriete) {
+        this.liste = new List();
+        for (int i =0 ;i<listePropriete.size();i++)
+        {
+            System.out.println(listePropriete.get(i).getNom());
+            this.liste.add(new JLabel(listePropriete.get(i).getNom()).getText());
+        }
+    }
 
 
 
