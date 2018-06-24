@@ -84,6 +84,7 @@ public class Controlleur implements Observateur {
                 this.Vjeu.getSouthPanel().getNomCaseCourrante().setText(this.plateau.getCellule(0).getNom());
                 this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText("");
                 this.Vjeu.getSouthPanel().getFortuneJCourrant().setText("Fortune actuelle : "+this.joueurCourrant.getFortune());
+                
                 this.Vjeu.afficher();
                 break;
             case QUITTER:
@@ -273,6 +274,8 @@ public class Controlleur implements Observateur {
         this.Vplateau = new Vue_Plateau();
         this.Vplateau.setCellules(plateau);
         this.Vjeu = new Vue_Jeu();
+        
+        this.Vjeu.getWestPanel().setListeAchetables(this.banque.getPropriétésJoueur());
         
         this.Vjeu.getNorthPanel().setNomJ1(this.joueurs.get(0).getNom());
         this.Vjeu.getNorthPanel().setNomJ2(this.joueurs.get(1).getNom());

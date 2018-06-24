@@ -5,23 +5,15 @@
  */
 package monopoly.Vues;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.List;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import static javax.swing.text.StyleConstants.Bold;
-import monopoly.Message;
-import monopoly.TypesMessage;
+import monopoly.Propriete;
 
 /**
  *
@@ -32,20 +24,17 @@ public class Vue_Ouest extends JPanel {
     private List liste;
     private JButton lancer;
     private JLabel de1,de2;
+    private ArrayList<Propriete> listeAchetables;
     
     public Vue_Ouest()
     {
-              
-        
         this.setLayout(new GridLayout(2,1));
         liste = new List() ;
-        for (int i =0 ;i<100;i++)
+        for (int i =0 ;i<36;i++)
         {
-            JLabel j = new JLabel(""+i);
+            JLabel j = new JLabel(this.getListeAchetables().get(i).getNom());
             liste.add(j.getText());
         }
-        
-        
         
         this.add(liste);
         
@@ -66,9 +55,6 @@ public class Vue_Ouest extends JPanel {
         panelValeur.add(de1);
         panelValeur.add(de2);
         
-        
-        
-        
     }
     
     public JButton getBouton()
@@ -83,5 +69,17 @@ public class Vue_Ouest extends JPanel {
     public JLabel getDe2() {
         return de2;
     }
+
+    public ArrayList<Propriete> getListeAchetables() {
+        return listeAchetables;
+    }
+
+    public void setListeAchetables(ArrayList<Propriete> listeAchetables) {
+        this.listeAchetables = listeAchetables;
+    }
+
+
+
+    
     
 }
