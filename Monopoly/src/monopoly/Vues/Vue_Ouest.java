@@ -5,6 +5,7 @@
  */
 package monopoly.Vues;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.List;
@@ -27,17 +28,11 @@ public class Vue_Ouest extends JPanel {
     
     public Vue_Ouest()
     {
-        this.setLayout(new GridLayout(2,1));
-    
-//        for (int i =0 ;i<this.;i++)
-//        {
-//            JLabel j = new JLabel(this.getListeAchetables().get(i).getNom());
-//            liste.add(j.getText());
-//        }
-//        
-        this.add(liste);
-        
+        this.setPreferredSize(new Dimension(190, 350));
+        this.setLayout(new GridLayout(2, 1));
+
         lancer = new JButton("Lancer les dés");
+        lancer.setPreferredSize(new Dimension(180, 70));
         
         JPanel panelLancer = new JPanel(new GridLayout(2,1));
         this.add(panelLancer);
@@ -77,7 +72,6 @@ public class Vue_Ouest extends JPanel {
          liste = new List();
         for (int i =0 ;i<listePropriete.size();i++)
         {
-
             this.liste.add(listePropriete.get(i).getNom());
         }
         this.add(liste);
