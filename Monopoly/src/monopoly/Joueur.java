@@ -84,7 +84,7 @@ public class Joueur {
         return this.position;
     }
 
-    public ArrayList getPropriétésJoueur() {
+    public ArrayList<Propriete> getPropriétésJoueur() {
         return this.possedé;
     }
 
