@@ -26,7 +26,7 @@ public class Vue_Sud extends JPanel{
         JPanel infoJoueur = new JPanel(new GridLayout(2,1));
         JPanel rouge = new JPanel();
         rouge.setBackground(Color.red);
-        this.nomJCourrant = new JLabel("AAAAAAAAA");
+        this.nomJCourrant = new JLabel();
         rouge.add(nomJCourrant);
         infoJoueur.add(rouge);
         

@@ -43,11 +43,7 @@ public class Vue_Est extends JPanel {
         f.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        Vue_Est exemple1 = new Vue_Est();
-        exemple1.afficher();
 
-    }
 
     public void setListe(ArrayList<Propriete> listePropriete) {
         

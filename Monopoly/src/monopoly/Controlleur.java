@@ -80,7 +80,7 @@ public class Controlleur implements Observateur {
                 this.initialisationTourJeu();
                 this.cacherIhmInscription2();               // On cache la fenetre d'inscription2
                 this.Vjeu.addObservateur(this);
-                this.Vjeu.getSouthPanel().getNomJCourrant().setText(this.joueurCourrant.getNom());
+                this.Vjeu.getSouthPanel().getNomJCourrant().setText("Joueur courrant : " + this.joueurCourrant.getNom());
                 this.Vjeu.getSouthPanel().getNomCaseCourrante().setText(this.plateau.getCellule(0).getNom());
                 this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText("");
                 this.Vjeu.getSouthPanel().getFortuneJCourrant().setText("Fortune actuelle : "+this.joueurCourrant.getFortune());
@@ -295,6 +295,7 @@ public class Controlleur implements Observateur {
     }
 
     public void tourDeJeu() {
+        
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
         this.Vjeu.getEastPanel().setListe(this.getJoueurCourrant().getPropriétésJoueur());
         System.out.println("\n\n\n--------------------------------------------");
@@ -305,6 +306,7 @@ public class Controlleur implements Observateur {
         }
 
         if (getJoueurCourrant().isPrisonnier() == false) {
+            
             int de = lancerDes(); // Jeu avec lancé de dés aléatoire
             //int de = lancerDesTruqué(); // Jeu avec choix du résultat des dés
             getJoueurCourrant().setDe(de);
@@ -914,6 +916,7 @@ public class Controlleur implements Observateur {
                 timer.cancel();
             }
         }, 0, 50);
+        
         
     }
 }
