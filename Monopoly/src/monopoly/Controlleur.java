@@ -848,7 +848,7 @@ public class Controlleur implements Observateur {
 
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - sommeTot);
                 System.out.println("Vous payez 40 par maison et 115 par hotel soit : " + sommeTot);
-                System.out.println("Fortune Actuelle : " + joueurCourrant.getFortune());
+                System.out.println("Fortune Actuelle après impots : " + joueurCourrant.getFortune());
                 cartes.remove(cartes.get(0));
                 cartes.add(carte);
                 this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 40 par maison et 115 par hotel soit : " + sommeTot);
@@ -915,7 +915,7 @@ public class Controlleur implements Observateur {
                         banque.getPropriétésJoueur().remove(joueurCourrant.getCellule().getPropriete());
                         joueurCourrant.getCellule().getPropriete().setProprietaire(joueurCourrant);
                         System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
-                        this.Vjeu.getSouthPanel().getLabelConsole().setText("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
+                        this.Vjeu.getSouthPanel().getLabelConsole().setText("Fortune du joueur après achat " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
                         System.out.println("! Achat confirmé !");
                         System.out.println("Fin de tour");
                         tourSuivant();
