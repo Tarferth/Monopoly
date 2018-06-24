@@ -33,6 +33,7 @@ public class Vue_Ouest extends JPanel {
         lancer = new JButton("Lancer les dés");
         
         JPanel panelLancer = new JPanel(new GridLayout(2,1));
+        
         this.add(panelLancer);
         panelLancer.add(lancer);
         

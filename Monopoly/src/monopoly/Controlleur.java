@@ -277,7 +277,7 @@ public class Controlleur implements Observateur {
         this.Vjeu = new Vue_Jeu();
         
         this.Vjeu.getWestPanel().setListe(this.banque.getPropriétésJoueur());
-        
+
         this.Vjeu.getNorthPanel().setNomJ1(this.joueurs.get(0).getNom());
         this.Vjeu.getNorthPanel().setNomJ2(this.joueurs.get(1).getNom());
         if (this.joueurs.size() > 2) {
@@ -296,7 +296,7 @@ public class Controlleur implements Observateur {
 
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
-        
+        this.Vjeu.getEastPanel().setListe(this.getJoueurCourrant().getPropriétésJoueur());
         System.out.println("\n\n\n--------------------------------------------");
         System.out.println("C'est au tour de: " + joueurCourrant.getNom() + " qui est sur la case: " + joueurCourrant.getPosition());
         Joueur proprio;
