@@ -31,15 +31,7 @@ public class Vue_Plateau extends JPanel{
       //  f_Plateau.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
       //  Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
       //  f_Plateau.setSize(dim);
-        
-        JPanel vide = new JPanel();
-        JPanel vide1 = new JPanel();
-        JPanel vide2 = new JPanel();
-        JPanel vide3 = new JPanel();
-        vide.add(new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAA"));
-        vide1.add(new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAA"));
-        vide2.add(new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAA"));
-        vide3.add(new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAA"));
+
         JPanel cadre = new JPanel(new BorderLayout());
         JPanel  mainPanel = new JPanel(new GridLayout(11,11));
         

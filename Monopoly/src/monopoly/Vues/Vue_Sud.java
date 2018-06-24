@@ -8,7 +8,6 @@ package monopoly.Vues;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,55 +17,67 @@ import javax.swing.JPanel;
  */
 public class Vue_Sud extends JPanel{
     private JPanel vue_Sud;
-    private JButton boutonAcheter, boutonPasserSonTour;
     private JLabel nomJCourrant;
+    private JLabel fortuneJCourrant, prixCaseCourrante, nomCaseCourrante;
     
     public Vue_Sud(){
         this.vue_Sud = new JPanel(new BorderLayout());
         
         JPanel joueurCourantHaut = new JPanel(new GridLayout(1,2));
-        this.nomJCourrant = new JLabel("Joueur 1");
+        this.nomJCourrant = new JLabel("");
         joueurCourantHaut.add(nomJCourrant);
         joueurCourantHaut.setBackground(getCouleurJCourant());
         this.vue_Sud.add(joueurCourantHaut, BorderLayout.NORTH);
         
-        JPanel joueurCourantAction = new JPanel(new GridLayout(3,5));
-        JPanel vide = new JPanel();
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        // liste des actions
-        this.boutonAcheter = new JButton("Acheter");
-        joueurCourantAction.add(boutonAcheter);
-        joueurCourantAction.add(vide);
-        this.boutonPasserSonTour = new JButton("Passer son tour");
-        joueurCourantAction.add(boutonPasserSonTour);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        joueurCourantAction.add(vide);
-        this.vue_Sud.add(joueurCourantAction, BorderLayout.CENTER);
+        JPanel joueurCase = new JPanel(new GridLayout(3,1));
+        this.nomCaseCourrante = new JLabel("");
+        joueurCase.add(nomCaseCourrante);
+        this.prixCaseCourrante = new JLabel("");
+        joueurCase.add(prixCaseCourrante);
+        this.fortuneJCourrant = new JLabel("");
+        joueurCase.add(fortuneJCourrant);
+        this.vue_Sud.add(joueurCase, BorderLayout.CENTER);
         this.add(vue_Sud);
     }
-
-    public JButton getBoutonAcheter() {
-        return boutonAcheter;
-    }
-
-    public JButton getBoutonPasserSonTour() {
-        return boutonPasserSonTour;
-    }
-
-    private String getNomJCourant() {
-        return "Patrick";
+    
+    private JLabel getNomJCourrant() {
+        return this.nomJCourrant;
     }
 
     private Color getCouleurJCourant() {
         return Color.BLACK;
         }
+
+    public JLabel getFortuneJCourrant() {
+        return this.fortuneJCourrant;
+    }
+
+    public JLabel getPrixCaseCourrante() {
+        return this.prixCaseCourrante;
+    }
+
+    public JLabel getNomCaseCourrante() {
+        return this.nomCaseCourrante;
+    }
+
+    public void setVue_Sud(JPanel vue_Sud) {
+        this.vue_Sud = vue_Sud;
+    }
+
+    public void setNomJCourrant(JLabel nomJCourrant) {
+        this.nomJCourrant = nomJCourrant;
+    }
+
+    public void setFortuneJCourrant(String fortuneJCourrant) {
+        this.fortuneJCourrant.setText(fortuneJCourrant);
+    }
+
+    public void setPrixCaseCourrante(JLabel prixCaseCourrante) {
+        this.prixCaseCourrante = prixCaseCourrante;
+    }
+
+    public void setNomCaseCourrante(JLabel nomCaseCourrante) {
+        this.nomCaseCourrante = nomCaseCourrante;
+    }
+    
 }

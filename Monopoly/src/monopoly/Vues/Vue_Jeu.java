@@ -32,6 +32,7 @@ public class Vue_Jeu extends Observe{
     private Vue_Plateau plateau;
     private JPanel mainPanel;
     private JOptionPane popup;
+    
     public Vue_Jeu()
     {
         
@@ -67,22 +68,6 @@ public class Vue_Jeu extends Observe{
                 Message m = new Message(TypesMessage.LANCER_DES);
                 notifierObservateur(m);
                 
-            }
-        });
-        southPanel.getBoutonAcheter().addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Message m = new Message(TypesMessage.ACHETER);
-                notifierObservateur(m);
-            }
-        });
-        southPanel.getBoutonPasserSonTour().addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Message m = new Message(TypesMessage.PASSER_TOUR);
-                notifierObservateur(m);
             }
         });
     }

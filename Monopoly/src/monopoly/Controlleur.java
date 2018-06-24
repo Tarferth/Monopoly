@@ -248,11 +248,13 @@ public class Controlleur implements Observateur {
         this.Vplateau = new Vue_Plateau();
         this.Vplateau.setCellules(plateau);
         this.Vjeu = new Vue_Jeu();
+        
 
     }
 
     public void tourDeJeu() {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
+        this.Vjeu.getSouthPanel().setFortuneJCourrant(String.valueOf(this.getJoueurCourrant().getFortune()));
         System.out.println("\n\n\n--------------------------------------------");
         System.out.println("C'est au tour de: " + joueurCourrant.getNom() + " qui est sur la case: " + joueurCourrant.getPosition());
         Joueur proprio;
