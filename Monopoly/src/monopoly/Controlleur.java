@@ -460,7 +460,6 @@ public class Controlleur implements Observateur {
     }
 
     public void prison(Joueur j) {
-        Scanner sc = new Scanner(System.in);
 
         j.setPrisonnier(true);
         j.getCellule().removePion(j);
@@ -483,13 +482,11 @@ public class Controlleur implements Observateur {
             j.getInventaire().remove(0);
 
         } else {
-            System.out.println("|**                     Vous êtes en prison                **|");
-            System.out.println("|**                     1- Lancer les dés                  **|");
-            System.out.println("|**                     0- Payer l'amende (50)             **|");
-            int nb = sc.nextInt();
-            switch (nb) {
+             int nb = this.Vjeu.getPopup().showConfirmDialog(null, "Vous etes en prison. Voulez vous payer l'amende de 50 pour sortir ?", "Achat", JOptionPane.YES_NO_OPTION);
 
-                case 1:
+            switch (nb) {   
+
+                case 0:
                     lancerDes();
                     if (faitUnDouble) {
                         j.setPrisonnier(false);
@@ -500,7 +497,7 @@ public class Controlleur implements Observateur {
                     }
                     break;
 
-                case 0:
+                case 1:
                     j.setFortune(j.getFortune() - 50);
                     j.setPrisonnier(false);
                     System.out.println("Vous avez payé l'amende.");
@@ -529,17 +526,13 @@ public class Controlleur implements Observateur {
 
     public void parcGratuit2() {
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("|**               Vous êtes dans le parc Gratuit           **|");
-        System.out.println("|**                     1- Lancer les dés                  **|");
-        System.out.println("|**                     0- Attendre                        **|");
-        int nb = sc.nextInt();
+        int nb = this.Vjeu.getPopup().showConfirmDialog(null, "Voulez vous rester au parc ?", "Achat", JOptionPane.YES_NO_OPTION);
         switch (nb) {
 
-            case 1:
+            case 0:
                 phase2 = false;
                 break;
-            case 0:
+            case 1:
                 phase2 = false;
                 
                 tourSuivant();
@@ -828,13 +821,11 @@ public class Controlleur implements Observateur {
     }
 
     public void construire() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("|**                     1- Acheter une maison (" + joueurCourrant.getCellule().getPropriete().getPrixMaison() + ")                    **|");
-        System.out.println("|**                     0- Passer son Tour                 **|");
-        int nb = sc.nextInt();
+
+         int nb = this.Vjeu.getPopup().showConfirmDialog(null, "Voulez vous construire su ce terrain ?", "Achat", JOptionPane.YES_NO_OPTION);
         switch (nb) {
 
-            case 1:
+            case 0:
                 if (joueurCourrant.getCellule().getPropriete().getNbMaison() != 4) {
                     joueurCourrant.getCellule().getPropriete().addMaison();
                     maisonsDispo--;
@@ -852,7 +843,7 @@ public class Controlleur implements Observateur {
                 }
                 break;
 
-            case 0:
+            case 1:
                 System.out.println("Fin de tour");
                     System.out.println("854");
                 tourSuivant();
