@@ -28,8 +28,8 @@ public class Vue_Ouest extends JPanel {
     public Vue_Ouest()
     {
 //        this.setLayout(new GridLayout(2,1));
-//        liste = new List() ;
-//        for (int i =0 ;i<36;i++)
+    
+//        for (int i =0 ;i<this.;i++)
 //        {
 //            JLabel j = new JLabel(this.getListeAchetables().get(i).getNom());
 //            liste.add(j.getText());
@@ -73,13 +73,14 @@ public class Vue_Ouest extends JPanel {
         return liste;
     }
 
-    // public void setListe(ArrayList<Propriete> listePropriete) {
-    //    for (int i =0 ;i<listePropriete.size();i++)
-    //    {
-    //        System.out.println(listePropriete.get(i).getNom());
-    //        this.liste.add(new JLabel(listePropriete.get(i).getNom()).getText());
-    //    }
-    //}
+     public void setListe(ArrayList<Propriete> listePropriete) {
+         liste = new List(29);
+        for (int i =1 ;i<=listePropriete.size();i++)
+        {
+
+            this.liste.add(listePropriete.get(i).getNom());
+        }
+    }
 
 
 
