@@ -46,7 +46,9 @@ public class Vue_Est extends JPanel {
 
 
     public void setListe(ArrayList<Propriete> listePropriete) {
-        
+        if (this.getListe().getItemCount() > 0) {
+            this.getListe().removeAll();
+        }
         for (int i = 0; i < listePropriete.size(); i++) {
 
             this.liste.add(listePropriete.get(i).getNom());
