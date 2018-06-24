@@ -74,8 +74,8 @@ public class Vue_Ouest extends JPanel {
     }
 
      public void setListe(ArrayList<Propriete> listePropriete) {
-         liste = new List(29);
-        for (int i =1 ;i<=listePropriete.size();i++)
+         liste = new List();
+        for (int i =0 ;i<listePropriete.size();i++)
         {
 
             this.liste.add(listePropriete.get(i).getNom());
