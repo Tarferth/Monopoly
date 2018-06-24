@@ -334,6 +334,7 @@ public class Controlleur implements Observateur {
                 //////////////////////////////////////////////FIN DU CAS DOUBLE    
             if (compteurDouble == 3) {
                 System.out.println("Vous avez fait 3 doubles à la suite vous allez en prison.");
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous avez fait 3 doubles à la suite vous allez en prison.");
                 compteurDouble = 0;
                 prison(this.getJoueurCourrant());
                 
@@ -368,6 +369,7 @@ public class Controlleur implements Observateur {
                                 System.out.println("Fortune du joueur " + this.getJoueurCourrant().getNom() + ": " + this.getJoueurCourrant().getFortune());
                                 System.out.println("Fin de tour");
                                 System.out.println("363");
+                                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous avez payé : " + cel.getPropriete().getLoyer() + " au joueur : " + cel.getPropriete().getProprietaire().getNom());
                                 try {
                                     Thread.sleep(3000);
                                 } catch (InterruptedException ex) {
@@ -385,6 +387,7 @@ public class Controlleur implements Observateur {
                                 perdu(this.getJoueurCourrant());
                                 if (finDeLaPartie()) {
                                     System.out.println("La partie est finie le joueur " + this.getJoueurs().get(0).getNom() + " a gagné !");
+                                    this.Vjeu.getSouthPanel().getLabelConsole().setText("La partie est finie le joueur " + this.getJoueurs().get(0).getNom() + " a gagné !");
                                     System.exit(0);
                                 }
 
@@ -392,7 +395,7 @@ public class Controlleur implements Observateur {
                         }
                     } else {
                         System.out.println("! Vous n'avez rien à faire !");
-                        
+                        this.Vjeu.getSouthPanel().getLabelConsole().setText(" Vous n'avez rien à faire !");
                     }
                 } else if (cel.getImpot() != null) {
                     this.getJoueurCourrant().setFortune(this.getJoueurCourrant().getFortune() - cel.getImpot().getMontant());
@@ -400,7 +403,7 @@ public class Controlleur implements Observateur {
                     this.Vplateau.setCagnotte(cagnotte);
                     System.out.println("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
                     System.out.println("Fortune actuelle : " + this.getJoueurCourrant().getFortune());
-                    
+                    this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous êtes sur la case " + cel.getImpot().getNom() + ", vous payez " + cel.getImpot().getMontant());
                 } else if (cel.getNumero() == 2 || cel.getNumero() == 17 || cel.getNumero() == 33) {
                     piocherUneCarteCommunaute();
                     
@@ -412,6 +415,7 @@ public class Controlleur implements Observateur {
                     
                 } else {
                     System.out.println("Fin de tour");
+                    
                     System.out.println("408");
                     
                 }
@@ -474,6 +478,7 @@ public class Controlleur implements Observateur {
         if (compteurP == 3) {
             j.setPrisonnier(false);
             System.out.println("Vous devez payer l'amende");
+            this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous devez payer l'amende");
             j.setFortune(j.getFortune() - 50);
         } else if (j.getInventaire().isEmpty() != true) // si le joueur a une carte "libérer de prison"
         {
@@ -495,6 +500,7 @@ public class Controlleur implements Observateur {
                     if (faitUnDouble) {
                         j.setPrisonnier(false);
                         System.out.println("Vous vous êtes échappé de prison.");
+                        this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous vous êtes échappé de prison.");
                         tourSuivant();
                     } else {
                         compteurP++;
@@ -521,6 +527,7 @@ public class Controlleur implements Observateur {
         phase2 = true;
         jX = joueurCourrant.getNom();
         System.out.println("Vous êtes dans le parc gratuit vous remportez la cagnotte !");
+        this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous êtes dans le parc gratuit vous remportez la cagnotte !");
         System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
         System.out.println("Vous pouvez aussi choisir de ne pas jouer au prochain tour.");
         if (faitUnDouble == true) {
@@ -552,11 +559,13 @@ public class Controlleur implements Observateur {
 
         switch (carte.getDescription()) {
             case "Liberer prison Co":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous avez pioché la carte libéré de prison");
                 joueurCourrant.getInventaire().add(carte);
                 cartes.remove(carte);
                 break;
 
             case "Payer 10":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 10");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - 10);
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
                 cartes.remove(cartes.get(0));
@@ -564,6 +573,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Tout le monde vous donne 10":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Tout le monde vous donne 10");
                 int somme = 0;
                 for (int i = 1; i < joueurs.size(); i++) {
                     joueurs.get(i).setFortune(joueurs.get(i).getFortune() - 10);
@@ -577,6 +587,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Gagner 200":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 200");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 200);
                 System.out.println("Vous gagnez 200");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -585,6 +596,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Aller a Belleville":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Allez à Belleville");
                 joueurCourrant.setCellule(plateau.getCellules().get(1));
                 System.out.println("Vous retournez au Boulevard de Belleville");
                 cartes.remove(cartes.get(0));
@@ -592,6 +604,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Payer 50":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 50");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - 50);
                 System.out.println("Vous Payez 50");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -600,6 +613,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Gagner 20":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 20");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 20);
                 System.out.println("Vous gagner 20");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -608,6 +622,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Payer 100":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 100");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - 100);
                 System.out.println("Vous payer 100");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -616,6 +631,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Gagner 100":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 100");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 100);
                 System.out.println("Vous gagner 100");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -624,12 +640,14 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Aller en prison":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous allez en prison");
                 prison(joueurCourrant);
                 cartes.remove(cartes.get(0));
                 cartes.add(carte);
                 break;
 
             case "Gagner 50":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 50");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 50);
                 System.out.println("Vous gagner 50");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -638,6 +656,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Aller au depart":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Allez au départ");
                 joueurCourrant.setCellule(plateau.getCellules().get(0));
                 System.out.println("Vous retournez au Depart");
                 cartes.remove(cartes.get(0));
@@ -645,6 +664,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Gagner 25":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 25");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 25);
                 System.out.println("Vous gagner 25");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -653,6 +673,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Gagner 10":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 10");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 10);
                 System.out.println("Vous gagner 10");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -671,11 +692,13 @@ public class Controlleur implements Observateur {
 
         switch (carte.getDescription()) {
             case "Liberer prison Ch":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous avez pioché la carte libéré de prison");
                 joueurCourrant.getInventaire().add(carte);
                 cartes.remove(carte);
                 break;
 
             case "Reculez de 3 cases":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Reculez de 3 cases");
                 joueurCourrant.setCellule(plateau.getCellule(joueurCourrant.getCellule().getNumero() - 3));
                 System.out.println("Vous reculez de 3 cases.");
                 System.out.println("Position actuelle : " + joueurCourrant.getCellule().getNumero());
@@ -684,6 +707,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Payer 15":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 15");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - 15);
                 System.out.println("Vous Payez 15");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -692,7 +716,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Reparations":
-
+                
                 for (int i = 0; i < joueurCourrant.getTerrains().size(); i++) {
                     sommeM = sommeM + joueurCourrant.getTerrains().get(i).getNbMaison();
                     sommeH = sommeH + joueurCourrant.getTerrains().get(i).getHotel();
@@ -704,9 +728,11 @@ public class Controlleur implements Observateur {
                 System.out.println("Fortune Actuelle : " + joueurCourrant.getFortune());
                 cartes.remove(cartes.get(0));
                 cartes.add(carte);
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 25 par maison et 100 par hotel soit : " + sommeTot);
                 break;
 
             case "Payer 20":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 20");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - 20);
                 System.out.println("Vous Payez 20");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -715,6 +741,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Aller au depart":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Allez au départ");
                 joueurCourrant.setCellule(plateau.getCellules().get(0));
                 System.out.println("Vous retournez au Depart");
                 cartes.remove(cartes.get(0));
@@ -722,7 +749,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Deplacer Henri-Martin":
-
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous vous déplacez jusqu'à Henri-Martin");
                 if (joueurCourrant.getCellule().getNumero() > 24) {
                     deplacement = (24 - joueurCourrant.getCellule().getNumero()) + 40;
                 } else {
@@ -735,7 +762,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Deplacer gare de lyon":
-
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous vous déplacez jusqu'à la gare de Lyon");
                 if (joueurCourrant.getCellule().getNumero() > 15) {
                     deplacement = (15 - joueurCourrant.getCellule().getNumero()) + 40;
                 } else {
@@ -748,6 +775,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Payer 150":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 150");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() - 150);
                 System.out.println("Vous payer 150");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -756,12 +784,14 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Aller en prison":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Allez en prison");
                 prison(joueurCourrant);
                 cartes.remove(cartes.get(0));
                 cartes.add(carte);
                 break;
 
             case "Gagner 50":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 50");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 50);
                 System.out.println("Vous gagner 50");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -770,6 +800,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Gagner 100":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 100");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 100);
                 System.out.println("Vous gagner 100");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -778,6 +809,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Gagner 150":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous gagnez 150");
                 joueurCourrant.setFortune(joueurCourrant.getFortune() + 150);
                 System.out.println("Vous gagner 150");
                 System.out.println("Fortune actuelle : " + joueurCourrant.getFortune());
@@ -786,6 +818,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Aller rue de la paix":
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Allez à la rue de la paix");
                 joueurCourrant.setCellule(plateau.getCellules().get(39));
                 System.out.println("Vous aller à rue de la paix (cellule 39).");
                 cartes.remove(cartes.get(0));
@@ -793,7 +826,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Deplacer Villette":
-
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous vous déplacez jusqu'au Boulevard de la Villette");
                 if (joueurCourrant.getCellule().getNumero() > 11) {
                     deplacement = (11 - joueurCourrant.getCellule().getNumero()) + 40;
                 } else {
@@ -806,7 +839,7 @@ public class Controlleur implements Observateur {
                 break;
 
             case "Impots voirie":
-
+                
                 for (int i = 0; i < joueurCourrant.getTerrains().size(); i++) {
                     sommeM = sommeM + joueurCourrant.getTerrains().get(i).getNbMaison();
                     sommeH = sommeH + joueurCourrant.getTerrains().get(i).getHotel();
@@ -818,6 +851,7 @@ public class Controlleur implements Observateur {
                 System.out.println("Fortune Actuelle : " + joueurCourrant.getFortune());
                 cartes.remove(cartes.get(0));
                 cartes.add(carte);
+                this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous payez 40 par maison et 115 par hotel soit : " + sommeTot);
                 break;
 
         }
@@ -835,15 +869,19 @@ public class Controlleur implements Observateur {
                     maisonsDispo--;
                     System.out.println("Une maison a été ajouté au terrain " + joueurCourrant.getCellule().getPropriete().getNom() + " Il y a " + joueurCourrant.getCellule().getPropriete().getNbMaison() + " maisons sur ce terrain.");
                     System.out.println("Nouveau Loyer : " + joueurCourrant.getCellule().getPropriete().getLoyer());
+                    this.Vjeu.getSouthPanel().getLabelConsole().setText("Une maison a été ajouté au terrain " + joueurCourrant.getCellule().getPropriete().getNom() + " Il y a " + joueurCourrant.getCellule().getPropriete().getNbMaison() + " maisons sur ce terrain." + "\n Nouveau Loyer : " + joueurCourrant.getCellule().getPropriete().getLoyer());
                     tourSuivant();
                 } else if (joueurCourrant.getCellule().getPropriete().getNbMaison() == 4) {
                     joueurCourrant.getCellule().getPropriete().addHotel();
                     hotelsDispo--;
                     System.out.println("Un hotel a été ajouté au terrain " + joueurCourrant.getCellule().getPropriete().getNom());
                     System.out.println("Nouveau Loyer : " + joueurCourrant.getCellule().getPropriete().getLoyer());
+                    this.Vjeu.getSouthPanel().getLabelConsole().setText("Un hôtel a été ajouté au terrain " + joueurCourrant.getCellule().getPropriete().getNom() + " Il y a " + joueurCourrant.getCellule().getPropriete().getNbMaison() + " maisons sur ce terrain." + "\n Nouveau Loyer : " + joueurCourrant.getCellule().getPropriete().getLoyer());
+
                     tourSuivant();
                 } else if (joueurCourrant.getCellule().getPropriete().getHotel() == 1) {
                     System.out.println("Vous ne pouvez plus rien construire sur ce terrain.");
+                    this.Vjeu.getSouthPanel().getLabelConsole().setText("Vous ne pouvez plus rien construire sur ce terrain.");
                 }
                 break;
 
@@ -877,6 +915,7 @@ public class Controlleur implements Observateur {
                         banque.getPropriétésJoueur().remove(joueurCourrant.getCellule().getPropriete());
                         joueurCourrant.getCellule().getPropriete().setProprietaire(joueurCourrant);
                         System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
+                        this.Vjeu.getSouthPanel().getLabelConsole().setText("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
                         System.out.println("! Achat confirmé !");
                         System.out.println("Fin de tour");
                         tourSuivant();
