@@ -24,17 +24,11 @@ public class Vue_Ouest extends JPanel {
     private List liste;
     private JButton lancer;
     private JLabel de1,de2;
-    private ArrayList<Propriete> listeAchetables;
     
     public Vue_Ouest()
     {
         this.setLayout(new GridLayout(2,1));
         liste = new List() ;
-        for (int i =0 ;i<36;i++)
-        {
-            JLabel j = new JLabel(this.getListeAchetables().get(i).getNom());
-            liste.add(j.getText());
-        }
         
         this.add(liste);
         
@@ -70,13 +64,17 @@ public class Vue_Ouest extends JPanel {
         return de2;
     }
 
-    public ArrayList<Propriete> getListeAchetables() {
-        return listeAchetables;
+    public List getListe() {
+        return liste;
     }
 
-    public void setListeAchetables(ArrayList<Propriete> listeAchetables) {
-        this.listeAchetables = listeAchetables;
-    }
+    // public void setListe(ArrayList<Propriete> listePropriete) {
+    //    for (int i =0 ;i<listePropriete.size();i++)
+    //    {
+    //        System.out.println(listePropriete.get(i).getNom());
+    //        this.liste.add(new JLabel(listePropriete.get(i).getNom()).getText());
+    //    }
+    //}
 
 
 
