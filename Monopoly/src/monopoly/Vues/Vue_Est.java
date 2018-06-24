@@ -6,13 +6,9 @@
 package monopoly.Vues;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.List;
-import java.awt.Toolkit;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import monopoly.Propriete;
 
