@@ -17,6 +17,7 @@ public class Cellule {
     private ArrayList<Joueur> pions;
     private Propriete propriete = null;
     private Impôt impot;
+    private String nom; 
 
     public Cellule(String nom, int numero) {
         this.numero = numero;
@@ -84,4 +85,15 @@ public class Cellule {
             System.out.println(pions.get(i));
         }
     }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+    
+    
+    
 }

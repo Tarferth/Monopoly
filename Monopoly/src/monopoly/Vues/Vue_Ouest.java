@@ -28,7 +28,7 @@ import monopoly.TypesMessage;
  * @author crosv
  */
 public class Vue_Ouest extends JPanel {
-    private JPanel mainPanel;
+    
     private List liste;
     private JButton lancer;
     private JLabel de1,de2;

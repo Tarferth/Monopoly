@@ -16,31 +16,34 @@ import javax.swing.JPanel;
  * @author Quentin
  */
 public class Vue_Sud extends JPanel{
-    private JPanel vue_Sud;
     private JLabel nomJCourrant;
     private JLabel fortuneJCourrant, prixCaseCourrante, nomCaseCourrante;
     
     public Vue_Sud(){
-        this.vue_Sud = new JPanel(new BorderLayout());
         
-        JPanel joueurCourantHaut = new JPanel(new GridLayout(1,2));
-        this.nomJCourrant = new JLabel("");
-        joueurCourantHaut.add(nomJCourrant);
-        joueurCourantHaut.setBackground(getCouleurJCourant());
-        this.vue_Sud.add(joueurCourantHaut, BorderLayout.NORTH);
         
+        this.setLayout(new GridLayout(2,1));
+        JPanel rouge = new JPanel();
+        rouge.setBackground(Color.red);
+        this.nomJCourrant = new JLabel("AAAAAAAAA");
+        rouge.add(nomJCourrant);
+        this.add(rouge);
+        
+        JPanel infos = new JPanel();
         JPanel joueurCase = new JPanel(new GridLayout(3,1));
-        this.nomCaseCourrante = new JLabel("");
+        
+        this.nomCaseCourrante = new JLabel("aaaaaaaaa");
         joueurCase.add(nomCaseCourrante);
-        this.prixCaseCourrante = new JLabel("");
+        this.prixCaseCourrante = new JLabel("bbbbbbbbb");
         joueurCase.add(prixCaseCourrante);
-        this.fortuneJCourrant = new JLabel("");
+        this.fortuneJCourrant = new JLabel("ccccccccc");
         joueurCase.add(fortuneJCourrant);
-        this.vue_Sud.add(joueurCase, BorderLayout.CENTER);
-        this.add(vue_Sud);
+        infos.add(joueurCase);
+        this.add(infos);
+        
     }
     
-    private JLabel getNomJCourrant() {
+    public JLabel getNomJCourrant() {
         return this.nomJCourrant;
     }
 
@@ -60,9 +63,7 @@ public class Vue_Sud extends JPanel{
         return this.nomCaseCourrante;
     }
 
-    public void setVue_Sud(JPanel vue_Sud) {
-        this.vue_Sud = vue_Sud;
-    }
+    
 
     public void setNomJCourrant(String nomJCourrant) {
         this.nomJCourrant.setText(nomJCourrant);
