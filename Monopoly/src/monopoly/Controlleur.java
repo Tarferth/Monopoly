@@ -98,16 +98,18 @@ public class Controlleur implements Observateur {
                 this.Vjeu.getWestPanel().getDe2().setText(String.valueOf(de2));
                 this.Vjeu.getSouthPanel().getNomJCourrant().setText(this.joueurCourrant.getNom());
                 
-                if (joueurCourrant.getCellule().getPropriete().getProprietaire() == banque)
-                {
-                    this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText("Prix de la propriété : "+ this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getPropriete().getPrixAchat());
-                    this.Vjeu.getSouthPanel().getNomCaseCourrante().setText("Vous êtes sur la case : "+this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getNomCellule());
-                }
-                else if (joueurCourrant.getCellule().getPropriete().getProprietaire() == null)
+                
+                if (joueurCourrant.getCellule().getNom() != null )
                 {
                     this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText("Pas à vendre (" + this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getNomCellule());
                     this.Vjeu.getSouthPanel().getNomCaseCourrante().setText("Vous êtes sur la case : "+this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getNom());
                 }
+                        else if (joueurCourrant.getCellule().getPropriete().getProprietaire() == banque)
+                {
+                    this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText("Prix de la propriété : "+ this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getPropriete().getPrixAchat());
+                    this.Vjeu.getSouthPanel().getNomCaseCourrante().setText("Vous êtes sur la case : "+this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getNomCellule());
+                }
+                
                 else
                 {
                     this.Vjeu.getSouthPanel().getPrixCaseCourrante().setText( "Loyer a payer : "+ this.plateau.getCellule(joueurCourrant.getCellule().getNumero()).getPropriete().getLoyer());
@@ -327,8 +329,7 @@ public class Controlleur implements Observateur {
                 System.out.println("Vous avez fait 3 doubles à la suite vous allez en prison.");
                 compteurDouble = 0;
                 prison(joueurCourrant);
-                joueurs.remove(0);
-                joueurs.add(joueurCourrant);
+                
                 tourSuivant();
                 compteurDouble=0;
 
@@ -347,7 +348,7 @@ public class Controlleur implements Observateur {
                             return;
                         } else if (proprio == joueurCourrant) { //Si la propriété lui appartient
                             System.out.println("Fin de tour");
-                            
+                            System.out.println("351");
                         } else {// si il doit payer un loyer
                             if (joueurCourrant.getFortune() > cel.getPropriete().getLoyer()) {
                                 proprio.setFortune(proprio.getFortune() + cel.getPropriete().getLoyer());
@@ -359,6 +360,7 @@ public class Controlleur implements Observateur {
                                 System.out.println("Vous avez payé : " + cel.getPropriete().getLoyer() + " au joueur : " + cel.getPropriete().getProprietaire().getNom());
                                 System.out.println("Fortune du joueur " + joueurCourrant.getNom() + ": " + joueurCourrant.getFortune());
                                 System.out.println("Fin de tour");
+                                System.out.println("363");
                                 try {
                                     Thread.sleep(3000);
                                 } catch (InterruptedException ex) {
@@ -403,6 +405,7 @@ public class Controlleur implements Observateur {
                     
                 } else {
                     System.out.println("Fin de tour");
+                    System.out.println("408");
                     
                 }
             }
@@ -411,9 +414,7 @@ public class Controlleur implements Observateur {
 
             
         }
-        if(!faitUnDouble){
-            tourSuivant();
-        }
+        
 
     }
 
@@ -537,8 +538,7 @@ public class Controlleur implements Observateur {
                 break;
             case 0:
                 phase2 = false;
-                joueurs.remove(0);
-                joueurs.add(joueurCourrant);
+                
                 tourSuivant();
                 break;
 
@@ -851,6 +851,7 @@ public class Controlleur implements Observateur {
 
             case 0:
                 System.out.println("Fin de tour");
+                    System.out.println("854");
                 tourSuivant();
                 break;
             default:
@@ -872,12 +873,7 @@ public class Controlleur implements Observateur {
         int nb = this.Vjeu.getPopup().showConfirmDialog(null, "Voulez vous achter la propriété ?", "Achat", JOptionPane.YES_NO_OPTION);
 
         switch (nb) {
-            case 0:
-                voirOffre();
-                int nb2 = this.Vjeu.getPopup().showConfirmDialog(null, "Confirmez-vous ?", "Confirmation", JOptionPane.YES_NO_OPTION);
-
-                switch (nb2) {
-                    case 0:
+            case 0:              
                         joueurCourrant.setFortune(joueurCourrant.getFortune() - joueurCourrant.getCellule().getPropriete().getPrixAchat());
                         joueurCourrant.addProprieter(joueurCourrant.getCellule().getPropriete());
                         banque.getPropriétésJoueur().remove(joueurCourrant.getCellule().getPropriete());
@@ -887,24 +883,16 @@ public class Controlleur implements Observateur {
                         System.out.println("Fin de tour");
                         tourSuivant();
                         break;
-                    case 1:
-                        System.out.println("Fin de tour");
-                        
-                        tourSuivant();
-                        break;
-                    default:
-                        System.out.println("Fin de tour");
-                        tourSuivant();
-
-                        break;
-                }
+                    
             case 1:
-                System.out.println("Fin de tour");
-                tourSuivant();
-                break;
+                        System.out.println("Fin de tour");
+                        tourSuivant();
+                        break;
+                
+            
             default:
-                System.out.println("! Entrée non valide !");
                 acheter();
+                
                 break;
         }
     }
@@ -926,7 +914,6 @@ public class Controlleur implements Observateur {
             public void run() {
 
                 acheter();
-                
                 timer.cancel();
             }
         }, 0, 50);
