@@ -28,10 +28,16 @@ public class Vue_Est extends JPanel {
     public Vue_Est() {
         //  f = new JFrame();
         //  f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/4, Toolkit.getDefaultToolkit().getScreenSize().height);
+        liste = new List();
         this.setLayout(new BorderLayout());
 
         //f.add(this);
     }
+
+    public List getListe() {
+        return liste;
+    }
+    
 
     public void afficher() {
         f.setVisible(true);
@@ -44,11 +50,15 @@ public class Vue_Est extends JPanel {
     }
 
     public void setListe(ArrayList<Propriete> listePropriete) {
-        liste = new List();
+        
         for (int i = 0; i < listePropriete.size(); i++) {
 
             this.liste.add(listePropriete.get(i).getNom());
         }
         this.add(liste);
+
     }
+    
+
+    
 }

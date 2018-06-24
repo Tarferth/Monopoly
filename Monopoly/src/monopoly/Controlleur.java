@@ -895,6 +895,7 @@ public class Controlleur implements Observateur {
     public void tourSuivant() {
         joueurs.remove(0);
         joueurs.add(joueurCourrant);
+         this.Vjeu.getEastPanel().getListe().clear();
     }
 
     public void timer() {

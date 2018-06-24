@@ -40,13 +40,13 @@ public class Vue_Plateau extends JPanel {
         for (int i = 1; i <= 121; i++) {
             switch (i) {
                 case 1:
-                    JPanel tuile1 = new JPanel(new GridLayout(2, 1));
+                    JPanel tuile1 = new JPanel(new GridLayout(3, 1));
 
                     JPanel nom1 = new JPanel();
                     JLabel labelNom1 = new JLabel("Depart");
                     nom1.add(labelNom1);
                     tuile1.add(nom1);
-
+                    
                     JPanel prix1 = new JPanel();
                     JLabel labelPrix1 = new JLabel("");
                     prix1.add(labelPrix1);
