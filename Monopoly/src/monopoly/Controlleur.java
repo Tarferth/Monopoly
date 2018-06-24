@@ -275,7 +275,7 @@ public class Controlleur implements Observateur {
         this.Vplateau.setCellules(plateau);
         this.Vjeu = new Vue_Jeu();
         
-        this.Vjeu.getWestPanel().setListeAchetables(this.banque.getPropriétésJoueur());
+        // this.Vjeu.getWestPanel().setListe(this.banque.getPropriétésJoueur());
         
         this.Vjeu.getNorthPanel().setNomJ1(this.joueurs.get(0).getNom());
         this.Vjeu.getNorthPanel().setNomJ2(this.joueurs.get(1).getNom());
