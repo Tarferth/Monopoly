@@ -897,7 +897,6 @@ public class Controlleur implements Observateur {
     public void tourSuivant() {
         joueurs.remove(0);
         joueurs.add(joueurCourrant);
-        this.Vjeu.getEastPanel().getListe().clear();
         this.Vjeu.getWestPanel().setListe(this.banque.getPropriétésJoueur());
     }
 
