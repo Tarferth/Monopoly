@@ -28,15 +28,15 @@ public class Vue_Ouest extends JPanel {
     
     public Vue_Ouest()
     {
-        this.setLayout(new GridLayout(2,1));
-        liste = new List() ;
-        for (int i =0 ;i<36;i++)
-        {
-            JLabel j = new JLabel(this.getListeAchetables().get(i).getNom());
-            liste.add(j.getText());
-        }
-        
-        this.add(liste);
+//        this.setLayout(new GridLayout(2,1));
+//        liste = new List() ;
+//        for (int i =0 ;i<36;i++)
+//        {
+//            JLabel j = new JLabel(this.getListeAchetables().get(i).getNom());
+//            liste.add(j.getText());
+//        }
+//        
+//        this.add(liste);
         
         lancer = new JButton("Lancer les dés");
         

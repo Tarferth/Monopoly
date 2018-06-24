@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -47,6 +48,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix1 = new JLabel("");
                     prix1.add(labelPrix1);
                     tuile1.add(prix1);
+                    tuile1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     
                     mainPanel.add(tuile1);
                     break;
@@ -58,6 +60,7 @@ public class Vue_Plateau extends JPanel{
                     labelNom2.setFont(new Font("Prop", 1, 9));
                     nom2.add(labelNom2);
                     tuile2.add(nom2);
+                    tuile2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     
                     JPanel prix2 = new JPanel();
                     JLabel labelPrix2 = new JLabel(this.getPrixTuile(1));
@@ -85,6 +88,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix3 = new JLabel("");
                     prix3.add(labelPrix3);
                     tuile3.add(prix3);
+                    tuile3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     
                     mainPanel.add(tuile3);
                     break;
@@ -107,7 +111,7 @@ public class Vue_Plateau extends JPanel{
                         couleur4.setBackground(this.getCouleur(3));
                     }
                     tuile4.add(couleur4);
-                    
+                    tuile4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile4);
                     break;
                 case 5:
@@ -123,6 +127,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix5 = new JLabel(String.valueOf(this.cellules.getCellule(4).getImpot().getMontant()));
                     prix5.add(labelPrix5);
                     tuile5.add(prix5);
+                    tuile5.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     
                     
                     
@@ -147,6 +152,7 @@ public class Vue_Plateau extends JPanel{
                         couleur6.setBackground(this.getCouleur(5));
                     }
                     tuile6.add(couleur6);
+                    tuile6.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     
                     mainPanel.add(tuile6);
                     break;
@@ -169,7 +175,7 @@ public class Vue_Plateau extends JPanel{
                         couleur7.setBackground(this.getCouleur(6));
                     }
                     tuile7.add(couleur7);
-                    
+                    tuile7.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile7);
                     break;
                 case 8:
@@ -185,7 +191,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix8 = new JLabel("");
                     prix8.add(labelPrix8);
                     tuile8.add(prix8);
-                    
+                    tuile8.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                    
                     
                     mainPanel.add(tuile8);
@@ -209,7 +215,7 @@ public class Vue_Plateau extends JPanel{
                         couleur9.setBackground(this.getCouleur(8));
                     }
                     tuile9.add(couleur9);
-                    
+                    tuile9.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile9);
                     break;
                 case 10:
@@ -231,7 +237,7 @@ public class Vue_Plateau extends JPanel{
                         couleur10.setBackground(this.getCouleur(9));
                     }
                     tuile10.add(couleur10);
-                    
+                    tuile10.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile10);
                     break;
                 case 11:
@@ -247,7 +253,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix11 = new JLabel("");
                     prix11.add(labelPrix11);
                     tuile11.add(prix11);
-                    
+                    tuile11.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile11);
                     break;
                 case 12:
@@ -273,7 +279,7 @@ public class Vue_Plateau extends JPanel{
                         couleur40.setBackground(this.getCouleur(39));
                     }
                     tuile40.add(couleur40, BorderLayout.EAST);
-                    
+                    tuile40.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile40);
                     break;
                 case 22:
@@ -299,7 +305,7 @@ public class Vue_Plateau extends JPanel{
                         couleur12.setBackground(this.getCouleur(11));
                     }
                     tuile12.add(couleur12, BorderLayout.WEST);
-                    
+                    tuile12.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile12);
                     break;
                 case 23:
@@ -319,7 +325,7 @@ public class Vue_Plateau extends JPanel{
                     carte39.add(prix39);
                     
                     tuile39.add(carte39, BorderLayout.CENTER);
-                    
+                    tuile39.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     
                     
                     mainPanel.add(tuile39);
@@ -347,7 +353,7 @@ public class Vue_Plateau extends JPanel{
                         couleur13.setBackground(this.getCouleur(12));
                     }
                     tuile13.add(couleur13, BorderLayout.WEST);
-                    
+                    tuile13.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile13);
                     break;
                 case 34:
@@ -373,7 +379,7 @@ public class Vue_Plateau extends JPanel{
                         couleur38.setBackground(this.getCouleur(37));
                     }
                     tuile38.add(couleur38, BorderLayout.EAST);
-                    
+                    tuile38.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile38);
                     break;
                 case 37:
@@ -403,7 +409,7 @@ public class Vue_Plateau extends JPanel{
                         couleur14.setBackground(this.getCouleur(13));
                     }
                     tuile14.add(couleur14, BorderLayout.WEST);
-                    
+                    tuile14.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile14);
                     break;
                 case 45:
@@ -423,7 +429,7 @@ public class Vue_Plateau extends JPanel{
                     carte37.add(prix37);
                     
                     tuile37.add(carte37, BorderLayout.CENTER);
-                    
+                    tuile37.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     
                     mainPanel.add(tuile37);
                     break;
@@ -450,7 +456,7 @@ public class Vue_Plateau extends JPanel{
                         couleur15.setBackground(this.getCouleur(14));
                     }
                     tuile15.add(couleur15, BorderLayout.WEST);
-                    
+                    tuile15.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile15);
                     break;
                 case 56:
@@ -476,7 +482,7 @@ public class Vue_Plateau extends JPanel{
                         couleur36.setBackground(this.getCouleur(35));
                     }
                     tuile36.add(couleur36, BorderLayout.EAST);
-                    
+                    tuile36.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile36);
                     break;
                     
@@ -493,7 +499,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix60 = new JLabel(String.valueOf(cagnotte));
                     prix60.add(labelPrix60);
                     tuile60.add(prix60);
-                    
+                    tuile60.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile60);
                     break;
                     
@@ -521,7 +527,7 @@ public class Vue_Plateau extends JPanel{
                         couleur16.setBackground(this.getCouleur(15));
                     }
                     tuile16.add(couleur16, BorderLayout.WEST);
-                    
+                    tuile16.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile16);
                     break;
                 case 67:
@@ -547,7 +553,7 @@ public class Vue_Plateau extends JPanel{
                         couleur35.setBackground(this.getCouleur(34));
                     }
                     tuile35.add(couleur35, BorderLayout.EAST);
-                    
+                    tuile35.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile35);
                     break;
                 case 77:
@@ -573,7 +579,7 @@ public class Vue_Plateau extends JPanel{
                         couleur17.setBackground(this.getCouleur(16));
                     }
                     tuile17.add(couleur17, BorderLayout.WEST);
-                    
+                    tuile17.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile17);
                     break;
                 case 78:
@@ -593,7 +599,7 @@ public class Vue_Plateau extends JPanel{
                     carte34.add(prix34);
                     
                     tuile34.add(carte34, BorderLayout.CENTER);
-                    
+                    tuile34.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     
                     mainPanel.add(tuile34);
                     break;
@@ -618,7 +624,7 @@ public class Vue_Plateau extends JPanel{
                     carte18.add(prix18);
                     
                     tuile18.add(carte18, BorderLayout.CENTER);
-                                        
+                    tuile18.setBorder(BorderFactory.createLineBorder(Color.BLACK));                    
                     mainPanel.add(tuile18);
                     break;
                 case 89:
@@ -644,7 +650,7 @@ public class Vue_Plateau extends JPanel{
                         couleur33.setBackground(this.getCouleur(32));
                     }
                     tuile33.add(couleur33, BorderLayout.EAST);
-                    
+                    tuile33.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile33);
                     break;
                 case 99:
@@ -670,7 +676,7 @@ public class Vue_Plateau extends JPanel{
                         couleur19.setBackground(this.getCouleur(18));
                     }
                     tuile19.add(couleur19, BorderLayout.WEST);
-                    
+                    tuile19.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile19);
                     break;
                 case 100:
@@ -696,7 +702,7 @@ public class Vue_Plateau extends JPanel{
                         couleur32.setBackground(this.getCouleur(31));
                     }
                     tuile32.add(couleur32, BorderLayout.EAST);
-                    
+                    tuile32.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile32);
                     break;
                 case 110:
@@ -722,7 +728,7 @@ public class Vue_Plateau extends JPanel{
                         couleur20.setBackground(this.getCouleur(19));
                     }
                     tuile20.add(couleur20, BorderLayout.WEST);
-                    
+                    tuile20.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile20);
                     break;
                 case 111:
@@ -738,7 +744,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix31 = new JLabel("");
                     prix31.add(labelPrix31);
                     tuile31.add(prix31);          
-                    
+                    tuile31.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile31);
                     break;
                 case 112:
@@ -760,7 +766,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix30 = new JLabel(getPrixTuile(29));
                     prix30.add(labelPrix30);
                     tuile30.add(prix30);          
-                    
+                    tuile30.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile30);
                     break;
                 case 113:
@@ -782,7 +788,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix29 = new JLabel(getPrixTuile(28));
                     prix29.add(labelPrix29);
                     tuile29.add(prix29);          
-                    
+                    tuile29.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile29);
                     break;
                 case 114:
@@ -804,7 +810,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix28 = new JLabel(getPrixTuile(27));
                     prix28.add(labelPrix28);
                     tuile28.add(prix28);          
-                    
+                    tuile28.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile28);
                     break;
                 case 115:
@@ -826,7 +832,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix27 = new JLabel(getPrixTuile(26));
                     prix27.add(labelPrix27);
                     tuile27.add(prix27);          
-                    
+                    tuile27.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile27);
                     break;
                 case 116:
@@ -848,7 +854,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix26 = new JLabel(getPrixTuile(25));
                     prix26.add(labelPrix26);
                     tuile26.add(prix26);          
-                    
+                    tuile26.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile26);
                     break;
                 case 117:
@@ -870,7 +876,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix25 = new JLabel(getPrixTuile(24));
                     prix25.add(labelPrix25);
                     tuile25.add(prix25);          
-                    
+                    tuile25.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile25);
                     break;
                 case 118:
@@ -892,7 +898,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix24 = new JLabel(getPrixTuile(23));
                     prix24.add(labelPrix24);
                     tuile24.add(prix24);          
-                    
+                    tuile24.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile24);
                     break;
                 case 119:
@@ -910,7 +916,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix23 = new JLabel("");
                     prix23.add(labelPrix23);
                     tuile23.add(prix23);          
-                    
+                    tuile23.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile23);
                     break;
                 case 120:
@@ -932,7 +938,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix22 = new JLabel(getPrixTuile(21));
                     prix22.add(labelPrix22);
                     tuile22.add(prix22);          
-                    
+                    tuile22.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile22);
                     break;
                 case 121:
@@ -948,7 +954,7 @@ public class Vue_Plateau extends JPanel{
                     JLabel labelPrix21 = new JLabel("");
                     prix21.add(labelPrix21);
                     tuile21.add(prix21);          
-                    
+                    tuile21.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     mainPanel.add(tuile21);
                     break;
                     
