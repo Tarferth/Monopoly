@@ -268,7 +268,9 @@ public class Controlleur implements Observateur {
         joueurCourrant = joueurs.get(0);//innitialisation du joueur courrant
         this.Vjeu.getSouthPanel().setFortuneJCourrant(String.valueOf(this.getJoueurCourrant().getFortune()));
         this.Vjeu.getSouthPanel().setNomJCourrant(this.getJoueurCourrant().getNom());
-        this.Vjeu.getSouthPanel().setPrixCaseCourrante(String.valueOf(this.getJoueurCourrant().getCellule().getPropriete().getPrixAchat()));
+        if (this.plateau.getAchetables().containsKey(this.getJoueurCourrant().getCellule().getNumero())) {
+            this.Vjeu.getSouthPanel().setPrixCaseCourrante(String.valueOf(this.getJoueurCourrant().getCellule().getPropriete().getPrixAchat()));
+        }
         this.Vjeu.getSouthPanel().setNomCaseCourrante(this.getJoueurCourrant().getCellule().getNomCellule());
         
         System.out.println("\n\n\n--------------------------------------------");
